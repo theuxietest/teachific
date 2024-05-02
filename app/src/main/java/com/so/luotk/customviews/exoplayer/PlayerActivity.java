@@ -1,0 +1,954 @@
+/*
+ * Copyright (C) 2016 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.so.luotk.customviews.exoplayer;
+
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
+import static android.view.WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE;
+
+import static com.google.android.exoplayer2.util.Assertions.checkArgument;
+import static com.google.android.exoplayer2.util.Assertions.checkState;
+
+import android.app.Dialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
+import android.util.Pair;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RadioButton;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.exoplayer2.C;
+import com.google.android.exoplayer2.ExoPlayer;
+import com.google.android.exoplayer2.MediaItem;
+import com.google.android.exoplayer2.PlaybackException;
+import com.google.android.exoplayer2.Player;
+import com.google.android.exoplayer2.RenderersFactory;
+import com.google.android.exoplayer2.TracksInfo;
+import com.google.android.exoplayer2.audio.AudioAttributes;
+import com.google.android.exoplayer2.drm.FrameworkMediaDrm;
+import com.google.android.exoplayer2.ext.ima.ImaAdsLoader;
+import com.google.android.exoplayer2.ext.ima.ImaServerSideAdInsertionMediaSource;
+import com.google.android.exoplayer2.mediacodec.MediaCodecRenderer.DecoderInitializationException;
+import com.google.android.exoplayer2.mediacodec.MediaCodecUtil.DecoderQueryException;
+import com.google.android.exoplayer2.offline.DownloadRequest;
+import com.google.android.exoplayer2.source.DefaultMediaSourceFactory;
+import com.google.android.exoplayer2.source.MediaSource;
+import com.google.android.exoplayer2.source.ads.AdsLoader;
+import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
+import com.google.android.exoplayer2.ui.StyledPlayerControlView;
+import com.google.android.exoplayer2.ui.StyledPlayerView;
+import com.google.android.exoplayer2.upstream.DataSource;
+import com.google.android.exoplayer2.util.DebugTextViewHelper;
+import com.google.android.exoplayer2.util.ErrorMessageProvider;
+import com.google.android.exoplayer2.util.EventLogger;
+import com.google.android.exoplayer2.util.Util;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.so.luotk.R;
+import com.so.luotk.activities.PlayerYoutubeActivity;
+import com.so.luotk.client.MyClient;
+import com.so.luotk.databinding.DialogUsbConnectedBinding;
+import com.so.luotk.models.output.ServiceResponse;
+import com.so.luotk.models.youtubeEx.newModels.YoutubeDataModel;
+import com.so.luotk.models.youtubeEx.youtube.playerResponse.MuxedStream;
+import com.so.luotk.utils.PreferenceHandler;
+import com.so.luotk.utils.Utilities;
+
+import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
+
+import timber.log.Timber;
+
+/** An activity that plays media using {@link ExoPlayer}. */
+public class PlayerActivity extends AppCompatActivity
+        implements OnClickListener, StyledPlayerControlView.VisibilityListener {
+
+  // Saved instance state keys.
+
+  public static final String TAG = "PlayerActivity";
+  private static final String KEY_TRACK_SELECTION_PARAMETERS = "track_selection_parameters";
+  private static final String KEY_SERVER_SIDE_ADS_LOADER_STATE = "server_side_ads_loader_state";
+  private static final String KEY_ITEM_INDEX = "item_index";
+  private static final String KEY_POSITION = "position";
+  private static final String KEY_AUTO_PLAY = "auto_play";
+
+  protected StyledPlayerView playerView;
+  protected RelativeLayout debugRootView;
+  protected TextView debugTextView;
+  protected @Nullable
+  ExoPlayer player;
+
+  private boolean isShowingTrackSelectionDialog;
+  private ImageView selectTracksButton;
+  private DataSource.Factory dataSourceFactory;
+  private List<MediaItem> mediaItems;
+  private DefaultTrackSelector trackSelector;
+  private DefaultTrackSelector.Parameters trackSelectionParameters;
+  private DebugTextViewHelper debugViewHelper;
+  private TracksInfo lastSeenTracksInfo;
+  private boolean startAutoPlay;
+  private int startItemIndex;
+  private long startPosition;
+  public ProgressBar pbProcessing;
+  private RelativeLayout progressLay;
+
+  // For ad playback only.
+
+  @Nullable
+  private AdsLoader clientSideAdsLoader;
+  @Nullable
+  private ImaServerSideAdInsertionMediaSource.AdsLoader serverSideAdsLoader;
+  private ImaServerSideAdInsertionMediaSource.AdsLoader.@MonotonicNonNull State
+          serverSideAdsLoaderState;
+  private List<MuxedStream> qualityArray = new ArrayList<>();
+  private Handler handler;
+  private BroadcastReceiver broadcast_reciever;
+  private Handler mHandler = null;
+  private String videoId;
+  private boolean isFullScreen;
+  private int currentMode;
+  private Dialog dialog;
+  private String id, isFrom, qualityArrayReturn, quality;
+  private boolean isViewSaved;
+  private boolean connected;
+  ConstraintLayout customLay;
+  private TextView titleVideo;
+  BottomSheetDialog dialogBottom;
+  private long currentTime = 0;
+  static boolean active = false;
+  private List<YoutubeDataModel> qualityArrayInApp = new ArrayList<>();
+  // Activity lifecycle.
+
+  @Override
+  public void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    dataSourceFactory = DemoUtil.getDataSourceFactory(/* context= */ this);
+    getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+    Utilities.restrictScreenShot(this);
+    Utilities.restrictKeepScreenOn(this);
+    overridePendingTransition(0, 0);
+    Utilities.setUpStatusBar(this);
+    Utilities.setLocale(this);
+    setContentView();
+    currentMode = getResources().getConfiguration().uiMode;
+    broadcast_reciever = new BroadcastReceiver() {
+      @Override
+      public void onReceive(Context arg0, Intent intent) {
+        if (intent.getExtras().getBoolean("connected")) {
+          showDisconnectUsbDialog();
+          connected = true;
+        }
+      }
+    };
+    handler = new Handler(Looper.myLooper());
+
+    debugRootView = findViewById(R.id.controls_root);
+    debugTextView = findViewById(R.id.debug_text_view);
+    selectTracksButton = findViewById(R.id.select_tracks_button);
+    progressLay = findViewById(R.id.progress_lay);
+    pbProcessing = findViewById(R.id.pbProcessing);
+    selectTracksButton.setOnClickListener(this);
+
+    playerView = findViewById(R.id.player_view);
+    playerView.setControllerVisibilityListener(this);
+    playerView.setErrorMessageProvider(new PlayerErrorMessageProvider());
+    playerView.requestFocus();
+    if (getIntent() != null) {
+      videoId = getIntent().getStringExtra("VideoLink");
+      isFrom = getIntent().getStringExtra(PreferenceHandler.IS_FROM);
+      id = getIntent().getStringExtra("videoID");
+      qualityArrayReturn = getIntent().getStringExtra("qualityArray");
+      try {
+        currentTime = getIntent().getLongExtra("currentTime", 0);
+      } catch (NumberFormatException e) {
+        e.printStackTrace();
+      }
+      quality = getIntent().getStringExtra("quality");
+    }
+
+
+//    MuxedStream muxedStream = new Gson().fromJson(qualityArrayReturn, MuxedStream.class);
+
+    Log.d(TAG, "onCreateGson: " + qualityArrayReturn);
+
+    if (savedInstanceState != null) {
+      // Restore as DefaultTrackSelector.Parameters in case ExoPlayer specific parameters were set.
+      trackSelectionParameters =
+              DefaultTrackSelector.Parameters.CREATOR.fromBundle(
+                      savedInstanceState.getBundle(KEY_TRACK_SELECTION_PARAMETERS));
+      startAutoPlay = savedInstanceState.getBoolean(KEY_AUTO_PLAY);
+      startItemIndex = savedInstanceState.getInt(KEY_ITEM_INDEX);
+      startPosition = savedInstanceState.getLong(KEY_POSITION);
+      Bundle adsLoaderStateBundle = savedInstanceState.getBundle(KEY_SERVER_SIDE_ADS_LOADER_STATE);
+      if (adsLoaderStateBundle != null) {
+        serverSideAdsLoaderState =
+                ImaServerSideAdInsertionMediaSource.AdsLoader.State.CREATOR.fromBundle(
+                        adsLoaderStateBundle);
+      }
+    } else {
+      trackSelectionParameters =
+              new DefaultTrackSelector.ParametersBuilder(/* context= */ this).build();
+      clearStartPosition();
+    }
+
+    popupDialogQuality();
+  }
+
+
+  public void popupDialogQuality() {
+    try {
+      dialogBottom = new BottomSheetDialog(this, R.style.DialogStyle);
+//      JSONObject jsonObject = new JSONObject(qualityArrayReturn);
+//      Log.d(TAG, "popupDialogQuality1: " + jsonObject.toString());
+      JSONArray jsonArray = new JSONArray(qualityArrayReturn);
+      Log.d(TAG, "popupDialogQuality2: " + jsonArray.length());
+      for (int i = 0; i < jsonArray.length(); i++) {
+        JSONObject jsonObject1 = (JSONObject) jsonArray.get(i);
+        YoutubeDataModel youtubeDataModel = new YoutubeDataModel();
+        youtubeDataModel.setQuality(jsonObject1.optString("quality"));
+        youtubeDataModel.setQualityLabel(jsonObject1.optString("qualityLabel"));
+        youtubeDataModel.setUrl(jsonObject1.optString("url"));
+        if (quality.equals("1")) {
+          if (i == 0) {
+            youtubeDataModel.setSelected(true);
+          }
+        } else {
+          if (i == 1) {
+            youtubeDataModel.setSelected(true);
+          }
+        }
+        qualityArrayInApp.add(youtubeDataModel);
+      }
+
+      Log.d(TAG, "popupDialogQuality: " + qualityArrayInApp.size());
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  @Override
+  public void onNewIntent(Intent intent) {
+    super.onNewIntent(intent);
+    releasePlayer();
+    releaseClientSideAdsLoader();
+    clearStartPosition();
+    setIntent(intent);
+  }
+
+  @Override
+  public void onStart() {
+    super.onStart();
+    if (Util.SDK_INT > 23) {
+//      runVideo(videoId);
+      initializePlayer();
+      if (playerView != null) {
+        playerView.onResume();
+      }
+    }
+  }
+
+  @Override
+  public void onResume() {
+    super.onResume();
+    if (Util.SDK_INT <= 23 || player == null) {
+//      runVideo(videoId);
+      initializePlayer();
+      if (playerView != null) {
+        playerView.onResume();
+      }
+    }
+  }
+
+  @Override
+  public void onPause() {
+    super.onPause();
+    if (Util.SDK_INT <= 23) {
+      if (playerView != null) {
+        playerView.onPause();
+      }
+      releasePlayer();
+    }
+    try {
+      handler.removeCallbacks(updateProgressAction);
+      handler.removeCallbacksAndMessages(null);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  @Override
+  public void onStop() {
+    super.onStop();
+    if (Util.SDK_INT > 23) {
+      if (playerView != null) {
+        playerView.onPause();
+      }
+      releasePlayer();
+    }
+    try {
+      handler.removeCallbacks(updateProgressAction);
+      handler.removeCallbacksAndMessages(null);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  @Override
+  public void onDestroy() {
+    super.onDestroy();
+    releaseClientSideAdsLoader();
+  }
+
+  @Override
+  public void onRequestPermissionsResult(
+          int requestCode, String[] permissions, int[] grantResults) {
+    super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    if (grantResults.length == 0) {
+      // Empty results are triggered if a permission is requested while another request was already
+      // pending and can be safely ignored in this case.
+      return;
+    }
+    if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//      runVideo(videoId);
+      initializePlayer();
+    } else {
+      showToast(R.string.storage_permission_denied);
+      finish();
+    }
+  }
+
+  @Override
+  public void onSaveInstanceState(Bundle outState) {
+    super.onSaveInstanceState(outState);
+    updateTrackSelectorParameters();
+    updateStartPosition();
+    outState.putBundle(KEY_TRACK_SELECTION_PARAMETERS, trackSelectionParameters.toBundle());
+    outState.putBoolean(KEY_AUTO_PLAY, startAutoPlay);
+    outState.putInt(KEY_ITEM_INDEX, startItemIndex);
+    outState.putLong(KEY_POSITION, startPosition);
+    if (serverSideAdsLoaderState != null) {
+      outState.putBundle(KEY_SERVER_SIDE_ADS_LOADER_STATE, serverSideAdsLoaderState.toBundle());
+    }
+  }
+
+  // Activity input
+
+  @Override
+  public boolean dispatchKeyEvent(KeyEvent event) {
+    // See whether the player view wants to handle media or DPAD keys events.
+    return playerView.dispatchKeyEvent(event) || super.dispatchKeyEvent(event);
+  }
+
+  // OnClickListener methods
+
+  @Override
+  public void onClick(View view) {
+    if (view == selectTracksButton
+        /*&& !isShowingTrackSelectionDialog
+        && TrackSelectionDialog.willHaveContent(trackSelector)*/) {
+
+      BottomDialogQuality(qualityArrayInApp);
+//      isShowingTrackSelectionDialog = true;
+//      TrackSelectionDialog trackSelectionDialog =
+//              TrackSelectionDialog.createForTrackSelector(
+//              trackSelector,
+//              /* onDismissListener= */ dismissedDialog -> isShowingTrackSelectionDialog = false);
+//      trackSelectionDialog.show(getSupportFragmentManager(), /* tag= */ null);
+    }
+  }
+
+  // StyledPlayerControlView.VisibilityListener implementation
+
+  @Override
+  public void onVisibilityChange(int visibility) {
+    debugRootView.setVisibility(visibility);
+  }
+
+  // Internal methods
+
+  protected void setContentView() {
+    setContentView(R.layout.player_activity);
+  }
+
+  /**
+   * @return Whether initialization was successful.
+   */
+  protected boolean initializePlayer() {
+    if (player == null) {
+      Intent intent = getIntent();
+
+      mediaItems = createMediaItems(intent);
+
+
+      if (mediaItems.isEmpty()) {
+        return false;
+      }
+
+      boolean preferExtensionDecoders =
+              intent.getBooleanExtra(IntentUtil.PREFER_EXTENSION_DECODERS_EXTRA, false);
+      RenderersFactory renderersFactory =
+              DemoUtil.buildRenderersFactory(/* context= */ this, preferExtensionDecoders);
+
+      trackSelector = new DefaultTrackSelector(/* context= */ this);
+      lastSeenTracksInfo = TracksInfo.EMPTY;
+      player =
+              new ExoPlayer.Builder(/* context= */ this)
+                      .setRenderersFactory(renderersFactory)
+                      .setMediaSourceFactory(createMediaSourceFactory())
+                      .setTrackSelector(trackSelector)
+                      .build();
+      player.setTrackSelectionParameters(trackSelectionParameters);
+      player.addListener(new PlayerEventListener());
+      player.addAnalyticsListener(new EventLogger(trackSelector));
+      player.setAudioAttributes(AudioAttributes.DEFAULT, /* handleAudioFocus= */ true);
+      player.setPlayWhenReady(startAutoPlay);
+      playerView.setShowNextButton(false);
+      playerView.setShowPreviousButton(false);
+      playerView.setControllerOnFullScreenModeChangedListener(new StyledPlayerControlView.OnFullScreenModeChangedListener() {
+        @Override
+        public void onFullScreenModeChanged(boolean isFullScreennn) {
+          Log.d(TAG, "onFullScreenModeChanged: " + isFullScreennn);
+          isFullScreen = isFullScreennn;
+          if (isFullScreennn) {
+            isFullScreen = isFullScreennn;
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+          } else {
+            isFullScreen = isFullScreennn;
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+          }
+        }
+      });
+      playerView.setPlayer(player);
+
+      serverSideAdsLoader.setPlayer(player);
+      debugViewHelper = new DebugTextViewHelper(player, debugTextView);
+      debugViewHelper.start();
+
+    }
+    boolean haveStartPosition = startItemIndex != C.INDEX_UNSET;
+    if (haveStartPosition) {
+      player.seekTo(startItemIndex, startPosition);
+    }
+    player.setMediaItems(mediaItems, /* resetPosition= */ !haveStartPosition);
+    player.prepare();
+    if (currentTime > 0) {
+      player.seekTo(currentTime);
+    }
+    updateButtonVisibility();
+    return true;
+  }
+
+  private MediaSource.Factory createMediaSourceFactory() {
+    ImaServerSideAdInsertionMediaSource.AdsLoader.Builder serverSideAdLoaderBuilder =
+            new ImaServerSideAdInsertionMediaSource.AdsLoader.Builder(/* context= */ this, playerView);
+    if (serverSideAdsLoaderState != null) {
+      serverSideAdLoaderBuilder.setAdsLoaderState(serverSideAdsLoaderState);
+    }
+    serverSideAdsLoader = serverSideAdLoaderBuilder.build();
+    ImaServerSideAdInsertionMediaSource.Factory imaServerSideAdInsertionMediaSourceFactory =
+            new ImaServerSideAdInsertionMediaSource.Factory(
+                    serverSideAdsLoader, new DefaultMediaSourceFactory(dataSourceFactory));
+    return new DefaultMediaSourceFactory(dataSourceFactory)
+            .setAdsLoaderProvider(this::getClientSideAdsLoader)
+            .setAdViewProvider(playerView)
+            .setServerSideAdInsertionMediaSourceFactory(imaServerSideAdInsertionMediaSourceFactory);
+  }
+
+  private List<MediaItem> createMediaItems(Intent intent) {
+    String action = intent.getAction();
+    boolean actionIsListView = IntentUtil.ACTION_VIEW_LIST.equals(action);
+    if (!actionIsListView && !IntentUtil.ACTION_VIEW.equals(action)) {
+      showToast(getString(R.string.unexpected_intent_action, action));
+      finish();
+      return Collections.emptyList();
+    }
+
+    List<MediaItem> mediaItems =
+            createMediaItems(intent, DemoUtil.getDownloadTracker(/* context= */ this));
+    for (int i = 0; i < mediaItems.size(); i++) {
+      MediaItem mediaItem = mediaItems.get(i);
+      if (!Util.checkCleartextTrafficPermitted(mediaItem)) {
+        showToast(R.string.error_cleartext_not_permitted);
+        finish();
+        return Collections.emptyList();
+      }
+      if (Util.maybeRequestReadExternalStoragePermission(/* activity= */ this, mediaItem)) {
+        // The player will be reinitialized if the permission is granted.
+        return Collections.emptyList();
+      }
+
+      MediaItem.DrmConfiguration drmConfiguration = mediaItem.localConfiguration.drmConfiguration;
+      if (drmConfiguration != null) {
+        if (Util.SDK_INT < 18) {
+          showToast(R.string.error_drm_unsupported_before_api_18);
+          finish();
+          return Collections.emptyList();
+        } else if (!FrameworkMediaDrm.isCryptoSchemeSupported(drmConfiguration.scheme)) {
+          showToast(R.string.error_drm_unsupported_scheme);
+          finish();
+          return Collections.emptyList();
+        }
+      }
+    }
+    return mediaItems;
+  }
+
+  private AdsLoader getClientSideAdsLoader(MediaItem.AdsConfiguration adsConfiguration) {
+    // The ads loader is reused for multiple playbacks, so that ad playback can resume.
+    if (clientSideAdsLoader == null) {
+      clientSideAdsLoader = new ImaAdsLoader.Builder(/* context= */ this).build();
+    }
+    clientSideAdsLoader.setPlayer(player);
+    return clientSideAdsLoader;
+  }
+
+  protected void releasePlayer() {
+    if (player != null) {
+      updateTrackSelectorParameters();
+      updateStartPosition();
+      serverSideAdsLoaderState = serverSideAdsLoader.release();
+      serverSideAdsLoader = null;
+      debugViewHelper.stop();
+      debugViewHelper = null;
+      player.release();
+      player = null;
+      playerView.setPlayer(/* player= */ null);
+      mediaItems = Collections.emptyList();
+    }
+    if (clientSideAdsLoader != null) {
+      clientSideAdsLoader.setPlayer(null);
+    } else {
+      playerView.getAdViewGroup().removeAllViews();
+    }
+  }
+
+  private void releaseClientSideAdsLoader() {
+    if (clientSideAdsLoader != null) {
+      clientSideAdsLoader.release();
+      clientSideAdsLoader = null;
+      playerView.getAdViewGroup().removeAllViews();
+    }
+  }
+
+  private void updateTrackSelectorParameters() {
+    if (player != null) {
+      // Until the demo app is fully migrated to TrackSelectionParameters, rely on ExoPlayer to use
+      // DefaultTrackSelector by default.
+      trackSelectionParameters =
+              (DefaultTrackSelector.Parameters) player.getTrackSelectionParameters();
+    }
+  }
+
+  private void updateStartPosition() {
+    if (player != null) {
+      startAutoPlay = player.getPlayWhenReady();
+      startItemIndex = player.getCurrentMediaItemIndex();
+      startPosition = Math.max(0, player.getContentPosition());
+    }
+  }
+
+  protected void clearStartPosition() {
+    startAutoPlay = true;
+    startItemIndex = C.INDEX_UNSET;
+    startPosition = C.TIME_UNSET;
+  }
+
+  // User controls
+
+  private void updateButtonVisibility() {
+    selectTracksButton.setEnabled(
+            player != null && TrackSelectionDialog.willHaveContent(trackSelector));
+  }
+
+  private void showControls() {
+    debugRootView.setVisibility(View.GONE);
+  }
+
+  private void showToast(int messageId) {
+    showToast(getString(messageId));
+  }
+
+  private void showToast(String message) {
+    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+  }
+
+  private class PlayerEventListener implements Player.Listener {
+
+    @Override
+    public void onPlaybackStateChanged(@Player.State int playbackState) {
+      if (playbackState == Player.STATE_ENDED) {
+        showControls();
+        onBackPressed();
+      }
+      updateButtonVisibility();
+      if (!isViewSaved) {
+        updateProgressBar();
+      }
+    }
+
+
+    @Override
+    public void onPlayerError(PlaybackException error) {
+      if (error.errorCode == PlaybackException.ERROR_CODE_BEHIND_LIVE_WINDOW) {
+        player.seekToDefaultPosition();
+        player.prepare();
+      } else {
+        updateButtonVisibility();
+        showControls();
+      }
+    }
+
+
+    @Override
+    @SuppressWarnings("ReferenceEquality")
+    public void onTracksInfoChanged(TracksInfo tracksInfo) {
+      updateButtonVisibility();
+      if (tracksInfo == lastSeenTracksInfo) {
+        return;
+      }
+      if (!tracksInfo.isTypeSupportedOrEmpty(
+              C.TRACK_TYPE_VIDEO, /* allowExceedsCapabilities= */ true)) {
+        showToast(R.string.error_unsupported_video);
+      }
+      if (!tracksInfo.isTypeSupportedOrEmpty(
+              C.TRACK_TYPE_AUDIO, /* allowExceedsCapabilities= */ true)) {
+        showToast(R.string.error_unsupported_audio);
+      }
+      lastSeenTracksInfo = tracksInfo;
+    }
+  }
+
+  private final Runnable updateProgressAction = new Runnable() {
+    @Override
+    public void run() {
+      if (!isViewSaved) {
+        updateProgressBar();
+      }
+    }
+  };
+
+  private void updateProgressBar() {
+    try {
+//      if (isFrom.equals("course")){
+      if (!isViewSaved) {
+        Number amt = NumberFormat.getNumberInstance(Locale.US).parse(String.valueOf(player.getCurrentPosition()));
+        Float amtFloat = new Float(amt.floatValue());
+        Float timePosition = amtFloat;
+        if (timePosition > 0) {
+          pbProcessing.setVisibility(View.GONE);
+        }
+        if (player != null) {
+          Log.d(TAG, "updateProgressBar1: " + timePosition);
+          if ((timePosition >= 20000)) {
+            if (!isViewSaved && isFrom.equalsIgnoreCase("course")) {
+              isViewSaved = true;
+              new MyClient(PlayerActivity.this).hitSetVideoView(id, (content, error) -> {
+                if (content != null) {
+                  ServiceResponse response = (ServiceResponse) content;
+                  isViewSaved = response.getResult() != null && response.getResult().equalsIgnoreCase("Views saved");
+                  Log.d(TAG, "updateProgressBar: " + isViewSaved);
+                  handler.removeCallbacks(updateProgressAction);
+                } else
+                  handler.removeCallbacks(updateProgressAction);
+                Timber.e("onPlaying: " + error);
+              });
+
+            }
+
+          }
+        }
+        // Remove scheduled updates.
+        handler = new Handler(Looper.myLooper());
+        handler.removeCallbacks(updateProgressAction);
+        handler.postDelayed(updateProgressAction, 1000);
+        // Schedule an update if necessary.
+
+      }
+//      }
+
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  private class PlayerErrorMessageProvider implements ErrorMessageProvider<PlaybackException> {
+
+    @Override
+    public Pair<Integer, String> getErrorMessage(PlaybackException e) {
+      String errorString = getString(R.string.error_generic);
+      Throwable cause = e.getCause();
+
+      if (cause instanceof DecoderInitializationException) {
+        // Special case for decoder initialization failures.
+        DecoderInitializationException decoderInitializationException =
+                (DecoderInitializationException) cause;
+        if (decoderInitializationException.codecInfo == null) {
+          if (decoderInitializationException.getCause() instanceof DecoderQueryException) {
+            errorString = getString(R.string.error_querying_decoders);
+          } else if (decoderInitializationException.secureDecoderRequired) {
+            errorString =
+                    getString(
+                            R.string.error_no_secure_decoder, decoderInitializationException.mimeType);
+          } else {
+            errorString =
+                    getString(R.string.error_no_decoder, decoderInitializationException.mimeType);
+          }
+        } else {
+          errorString =
+                  getString(
+                          R.string.error_instantiating_decoder,
+                          decoderInitializationException.codecInfo.name);
+        }
+      }
+      pbProcessing.setVisibility(View.GONE);
+      return Pair.create(0, errorString);
+    }
+  }
+
+  private static List<MediaItem> createMediaItems(Intent intent, DownloadTracker downloadTracker) {
+    List<MediaItem> mediaItems = new ArrayList<>();
+    for (MediaItem item : IntentUtil.createMediaItemsFromIntent(intent)) {
+      @Nullable
+      DownloadRequest downloadRequest =
+              downloadTracker.getDownloadRequest(item.localConfiguration.uri);
+      if (downloadRequest != null) {
+        MediaItem.Builder builder = item.buildUpon();
+        builder
+                .setMediaId(downloadRequest.id)
+                .setUri(downloadRequest.uri)
+                .setCustomCacheKey(downloadRequest.customCacheKey)
+                .setMimeType(downloadRequest.mimeType)
+                .setStreamKeys(downloadRequest.streamKeys);
+        @Nullable
+        MediaItem.DrmConfiguration drmConfiguration = item.localConfiguration.drmConfiguration;
+        if (drmConfiguration != null) {
+          builder.setDrmConfiguration(
+                  drmConfiguration.buildUpon().setKeySetId(downloadRequest.keySetId).build());
+        }
+
+        mediaItems.add(builder.build());
+      } else {
+        mediaItems.add(item);
+      }
+    }
+    return mediaItems;
+  }
+
+  private void showDisconnectUsbDialog() {
+    DialogUsbConnectedBinding dialogUsbConnectedBinding = DialogUsbConnectedBinding.inflate(LayoutInflater.from(this));
+    Dialog dialog = new Dialog(this);
+    dialog.setContentView(dialogUsbConnectedBinding.getRoot());
+    dialogUsbConnectedBinding.txtGotIt.setOnClickListener(v -> {
+      if (!isFinishing()) {
+        dialog.dismiss();
+        finish();
+      }
+    });
+    try {
+      if (!isFinishing())
+        dialog.show();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    dialog.getWindow().setLayout(MATCH_PARENT, WRAP_CONTENT);
+    dialog.setCancelable(false);
+  }
+
+  /*@Override
+  public void onConfigurationChanged(@NonNull Configuration newConfig) {
+    super.onConfigurationChanged(newConfig);
+    Log.e("", "tag %s" + newConfig);
+    if (currentMode == newConfig.uiMode) {
+      DisplayMetrics displayMetrics = new DisplayMetrics();
+      getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+      if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+        isFullScreen = true;
+      } else {
+        isFullScreen = false;
+      }
+    } else {
+
+      Intent intent = new Intent(PlayerActivity.this, PlayerActivity.class);
+      intent.putExtra("VideoLink", videoId);
+      startActivity(intent);
+      finish();
+    }
+
+
+  }*/
+
+  @Override
+  public void onBackPressed() {
+//    super.onBackPressed();
+    try {
+      if (dialogBottom.isShowing()) {
+        dialogBottom.dismiss();
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    Log.d(TAG, "onBackPressed: " + isFullScreen);
+    if (isFullScreen) {
+      setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+      isFullScreen = false;
+    } else {
+      finish();
+    }
+  }
+
+
+  public void BottomDialogQuality(List<YoutubeDataModel> adativeStream) {
+
+    RecyclerView qualtyRecycler;
+    dialogBottom = new BottomSheetDialog(this, R.style.DialogStyle);
+    View sheetView = getLayoutInflater().inflate(R.layout.bottom_dialog_quality, null);
+    Objects.requireNonNull(dialogBottom.getWindow())
+            .setSoftInputMode(SOFT_INPUT_STATE_VISIBLE);
+    dialogBottom.setContentView(sheetView);
+    dialogBottom.setCanceledOnTouchOutside(true);
+    dialogBottom.setOnShowListener(new DialogInterface.OnShowListener() {
+      @Override
+      public void onShow(DialogInterface dialog) {
+        BottomSheetDialog d = (BottomSheetDialog) dialog;
+        View bottomSheetInternal = d.findViewById(com.google.android.material.R.id.design_bottom_sheet);
+        BottomSheetBehavior.from(bottomSheetInternal).setState(BottomSheetBehavior.STATE_EXPANDED);
+      }
+    });
+    qualtyRecycler = sheetView.findViewById(R.id.qualtyRecycler);
+
+    QualityAdapterInner adapter = new QualityAdapterInner(adativeStream);
+    qualtyRecycler.setHasFixedSize(true);
+    qualtyRecycler.setLayoutManager(new LinearLayoutManager(this));
+    qualtyRecycler.setAdapter(adapter);
+
+    dialogBottom.show();
+
+  }
+
+  private class QualityAdapterInner extends RecyclerView.Adapter<QualityAdapterInner.ViewHolder> {
+    private List<YoutubeDataModel> listData;
+
+    public QualityAdapterInner(List<YoutubeDataModel> listData) {
+      this.listData = listData;
+    }
+
+    @Override
+    public QualityAdapterInner.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+      LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+      View listItem = layoutInflater.inflate(R.layout.list_item, parent, false);
+      QualityAdapterInner.ViewHolder viewHolder = new QualityAdapterInner.ViewHolder(listItem);
+      return viewHolder;
+    }
+
+    @Override
+    public void onBindViewHolder(QualityAdapterInner.ViewHolder holder, int position) {
+      final YoutubeDataModel myListData = listData.get(position);
+      holder.textView.setText(myListData.getQualityLabel());
+      if (myListData.isSelected()) {
+        holder.radioButton.setChecked(true);
+      } else {
+        holder.radioButton.setChecked(false);
+      }
+      holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+          dialogBottom.dismiss();
+          Log.d(TAG, "onClick: " + myListData.isSelected());
+          if (!myListData.isSelected()) {
+            for (int i = 0; i < listData.size(); i++) {
+              if (listData.get(i).getQualityLabel().equals(myListData.getQualityLabel())) {
+                listData.get(i).setSelected(true);
+              } else {
+                listData.get(i).setSelected(false);
+              }
+            }
+            player.stop();
+            currentTime = player.getCurrentPosition();
+            Log.d(TAG, "currentTime: " + currentTime);
+            String url = myListData.getUrl();
+            notifyDataSetChanged();
+
+            Log.d(TAG, "onClickOnClick: " + videoId +" : "+ id);
+            Intent intent = new Intent(PlayerActivity.this, PlayerYoutubeActivity.class);
+            intent.putExtra(PreferenceHandler.IS_FROM, isFrom);
+            intent.putExtra("currentTime", currentTime);
+            if (position == 0) {
+              intent.putExtra("quality", "1");
+            } else {
+              intent.putExtra("quality", "2");
+            }
+
+            intent.putExtra("videoID", id);
+            intent.putExtra("VideoLink", videoId);
+            startActivity(intent);
+            finish();
+//            initializePlayer(url);
+          }
+        }
+      });
+    }
+
+
+    @Override
+    public int getItemCount() {
+      return listData.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+      public TextView textView;
+      public RelativeLayout relativeLayout;
+      public RadioButton radioButton;
+
+      public ViewHolder(View itemView) {
+        super(itemView);
+        this.textView = (TextView) itemView.findViewById(R.id.textView);
+        relativeLayout = (RelativeLayout) itemView.findViewById(R.id.relativeLayout);
+        radioButton = (RadioButton) itemView.findViewById(R.id.radioCheck);
+      }
+    }
+  }
+}

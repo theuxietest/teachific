@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="java.util.List" />
+
+        <import type="android.text.TextUtils" />
+        <import type="android.graphics.drawable.Drawable"/>
+
+        <variable
+            name="list"
+            type="List" />
+
+        <variable
+            name="data"
+            type="com.so.luotk.models.output.TestQuestion" />
+
+        <variable
+            name="pos"
+            type="Integer" />
+
+        <variable
+            name="sectionName"
+            type="String" />
+
+        <variable
+            name="isStartIndex"
+            type="boolean" />
+        <variable
+            name="drawable"
+            type="Drawable" />
+
+        <variable
+            name="click"
+            type="com.so.luotk.adapter.ExerciseLayoutAdapter.QuestionClickListener" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/_5sdp">
+
+        <com.so.luotk.customviews.CustomSemiBoldFontTextView
+            hideText="@{!TextUtils.isEmpty(sectionName)}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:id="@+id/sectioName"
+            android:layout_marginHorizontal="@dimen/_6sdp"
+            android:text="@{sectionName}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:layout_below="@+id/sectioName"
+            android:background="@{drawable}"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/_7sdp">
+
+            <com.so.luotk.customviews.CustomBoldFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{(pos+1)+&quot;&quot;}"
+                android:textColor="@color/black" />
+
+            <WebView
+                webView="@{data.question}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_weight="1"
+                tools:ignore="WebViewLayout" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:rotation="180"
+                android:src="@drawable/back_arrow_white"
+                app:tint="@color/black" />
+        </LinearLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_centerVertical="true"
+            android:onClick="@{()->click.onclick(pos)}"
+            />
+    </RelativeLayout>
+</layout>

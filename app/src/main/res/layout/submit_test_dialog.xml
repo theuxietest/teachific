@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="timeLeft"
+            type="String" />
+
+        <variable
+            name="totalQues"
+            type="String" />
+
+        <variable
+            name="answeredQues"
+            type="String" />
+
+        <variable
+            name="markedForReview"
+            type="String" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layoutDirection="ltr"
+        android:orientation="vertical"
+        android:padding="@dimen/_16sdp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_corners_drawable"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="@dimen/_14sdp">
+
+            <ImageView
+                android:layout_width="@dimen/_120sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:src="@drawable/ic_finish_race" />
+
+            <com.so.luotk.customviews.CustomBoldFontTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_14sdp"
+                android:gravity="center_horizontal"
+                android:paddingVertical="@dimen/_6sdp"
+                android:text="@string/submit_tes"
+                android:textColor="@color/blue_main"
+                android:textSize="@dimen/_14sdp" />
+
+            <com.so.luotk.customviews.CustomFontTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_14sdp"
+                android:gravity="center"
+                android:paddingTop="@dimen/_2sdp"
+                android:paddingBottom="@dimen/_8sdp"
+                android:text="@string/want_to_submit_test"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/_11sdp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.so.luotk.customviews.CustomBoldFontTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_14sdp"
+                    android:layout_weight="2"
+                    android:paddingVertical="@dimen/_6sdp"
+                    android:text="@string/time_remaining"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+                <com.so.luotk.customviews.CustomFontTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_14sdp"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:paddingVertical="@dimen/_6sdp"
+                    android:text="@{timeLeft}"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/_12sdp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.so.luotk.customviews.CustomBoldFontTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_14sdp"
+                    android:layout_weight="2"
+                    android:paddingVertical="@dimen/_6sdp"
+                    android:text="@string/total_questions"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+                <com.so.luotk.customviews.CustomFontTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_14sdp"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:paddingVertical="@dimen/_6sdp"
+                    android:text="@{totalQues}"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/_12sdp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.so.luotk.customviews.CustomBoldFontTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_14sdp"
+                    android:layout_weight="2"
+                    android:gravity="start"
+                    android:paddingVertical="@dimen/_6sdp"
+                    android:text="@string/answered_questions"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+                <com.so.luotk.customviews.CustomFontTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_14sdp"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:paddingVertical="@dimen/_6sdp"
+                    android:text="@{answeredQues}"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/_12sdp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.so.luotk.customviews.CustomBoldFontTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_14sdp"
+                    android:layout_weight="2"
+                    android:gravity="start"
+                    android:paddingVertical="@dimen/_6sdp"
+                    android:text="@string/marked_review"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+                <com.so.luotk.customviews.CustomFontTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_14sdp"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:paddingVertical="@dimen/_6sdp"
+                    android:text="@{markedForReview}"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/_12sdp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.so.luotk.customviews.CustomSemiBoldFontTextView
+                    android:id="@+id/btn_cancel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_12sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/gray_button_bg"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:paddingHorizontal="@dimen/_20sdp"
+                    android:paddingVertical="@dimen/_8sdp"
+                    android:text="@string/cancel"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+                <com.so.luotk.customviews.CustomSemiBoldFontTextView
+                    android:id="@+id/submit_tst_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_12sdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/round_edge"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:paddingHorizontal="@dimen/_20sdp"
+                    android:paddingVertical="@dimen/_8sdp"
+                    android:text="@string/submit_tes"
+                    android:textColor="@color/textColorWhite"
+                    android:textSize="@dimen/_12sdp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</layout>

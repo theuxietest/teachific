@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.so.luotk"
+    tools:ignore="MissingLeanbackLauncher">
+    <uses-permission
+        android:name="com.google.android.gms.permission.AD_ID"
+        tools:node="remove" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO"/>
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <uses-feature
+        android:name="android.hardware.camera.any"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+    <uses-feature
+        android:name="android.software.leanback"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
+    <uses-permission
+        android:name="android.permission.STORAGE"
+        android:required="true" />
+
+    <queries>
+        <package android:name="com.whatsapp" />
+
+        <intent>
+            <action android:name="com.google.android.youtube.api.service.START" />
+        </intent>
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+
+            <category android:name="android.intent.category.BROWSABLE" />
+
+            <data android:mimeType="application/msword" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+
+            <category android:name="android.intent.category.BROWSABLE" />
+
+            <data android:scheme="https" />
+        </intent>
+    </queries>
+
+    <application
+        android:name="com.so.luotk.MyApplication"
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:requestLegacyExternalStorage="true"
+        android:resizeableActivity="false"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:supportsPictureInPicture="false"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity
+            android:name="com.so.luotk.activities.EasyVideoPlayer"
+            android:configChanges="orientation|keyboardHidden|screenSize|uiMode"
+            android:exported="false" />
+        <activity
+            android:name="com.so.luotk.activities.MyLiveClass"
+            android:configChanges="orientation|screenLayout|screenSize"
+            android:exported="true"
+            tools:ignore="AppLinkUrlError">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="alpha.jitsi.net"
+                    android:scheme="https" />
+                <data
+                    android:host="beta.meet.jit.si"
+                    android:scheme="https" />
+                <data
+                    android:host="meet.jit.si"
+                    android:scheme="https" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="org.jitsi.meet" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.so.luotk.activities.PlayerYoutubeActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize|uiMode" />
+        <activity
+            android:name="com.so.luotk.customviews.exoplayer.PlayerActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize|uiMode" />
+        <activity
+            android:name="com.so.luotk.activities.SingleIframeVideo"
+            android:configChanges="orientation|keyboardHidden|screenSize|uiMode" />
+        <activity android:name="com.so.luotk.activities.FeeStructureActivity" />
+        <activity android:name="com.so.luotk.activities.PDFViewNew" />
+        <activity
+            android:name="com.so.luotk.activities.SingleVideoYoutube"
+            android:configChanges="orientation|keyboardHidden|screenSize|uiMode" />
+        <activity android:name="com.so.luotk.activities.adminrole.YoutubePlayerVideo" />
+        <activity android:name="com.so.luotk.activities.YoutubeHelpVideo" />
+        <activity android:name="com.so.luotk.activities.adminrole.ContactUs" />
+        <activity android:name="com.so.luotk.activities.adminrole.AddFolderLinkActivity" />
+        <activity android:name="com.so.luotk.activities.SignUpWithEmail" />
+        <activity
+            android:name="com.so.luotk.activities.NewCustomPlayerActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize|uiMode" />
+        <activity
+            android:name="com.so.luotk.activities.SignUpActivityNew"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.so.luotk.activities.WelcomeActivityNew"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.so.luotk.activities.TermsOfUseActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.so.luotk.testmodule.TestResultActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.so.luotk.testmodule.TestActivity"
+            android:configChanges="uiMode"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.so.luotk.activities.adminrole.JoinRequestListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.so.luotk.activities.adminrole.AdminMainScreen"
+            android:configChanges="uiMode"
+            android:screenOrientation="portrait" />
+        <activity android:name="com.so.luotk.testmodule.ObTestActivity" />
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_notification_icon" />
+
+        <activity
+            android:name="com.so.luotk.activities.adminrole.CreateAssignmentTestActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.so.luotk.activities.adminrole.SelectStudentsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.so.luotk.activities.adminrole.AdminSettingsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.so.luotk.activities.adminrole.AddStudentActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.so.luotk.activities.adminrole.MakeAnnouncementActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.so.luotk.activities.adminrole.CreateEnquiryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.so.luotk.activities.adminrole.SelectBatchesForAnnouncementActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.so.luotk.activities.adminrole.CreateBatchActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.so.luotk.activities.adminrole.CatCourseSubjectSelectionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.so.luotk.activities.SmFolderDetailsActivity"
+            android:configChanges="uiMode"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.so.luotk.activities.CourseDetailAcrivity"
+            android:configChanges="uiMode"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.so.luotk.activities.AdminMainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.so.luotk.activities.AnnouncementActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.so.luotk.activities.ViewAttachmentActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name="com.so.luotk.activities.PaymentActivity" />
+        <activity
+            android:name="com.so.luotk.activities.CustomYouTubeViewActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize|uiMode" />
+        <activity
+            android:name="com.so.luotk.activities.AlreadyExistNumberActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.so.luotk.activities.EditProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.so.luotk.activities.ReportListDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.so.luotk.activities.VideoListActivity"
+            android:configChanges="uiMode"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.so.luotk.activities.ListDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.so.luotk.activities.BatchDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.so.luotk.activities.adminrole.AdminBatchDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.so.luotk.activities.VisitWebsiteActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.so.luotk.activities.SplashActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <!--
+                as we want to open main activity from our link so we are specifying
+                only in main activity or we can specify that in different activity as well
+            -->
+            <!-- on below line we are adding intent filter to our MainActivity -->
+            <intent-filter>
+                <data
+                    android:host="open"
+                    android:scheme="elctracdmy" />
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+
+            <!-- Branch App Links -->
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="y68dm.app.link"
+                    android:scheme="https" />
+            </intent-filter>
+
+            <meta-data
+                android:name="io.branch.sdk.BranchKey"
+                android:value="@string/branch_key" />
+            <!-- Branch testing (TestMode "true" to simulate fresh installs on dev environment) -->
+            <meta-data
+                android:name="io.branch.sdk.TestMode"
+                android:value="false" />
+        </activity>
+
+        <meta-data
+            android:name="io.branch.sdk.BranchKey"
+            android:value="@string/branch_key" /> <!-- Branch testing (TestMode "true" to simulate fresh installs on dev environment) -->
+        <meta-data
+            android:name="io.branch.sdk.TestMode"
+            android:value="false" />
+
+        <activity
+            android:name="com.so.luotk.activities.MainActivity"
+            android:configChanges="uiMode"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.so.luotk.scoppedStorage.Picker"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.dropbox.core.android.AuthActivity"
+            android:configChanges="keyboard|orientation"
+            android:exported="false"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="db-r4awlire5ft0c3f" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.so.luotk.activities.LiveConferenceActivity"
+            android:configChanges="orientation|screenLayout|screenSize" />
+        <activity
+            android:name="com.so.luotk.activities.adminrole.LiveJitsiMeetActivity"
+            android:configChanges="orientation|screenLayout|screenSize" />
+
+        <service
+            android:name="org.jitsi.meet.sdk.JitsiMeetOngoingConferenceService"
+            android:exported="false"
+            android:foregroundServiceType="mediaProjection" />
+        <service
+            android:name="com.so.luotk.firebase.MyFirebaseIdService"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.so.luotk.firebase.MyFirebaseMessaging"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name="com.so.luotk.utils.IncomingSMS"
+            android:exported="false"
+            android:permission="android.permission.BROADCAST_SMS">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.so.luotk.utils.UsbReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_STATE" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.so.luotk.firebase.MyFirebaseIdService"
+            android:exported="false" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.so.luotk"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+
+</manifest>

@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="ltr"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".activities.adminrole.CreateAssignmentTestActivity">
+
+    <include
+        android:id="@+id/toolbar_layout"
+        layout="@layout/layout_toolbar" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_below="@+id/toolbar_layout"
+        android:layout_above="@+id/btn_submit"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <!--<com.so.bgjcn.customviews.CustomFontTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/_10sdp"
+                    android:text="Topic"
+                    android:textAllCaps="true"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/_14sdp" />
+
+                <com.so.bgjcn.customviews.CustomFontEditText
+                    android:id="@+id/edt_topic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:hint="Enter topic"
+                    android:inputType="text"
+                    android:padding="@dimen/_10sdp"
+                    android:textSize="@dimen/_14sdp" />-->
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edt_topic_lay"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:hint="@string/enter_topic">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edt_topic"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lato_medium"
+                        android:inputType="none|text|textCapCharacters|textEmailAddress|textShortMessage|textPersonName"
+                        android:textSize="15sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.so.luotk.customviews.CustomFontTextView
+                    android:id="@+id/er_topic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/red"
+                    android:visibility="gone"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/required_topic"
+                    android:textSize="@dimen/_8sdp" />
+
+                <!-- <com.so.bgjcn.customviews.CustomFontTextView
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center_vertical"
+                     android:gravity="center_vertical"
+                     android:padding="@dimen/_10sdp"
+                     android:text="Due date"
+                     android:textAllCaps="true"
+                     android:textColor="@color/gray"
+                     android:textSize="@dimen/_14sdp" />
+
+                 <com.so.bgjcn.customviews.CustomFontTextView
+                     android:id="@+id/tv_select_date"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:background="@color/white"
+                     android:hint="Select date"
+                     android:padding="@dimen/_10sdp"
+                     android:textSize="@dimen/_14sdp" />-->
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tv_select_date_lay"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:focusableInTouchMode="false"
+                    android:hint="@string/select_due_date">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tv_select_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:editable="false"
+                        android:focusableInTouchMode="false"
+                        android:fontFamily="@font/lato_medium"
+                        android:inputType="none|text|textCapCharacters|textEmailAddress|textShortMessage|textPersonName"
+                        android:textSize="15sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.so.luotk.customviews.CustomFontTextView
+                    android:id="@+id/er_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/red"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="2dp"
+                    android:visibility="gone"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/required_date"
+                    android:textSize="@dimen/_8sdp" />
+
+                <!-- <com.so.bgjcn.customviews.CustomFontTextView
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center_vertical"
+                     android:gravity="center_vertical"
+                     android:padding="@dimen/_10sdp"
+                     android:text="Due time"
+                     android:textAllCaps="true"
+                     android:textColor="@color/gray"
+                     android:textSize="@dimen/_14sdp" />
+
+                 <com.so.bgjcn.customviews.CustomFontTextView
+                     android:id="@+id/tv_select_time"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:background="@color/white"
+                     android:hint="Select time"
+                     android:padding="@dimen/_10sdp"
+                     android:textSize="@dimen/_14sdp" />-->
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tv_select_time_lay"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:focusableInTouchMode="false"
+                    android:hint="@string/select_due_time">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tv_select_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:editable="false"
+                        android:focusableInTouchMode="false"
+                        android:fontFamily="@font/lato_medium"
+                        android:inputType="none|text|textCapCharacters|textEmailAddress|textShortMessage|textPersonName"
+                        android:textSize="15sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.so.luotk.customviews.CustomFontTextView
+                    android:id="@+id/er_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/red"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="16dp"
+                    android:visibility="gone"
+                    android:text="@string/required_time"
+                    android:textSize="@dimen/_8sdp" />
+
+                <LinearLayout
+                    android:id="@+id/layout_test_items"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <com.so.luotk.customviews.CustomFontTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/_10sdp"
+                        android:text="Total marks"
+                        android:textAllCaps="true"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/_14sdp" />
+
+
+                    <com.so.luotk.customviews.CustomFontEditText
+                        android:id="@+id/edt_total_marks"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:hint="Enter marks"
+                        android:inputType="text"
+                        android:padding="@dimen/_10sdp"
+                        android:textSize="@dimen/_14sdp" />
+
+                    <com.so.luotk.customviews.CustomFontTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/_10sdp"
+                        android:text="Total questions"
+                        android:textAllCaps="true"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/_14sdp" />
+
+                    <com.so.luotk.customviews.CustomFontEditText
+                        android:id="@+id/edt_total_questions"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:hint="Enter total questions"
+                        android:inputType="text"
+                        android:padding="@dimen/_10sdp"
+                        android:textSize="@dimen/_14sdp" />
+
+                    <com.so.luotk.customviews.CustomFontTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/_10sdp"
+                        android:text="Duration"
+                        android:textAllCaps="true"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/_14sdp" />
+
+                    <com.so.luotk.customviews.CustomFontEditText
+                        android:id="@+id/edt_duration"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:hint="Enter duration"
+                        android:inputType="text"
+                        android:padding="@dimen/_10sdp"
+                        android:textSize="@dimen/_14sdp" />
+
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/tv_select_attachment"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/poppins"
+                    android:letterSpacing="0"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="16dp"
+                    android:text="@string/add_attachment"
+                    android:textAllCaps="false"
+                    android:textSize="16sp"
+                    app:icon="@drawable/ic_attachment_new"
+                    app:layout_constraintStart_toStartOf="@+id/announcement_required_disclaimer"
+                    app:layout_constraintTop_toBottomOf="@+id/announcement_required_disclaimer"
+                    app:strokeColor="@color/primaryColor"
+                    app:strokeWidth="1dp" />
+
+                <!--<com.so.bgjcn.customviews.CustomFontTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/_10sdp"
+                    android:text="Add attachment"
+                    android:textAllCaps="true"
+                    android:textSize="@dimen/_14sdp" />
+
+                <com.so.bgjcn.customviews.CustomFontTextView
+                    android:id="@+id/tv_select_attachment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:drawableLeft="@drawable/ic_attachment"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:drawableTint="@color/blue_white"
+                    android:text="Select attachments"
+                    android:padding="@dimen/_10sdp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14sdp" />-->
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyler_attached_items"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_12sdp"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:visibility="gone" />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edt_notes_lay"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="@dimen/_12sdp"
+                    android:textAlignment="inherit">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edt_notes"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="top|left|center_vertical|center_horizontal|center"
+                        android:hint="Enter notes"
+                        android:inputType="none|text|textMultiLine|textImeMultiLine"
+                        android:lines="4"
+                        android:maxLines="4"
+                        android:minLines="4"
+                        android:textAlignment="inherit" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <!--<com.so.bgjcn.customviews.CustomFontTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/_10sdp"
+                    android:text="Notes"
+                    android:textAllCaps="true"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/_14sdp" />
+
+
+                <com.so.bgjcn.customviews.CustomFontEditText
+                    android:id="@+id/edt_notes"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_100sdp"
+                    android:background="@color/white"
+                    android:gravity="start"
+                    android:hint="Enter notes"
+                    android:inputType="textMultiLine"
+                    android:padding="@dimen/_10sdp"
+                    android:textSize="@dimen/_14sdp" />-->
+
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/checkbox_notify"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:text="@string/notify_students" />
+
+
+                <!--<com.so.bgjcn.customviews.CustomFontTextView
+                    android:id="@+id/btn_submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="@dimen/_12sdp"
+                    android:background="@drawable/round_edge"
+                    android:gravity="center"
+                    android:padding="@dimen/_10sdp"
+                    android:text="Submit"
+                    android:textAllCaps="true"
+                    android:textColor="@color/textColorWhite"
+                    android:textSize="@dimen/_14sdp" />-->
+
+            </LinearLayout>
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_submit"
+        style="@style/primary_button_new"
+        android:layout_width="match_parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginEnd="16dp"
+        android:layout_alignParentBottom="true"
+        android:fontFamily="@font/poppins_medium"
+        android:letterSpacing="0"
+        android:text="@string/submit"
+        android:textAllCaps="false" />
+
+</RelativeLayout>

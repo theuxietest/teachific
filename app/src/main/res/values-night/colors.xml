@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <color name="colorPrimaryDark">#4291e7</color>
+    <color name="textColorBlack">#000000</color>
+    <color name="textColorGray">#9F9F9F</color>
+    <color name="blue_white">#ffffff</color>
+    <color name="blue_main">#DD007AFF</color>
+    <color name="primaryColor">#DD007AFF</color>
+    <color name="primaryColor1">#ffffff</color>
+    <color name="primaryColorCall">#DD267be8</color>
+    <color name="colorBlackGray">#808080</color>
+    <color name="colorGrayBlack">#121212</color>
+    <color name="colorGrayBlackGray">#3E3E3E</color>
+    <color name="textColorWhite">#DDFFFFFF</color>
+    <color name="colorLightGrayBlack">#1E1E1E</color>
+    <color name="colorLightBlueGray">#3E3E3E</color>
+    <!--    <color name="card_back">#ebf4fa</color>-->
+    <color name="card_back">#1E1E1E</color>
+    <color name="gray">#808080</color>
+    <color name="back_white_lightgray">#2E2E2E</color>
+    <color name="yellow">#DDFF952A</color>
+    <!--    <color name="colorPrimaryDark">#307CE9</color>-->
+    <!-- Screens background color-->
+
+    <color name="card_back_hindi">#F1EEFF</color>
+    <color name="card_back_eng">#EAFFF0</color>
+    <color name="card_back_kannada">#FFF5F4</color>
+    <color name="card_back_marathi">#FCFEEC</color>
+    <color name="card_back_arbic">#FFF9F2</color>
+    <color name="card_back_punjabi">#E8BDEF</color>
+    <color name="card_back_oriya">#DF9898</color>
+
+    <!-- dots inactive colors -->
+    <color name="dot_dark_screen1">#AAAAAA</color>
+    <color name="dot_dark_screen2">#AAAAAA</color>
+    <color name="dot_dark_screen3">#AAAAAA</color>
+    <color name="dot_dark_screen4">#AAAAAA</color>
+
+    <!-- dots active colors -->
+    <color name="dot_light_screen1">@color/blue_main</color>
+    <color name="dot_light_screen2">@color/blue_main</color>
+    <color name="dot_light_screen3">@color/blue_main</color>
+    <color name="dot_light_screen4">@color/blue_main</color>
+
+    <array name="array_dot_active">
+        <item>@color/dot_light_screen1</item>
+        <item>@color/dot_light_screen2</item>
+        <item>@color/dot_light_screen3</item>
+        <item>@color/dot_light_screen4</item>
+    </array>
+
+    <array name="array_dot_inactive">
+        <item>@color/dot_dark_screen1</item>
+        <item>@color/dot_dark_screen2</item>
+        <item>@color/dot_dark_screen3</item>
+        <item>@color/dot_dark_screen4</item>
+    </array>
+
+
+    <color name="primary_darker">#CC1D1D</color>
+
+    <color name="black">#DFFFFFFF</color>
+    <color name="white">#121212</color>
+    <color name="grey_white">#121212</color>
+
+    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#8C8C8E</color>
+
+    <!--customised video view color-->
+    <color name="uvv_light_gray">#ff121212</color>
+    <color name="uvv_gray">#ffbbbbbb</color>
+
+    <color name="dark_gray">#ffffff</color>
+    <color name="light_gray">#AAAAAA</color>
+    <color name="dim_blue">#e7f4fd</color>
+
+    <!-- <color name="dark_blue">#0f75d8</color>-->
+    <!--    <color name="dark_blue">#2d73e3</color>-->
+    <color name="dark_blue">#DD007AFF</color>
+    <color name="light_blue">#339dfa</color>
+    <color name="light_red">#E43F3F</color>
+    <color name="purple">#5F6CAF</color>
+
+
+    <!--<color name="app_base_color">#f5f5f5</color>-->
+    <!--    <color name="app_base_color">#f4f5f7</color>-->
+    #f6f9fe
+    <color name="app_base_color">#1E1E1E</color>
+    <!--     <color name="app_status_bar_color">#2d67af</color>-->
+    <color name="app_status_bar_color">#121212</color>
+    <!--    <color name="app_status_bar_color">#1180ff</color>-->
+    <!--    <color name="app_status_bar_color">#e08353</color>-->
+    <color name="shimmer_item_color">#E6DDDDDD</color>
+    <!--    <color name="background_color">#EFF0F2</color>-->
+    <color name="background_color">#F5F5F6</color>
+    <color name="backcolorGrayBlack">#1E1E1E</color>
+    <color name="lightest_blue">#393939</color>
+
+<!--    Vishal-->
+    <color name="card_back_light_green">#1E1E1E</color>
+    <color name="account_card_back">#1E1E1E</color>
+    <color name="account_text_color">#ffffff</color>
+    <color name="account_title_text_color">#ffffff</color>
+    <color name="account_text_light_color">#ffffff</color>
+    <color name="white_text_color">#ffffff</color>
+    <color name="card_back_grey">#1E1E1E</color>
+    <color name="batchtextColor">#ffffff</color>
+    <color name="description_light_blue">#E6DDDDDD</color>
+    <color name="batchStrokeColor">#000000</color>
+    <color name="batchboxColor">#444444</color>
+    <color name="batchNextArrow">#ffffff</color>
+    <color name="statusToolBarColor">#121212</color>
+    <color name="adminHomeBack">#1E1E1E</color>
+    <color name="bottomNvaigationAdmin">#1E1E1E</color>
+    <color name="homeCard">#007aff</color>
+    <color name="yourBatchesText">#ffffff</color>
+    <color name="statusBarColor">#1E1E1E</color>
+    <color name="live_red">#d02222</color>
+    <color name="title_dark_blue">#ffffff</color>
+    <color name="white_both">#ffffff</color>
+    <color name="black_both">#000000</color>
+    <color name="black_opp">#000000</color>
+    <color name="edit_box_disabled_stroke_color">#ffffff</color>
+    <color name="toolbarHeadTitle">#ffffff</color>
+    <color name="headingColor">#ffffff</color>
+    <color name="freeStudyDescription">#E6DDDDDD</color>
+    <color name="connectDescription">#E6DDDDDD</color>
+    <color name="drawableColor">#ffffff</color>
+    <color name="profileHeading">#ffffff</color>
+    <color name="profileBox">#1E1E1E</color>
+    <color name="profileHeadingBox">#000000</color>
+    <color name="viewStudyMaterialButton">#1da1f2</color>
+    <color name="studyMaterialTextColor">#ffffff</color>
+    <color name="accountButtonBackground">#1da1f2</color>
+    <color name="accountButtonText">#ffffff</color>
+    <color name="accountButtonStroke">#ffffff</color>
+    <color name="appSetBackground">#1da1f2</color>
+    <color name="appSetText">#ffffff</color>
+    <color name="appSetStroke">#ffffff</color>
+    <color name="white_black">#3C3C3C</color>
+    <color name="green_background">#3C3C3C</color>
+    <color name="call_text_color">#ffffff</color>
+    <color name="chat_type_et">#33383b</color>
+    <color name="chat_type_tv">#ffffff</color>
+    <color name="sender_background">#066162</color>
+    <color name="reciever_background">#252d31</color>
+    <color name="date_background">#1e2a30</color>
+    <color name="chat_time_color">#7ca9aa</color>
+    <color name="selected_backgroun">#252b2f</color>
+    <color name="disabledButtonColor">#C8CBD3</color>
+    <color name="edit_background">#121212</color>
+    <color name="edit_stroke">#ffffff</color>
+    <color name="contact_text_color">#ffffff</color>
+    <color name="iconColor">#ffffff</color>
+    <color name="noTextColor">#ffffff</color>
+    <color name="noAssignmentTest">#8E8E93</color>
+    <color name="yellowCommon">#ff9f0a</color>
+    <color name="deleteIcon">#ffffff</color>
+    <color name="et_text_color">#ffffff</color>
+    <color name="profile_background">#3C3C3C</color>
+
+    <color name="colorAccent">#03DAC5</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorGrey">#807f7f</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorOverlayLight">#40000000</color>
+    <color name="colorOverlayDark">#AA000000</color>
+    <color name="amp_transparent">#00000000</color>
+    <color name="light_background">#E7EFF6</color>
+    <color name="studyColor">#687A88</color>
+</resources>

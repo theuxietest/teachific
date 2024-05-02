@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="java.util.List" />
+        <import type="android.graphics.drawable.Drawable"/>
+
+        <variable
+            name="list"
+            type="List" />
+
+        <variable
+            name="data"
+            type="com.so.luotk.models.output.TestQuestion" />
+
+        <variable
+            name="pos"
+            type="Integer" />
+
+        <variable
+            name="sectionName"
+            type="String" />
+
+        <variable
+            name="isStartIndex"
+            type="boolean" />
+        <variable
+            name="drawable"
+            type="Drawable" />
+
+        <variable
+            name="click"
+            type="com.so.luotk.adapter.ExerciseLayoutAdapter.QuestionClickListener" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_5sdp"
+        android:orientation="vertical">
+
+        <com.so.luotk.customviews.CustomBoldFontTextView
+            android:layout_width="@dimen/_45sdp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/_5sdp"
+            android:text="@{sectionName}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_8sdp" />
+
+        <com.so.luotk.customviews.CustomBoldFontTextView
+            android:layout_width="@dimen/_43sdp"
+            android:layout_height="@dimen/_43sdp"
+            android:background="@{drawable}"
+            android:gravity="center"
+            android:onClick="@{()->click.onclick(pos)}"
+            android:text="@{(pos+1)+&quot;&quot;}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp" />
+
+    </LinearLayout>
+</layout>

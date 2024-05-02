@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.text.TextUtils" />
+
+        <import type="android.graphics.drawable.Drawable" />
+
+        <variable
+            name="update"
+            type="com.so.luotk.adapter.ExerciseAdapter.UpdateItemListener" />
+
+        <variable
+            name="pos"
+            type="Integer" />
+
+        <variable
+            name="button"
+            type="String" />
+
+        <variable
+            name="answerText"
+            type="String" />
+
+        <variable
+            name="background"
+            type="Drawable" />
+
+        <variable
+            name="sol"
+            type="Boolean" />
+
+        <variable
+            name="state"
+            type="Integer" />
+
+        <variable
+            name="data"
+            type="com.so.luotk.models.output.TestQuestion" />
+
+        <variable
+            name="click"
+            type="com.so.luotk.adapter.ExerciseAdapter.TypeClickListener" />
+    </data>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/view_line"
+            android:overScrollMode="never">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/scrollable_question_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_8sdp"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_6sdp">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <!--
+                                                <com.smartowls.smartowls.customviews.CustomFontTextView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginTop="@dimen/_16sdp"
+                                                    android:background="@drawable/bg_light_blue_round_corner"
+                                                    android:paddingHorizontal="@dimen/_6sdp"
+                                                    android:paddingVertical="@dimen/_2sdp"
+                                                    android:text="@{pos+1+&quot;&quot;}"
+                                                    android:textColor="@color/black" />-->
+
+                        <WebView
+                            android:id="@+id/mWebView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:longClickable="false"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_4sdp"
+                            android:background="@null"
+                            tools:ignore="WebViewLayout" />
+                    </LinearLayout>
+
+                    <com.so.luotk.customviews.CustomFontEditText
+                        android:id="@+id/edt_fib"
+                        hideText="@{data.type==3||data.type==4}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/_12sdp"
+                        android:background="@{!sol?@drawable/gray_border_bg:data.answerStatus.option.equalsIgnoreCase(answerText)?@drawable/right_marks:@drawable/wrong_mark}"
+                        android:hint="@string/enter_your_answer"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:padding="@dimen/_12sdp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12sdp" />
+
+                    <LinearLayout
+                        hideText="@{(data.type==3||data.type==4)&amp;&amp;sol}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_12sdp"
+                        android:background="@drawable/bg_light_blue_round_corner"
+                        android:orientation="vertical"
+                        android:padding="@dimen/_10sdp">
+
+                        <com.so.luotk.customviews.CustomSemiBoldFontTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:text="@string/answer"
+                            android:textColor="@color/blue_main"
+                            android:textSize="@dimen/_10sdp" />
+
+                        <com.so.luotk.customviews.CustomFontTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:inputType="text"
+                            android:text="@{answerText}"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12sdp" />
+                    </LinearLayout>
+
+
+                    <!--      android:text="@={data.answerStatus.option}"-->
+                    <LinearLayout
+                        hideText="@{data.type==1||data.type==2}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            hideText="@{!TextUtils.isEmpty(data.options.option1.answer)}"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="@dimen/_10sdp">
+
+                            <LinearLayout
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/opt_text1"
+                                android:layout_marginTop="@dimen/_minus6sdp"
+                                android:background="@{!sol?state==0?@drawable/option_selection_bac:@drawable/edit_border:data.options.correct_option.equals(&quot;0&quot;)?data.options.correct_option.equals(state.toString())?@drawable/right_marks:@drawable/wrong_mark:state==0?@drawable/right_marks:@drawable/edit_border}"
+                                android:orientation="horizontal"
+                                android:paddingHorizontal="@dimen/_8sdp"
+                                android:paddingVertical="@dimen/_6sdp">
+
+                                <FrameLayout
+                                    android:layout_width="@dimen/_15sdp"
+                                    android:layout_height="@dimen/_15sdp"
+                                    android:layout_gravity="center_vertical"
+                                    android:background="@drawable/circular_border"
+                                    android:backgroundTint="@{!sol?state==0?@color/blue_main:@color/gray:data.options.correct_option.equals(&quot;0&quot;)?data.options.correct_option.equals(state.toString())?@color/green:@color/red:state==0?@color/green:@color/gray}"
+                                    android:padding="@dimen/_1sdp">
+
+                                    <com.so.luotk.customviews.CustomFontTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:text="a"
+                                        android:textAllCaps="true"
+                                        android:textColor="@color/textColorWhite"
+                                        android:textSize="@dimen/_8sdp" />
+                                </FrameLayout>
+
+                                <WebView
+                                    webView="@{TextUtils.isEmpty(data.options.option1.answer)?&quot;&lt;p&gt;&lt;/p&gt;&quot;:data.options.option1.answer}"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginHorizontal="@dimen/_4sdp"
+                                    android:layout_marginTop="@dimen/_5sdp"
+                                    android:layout_weight="1"
+                                    android:background="@null"
+                                    tools:ignore="WebViewLayout" />
+                            </LinearLayout>
+
+                            <com.so.luotk.customviews.CustomFontTextView
+                                android:id="@+id/opt_text1"
+                                invisibleView="@{sol}"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:background="@color/white"
+                                android:text="@{sol?data.options.correct_option.equals(&quot;0&quot;)?data.options.correct_option.equals(state.toString())?@string/your_answer:@string/you_missed:state==0?@string/your_answer:&quot;&quot;:&quot;&quot;}"
+                                android:textColor="@{sol?data.options.correct_option.equals(&quot;0&quot;)?data.options.correct_option.equals(state.toString())?@color/green:@color/red:state==0?@color/green:@color/gray:@color/gray}" />
+
+
+                            <FrameLayout
+                                android:id="@+id/option1"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_40sdp"
+                                android:layout_below="@+id/opt_text1"
+                                android:layout_marginTop="@dimen/_minus6sdp" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            hideText="@{!TextUtils.isEmpty(data.options.option2.answer)}"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/opt_text2"
+                                android:layout_marginTop="@dimen/_minus6sdp"
+                                android:background="@{!sol?state==1?@drawable/option_selection_bac:@drawable/edit_border:data.options.correct_option.equals(&quot;1&quot;)?data.options.correct_option.equals(state.toString())?@drawable/right_marks:@drawable/wrong_mark:state==1?@drawable/right_marks:@drawable/edit_border}"
+                                android:orientation="horizontal"
+                                android:paddingHorizontal="@dimen/_8sdp"
+                                android:paddingVertical="@dimen/_6sdp">
+
+                                <FrameLayout
+                                    android:layout_width="@dimen/_15sdp"
+                                    android:layout_height="@dimen/_15sdp"
+                                    android:layout_gravity="center_vertical"
+                                    android:background="@drawable/circular_border"
+                                    android:backgroundTint="@{!sol?state==1?@color/blue_main:@color/gray:data.options.correct_option.equals(&quot;1&quot;)?data.options.correct_option.equals(state.toString())?@color/green:@color/red:state==1?@color/green:@color/gray}"
+                                    android:padding="@dimen/_1sdp">
+
+                                    <com.so.luotk.customviews.CustomFontTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:text="b"
+                                        android:textAllCaps="true"
+                                        android:textColor="@color/textColorWhite"
+                                        android:textSize="@dimen/_8sdp" />
+                                </FrameLayout>
+
+                                <WebView
+                                    webView="@{TextUtils.isEmpty(data.options.option2.answer)?&quot;&lt;p&gt;&lt;/p&gt;&quot;:data.options.option2.answer}"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginHorizontal="@dimen/_4sdp"
+                                    android:layout_marginTop="@dimen/_5sdp"
+                                    android:layout_weight="1"
+                                    android:background="@null"
+                                    tools:ignore="WebViewLayout" />
+                            </LinearLayout>
+
+                            <com.so.luotk.customviews.CustomFontTextView
+                                android:id="@+id/opt_text2"
+                                invisibleView="@{sol}"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:background="@color/white"
+                                android:text="@{sol?data.options.correct_option.equals(&quot;1&quot;)?data.options.correct_option.equals(state.toString())?@string/your_answer:@string/you_missed:state==1?@string/your_answer:&quot;&quot;:&quot;&quot;}"
+                                android:textColor="@{sol?data.options.correct_option.equals(&quot;1&quot;)?data.options.correct_option.equals(state.toString())?@color/green:@color/red:state==1?@color/green:@color/gray:@color/gray}" />
+
+                            <FrameLayout
+                                android:id="@+id/option2"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_40sdp"
+                                android:layout_below="@+id/opt_text2"
+                                android:layout_marginTop="@dimen/_minus6sdp" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            hideText="@{!TextUtils.isEmpty(data.options.option3.answer)}"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="@dimen/_10sdp">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/opt_text3"
+                                android:layout_marginTop="@dimen/_minus6sdp"
+                                android:background="@{!sol?state==2?@drawable/option_selection_bac:@drawable/edit_border:data.options.correct_option.equals(&quot;2&quot;)?data.options.correct_option.equals(state.toString())?@drawable/right_marks:@drawable/wrong_mark:state==2?@drawable/right_marks:@drawable/edit_border}"
+                                android:orientation="horizontal"
+                                android:paddingHorizontal="@dimen/_8sdp"
+                                android:paddingVertical="@dimen/_6sdp">
+
+                                <FrameLayout
+                                    android:layout_width="@dimen/_15sdp"
+                                    android:layout_height="@dimen/_15sdp"
+                                    android:layout_gravity="center_vertical"
+                                    android:background="@drawable/circular_border"
+                                    android:backgroundTint="@{!sol?state==2?@color/blue_main:@color/gray:data.options.correct_option.equals(&quot;2&quot;)?data.options.correct_option.equals(state.toString())?@color/green:@color/red:state==2?@color/green:@color/gray}"
+                                    android:padding="@dimen/_1sdp">
+
+                                    <com.so.luotk.customviews.CustomFontTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:text="c"
+                                        android:textAllCaps="true"
+                                        android:textColor="@color/textColorWhite"
+                                        android:textSize="@dimen/_8sdp" />
+                                </FrameLayout>
+
+                                <WebView
+                                    webView="@{TextUtils.isEmpty(data.options.option3.answer)?&quot;&lt;p&gt;&lt;/p&gt;&quot;:data.options.option3.answer}"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginHorizontal="@dimen/_4sdp"
+                                    android:layout_marginTop="@dimen/_5sdp"
+                                    android:layout_weight="1"
+                                    android:background="@null"
+                                    tools:ignore="WebViewLayout" />
+                            </LinearLayout>
+
+                            <com.so.luotk.customviews.CustomFontTextView
+                                android:id="@+id/opt_text3"
+                                invisibleView="@{sol}"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:background="@color/white"
+                                android:text="@{sol?data.options.correct_option.equals(&quot;2&quot;)?data.options.correct_option.equals(state.toString())?@string/your_answer:@string/you_missed:state==2?@string/your_answer:&quot;&quot;:&quot;&quot;}"
+                                android:textColor="@{sol?data.options.correct_option.equals(&quot;2&quot;)?data.options.correct_option.equals(state.toString())?@color/green:@color/red:state==2?@color/green:@color/gray:@color/gray}" />
+
+                            <FrameLayout
+                                android:id="@+id/option3"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_40sdp"
+                                android:layout_below="@+id/opt_text3"
+                                android:layout_marginTop="@dimen/_minus6sdp" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            hideText="@{!TextUtils.isEmpty(data.options.option4.answer)}"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/opt_text4"
+                                android:layout_marginTop="@dimen/_minus6sdp"
+                                android:background="@{!sol?state==3?@drawable/option_selection_bac:@drawable/edit_border:data.options.correct_option.equals(&quot;3&quot;)?data.options.correct_option.equals(state.toString())?@drawable/right_marks:@drawable/wrong_mark:state==3?@drawable/right_marks:@drawable/edit_border}"
+                                android:orientation="horizontal"
+                                android:paddingHorizontal="@dimen/_8sdp"
+                                android:paddingVertical="@dimen/_6sdp">
+
+                                <FrameLayout
+                                    android:layout_width="@dimen/_15sdp"
+                                    android:layout_height="@dimen/_15sdp"
+                                    android:layout_gravity="center_vertical"
+                                    android:background="@drawable/circular_border"
+                                    android:backgroundTint="@{!sol?state==3?@color/blue_main:@color/gray:data.options.correct_option.equals(&quot;3&quot;)?data.options.correct_option.equals(state.toString())?@color/green:@color/red:state==3?@color/green:@color/gray}"
+                                    android:padding="@dimen/_1sdp">
+
+                                    <com.so.luotk.customviews.CustomBoldFontTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:text="d"
+                                        android:textAllCaps="true"
+                                        android:textColor="@color/textColorWhite"
+                                        android:textSize="@dimen/_8sdp" />
+                                </FrameLayout>
+
+                                <WebView
+                                    webView="@{TextUtils.isEmpty(data.options.option4.answer)?&quot;&lt;p&gt;&lt;/p&gt;&quot;:data.options.option4.answer}"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginHorizontal="@dimen/_4sdp"
+                                    android:layout_marginTop="@dimen/_5sdp"
+                                    android:layout_weight="1"
+                                    android:background="@null"
+                                    tools:ignore="WebViewLayout" />
+                            </LinearLayout>
+
+                            <com.so.luotk.customviews.CustomFontTextView
+                                android:id="@+id/opt_text4"
+                                invisibleView="@{sol}"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:background="@color/white"
+                                android:text="@{sol?data.options.correct_option.equals(&quot;3&quot;)?data.options.correct_option.equals(state.toString())?@string/your_answer:@string/you_missed:state==3?@string/your_answer:&quot;&quot;:&quot;&quot;}"
+                                android:textColor="@{sol?data.options.correct_option.equals(&quot;3&quot;)?data.options.correct_option.equals(state.toString())?@color/green:@color/red:state==3?@color/green:@color/gray:@color/gray}" />
+
+                            <FrameLayout
+                                android:id="@+id/option4"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_40sdp"
+                                android:layout_below="@+id/opt_text4"
+                                android:layout_marginTop="@dimen/_minus6sdp" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        hideText="@{sol}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/_15sdp"
+                        android:background="@drawable/bg_light_blue_round_corner"
+                        android:orientation="vertical"
+                        android:padding="@dimen/_10sdp"
+                        tools:ignore="WebViewLayout">
+
+                        <com.so.luotk.customviews.CustomSemiBoldFontTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/solution"
+                            android:textAllCaps="true"
+                            android:textColor="@color/blue_main"
+                            android:textSize="@dimen/_10sdp" />
+
+                        <WebView
+                            webView="@{data.solution}"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_minus5sdp"
+                            android:background="@null" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/not_clickable_layout"
+                    hideText="@{sol}"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:focusableInTouchMode="true" />
+            </RelativeLayout>
+        </ScrollView>
+
+        <View
+            android:id="@+id/view_line"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_above="@id/chapter_bottom_click"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:background="@color/gray" />
+
+        <RelativeLayout
+            android:id="@+id/chapter_bottom_click"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:paddingVertical="@dimen/_8sdp">
+
+            <!--      <FrameLayout
+                      invisibleView="@{pos>0}"
+                      android:layout_width="@dimen/_35sdp"
+                      android:layout_height="@dimen/_35sdp"
+                      android:layout_gravity="center"
+                      android:background="@drawable/gray_stroke_circle"
+                      android:onClick="@{()->click.onClick(pos,2,data)}"
+                      android:padding="@dimen/_5sdp">
+
+                      <ImageView
+                          android:layout_width="@dimen/_16sdp"
+                          android:layout_height="@dimen/_16sdp"
+                          android:layout_gravity="center"
+                          android:background="?selectableItemBackgroundBorderless"
+
+                          android:src="@drawable/back_arrow_white" />
+                  </FrameLayout>-->
+            <com.so.luotk.customviews.CustomSemiBoldFontTextView
+                invisibleView="@{pos>0}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/_8sdp"
+                android:background="?selectableItemBackground"
+                android:drawableLeft="@drawable/ic_round_keyboard_arrow_left_24"
+                android:gravity="center_vertical"
+                android:onClick="@{()->click.onClick(pos,2,data)}"
+                android:text="@string/exo_controls_previous_description"
+                android:textColor="@color/blue_main"
+                android:textSize="@dimen/_14sdp" />
+
+            <LinearLayout
+                android:id="@+id/exercise_solution"
+                hideText="@{!button.equals(&quot;Finish&quot;)}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:background="?selectableItemBackground"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.so.luotk.customviews.CustomSemiBoldFontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|end"
+                    android:text="@{button}"
+                    android:textColor="@{button.equals(&quot;Next&quot;)||button.equals(&quot;Submit&quot;)||button.equals(&quot;Finish&quot;)?@color/blue_main:@color/gray}"
+                    android:textSize="@dimen/_14sdp" />
+
+                <ImageView
+                    hideText="@{!button.equals(&quot;Submit&quot;)}"
+                    android:id="@+id/right_arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/ic_round_keyboard_arrow_right_24"
+                    android:backgroundTint="@{button.equals(&quot;Next&quot;)||button.equals(&quot;Submit&quot;)||button.equals(&quot;Finish&quot;)?@color/blue_main:@color/gray}" />
+            </LinearLayout>
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</layout>

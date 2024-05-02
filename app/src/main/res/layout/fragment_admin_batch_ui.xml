@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="ltr"
+    android:background="@color/white"
+    tools:context=".fragments.adminrole.AdminBatchUiFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/layoutDataView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/adminHomeBack"
+            android:visibility="gone">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@color/white"
+                android:elevation="0dp"
+                android:gravity="center_vertical"
+                app:titleTextAppearance="@style/Toolbar.TitleText"
+                app:titleTextColor="@color/white">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/toolbar_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_toLeftOf="@+id/rel_icon"
+                        android:fontFamily="@font/latosemibold"
+                        android:paddingRight="@dimen/_5sdp"
+                        android:layout_marginRight="@dimen/_6sdp"
+                        android:text=""
+                        android:textColor="@color/toolbarHeadTitle"
+                        android:textSize="@dimen/toolTextSize" />
+
+                    <LinearLayout
+                        android:id="@+id/rel_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/student_icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/_20sdp"
+                            android:visibility="gone"
+                            android:layout_gravity="center_vertical"
+                            android:layout_toLeftOf="@+id/menu_icon"
+                            android:layout_centerInParent="true"
+                            android:layout_marginRight="6dp"
+                            android:src="@drawable/ic_students" />
+
+                        <ImageView
+                            android:id="@+id/menu_icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="33dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerInParent="true"
+                            android:layout_marginRight="6dp"
+                            android:src="@drawable/ic_help_new" />
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+            </androidx.appcompat.widget.Toolbar>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_200sdp"
+                android:layout_below="@+id/toolbar">
+
+                <RelativeLayout
+                    android:id="@+id/imageLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_150sdp"
+                    android:padding="@dimen/_8sdp">
+
+                    <ImageView
+                        android:id="@+id/homeImage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_margin="@dimen/_8sdp"
+                        android:src="@drawable/girl_pngg" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/add_student_TV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/imageLayout"
+                    android:layout_marginLeft="@dimen/_28sdp"
+                    android:layout_marginRight="@dimen/_28sdp"
+                    android:fontFamily="@font/latosemibold"
+                    android:gravity="center"
+                    android:lineSpacingExtra="0.8dp"
+                    android:text="@string/admin_home"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/_11sdp" />
+
+                <TextView
+                    android:id="@+id/classRoomTv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/add_student_TV"
+                    android:layout_marginLeft="@dimen/_28sdp"
+                    android:layout_marginRight="@dimen/_28sdp"
+                    android:fontFamily="@font/latosemibold"
+                    android:gravity="center"
+                    android:lineSpacingExtra="0.8dp"
+                    android:text="@string/admin_home_desc"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/_11sdp" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fab"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="end"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:backgroundTint="@color/dark_blue"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_add_white_24dp"
+                    android:visibility="gone"
+                    app:borderWidth="0dp"
+                    app:elevation="6dp"
+                    app:fabCustomSize="45dp"
+                    app:rippleColor="@color/colorPrimaryDark"
+                    app:tint="@color/textColorWhite" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/constarintLayo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize">
+
+        <include
+            android:id="@+id/bottomSheetBatch"
+            layout="@layout/bottom_batch_screen" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <!--<FrameLayout
+        android:id="@+id/frame_layout_admin_batch"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/shimmerLay"
+        android:visibility="visible"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@color/white"
+            android:elevation="0dp"
+            android:visibility="visible"
+            android:gravity="center_vertical"
+            app:titleTextAppearance="@style/Toolbar.TitleText"
+            app:titleTextColor="@color/white">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/toolbar_title1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:fontFamily="@font/latosemibold"
+                    android:layout_toLeftOf="@+id/menu_icon1"
+                    android:paddingRight="@dimen/_5sdp"
+                    android:text=""
+                    android:textColor="@color/toolbarHeadTitle"
+                    android:textSize="@dimen/toolTextSize" />
+
+
+                <ImageView
+                    android:id="@+id/menu_icon1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="33dp"
+                    android:visibility="visible"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="6dp"
+                    android:src="@drawable/ic_help_new" />
+
+            </RelativeLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer_layout_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:background="@color/white"
+            android:visibility="visible">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:visibility="gone"
+                    android:paddingLeft="@dimen/_8sdp"
+                    android:paddingRight="@dimen/_8sdp"
+                    android:layout_height="wrap_content">
+
+                    <View
+                        android:layout_width="@dimen/_80sdp"
+                        android:layout_height="@dimen/_15sdp"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="@dimen/_6sdp"
+                        android:layout_marginVertical="@dimen/_6sdp"
+                        android:background="@drawable/round_edge_shimmer" />
+
+                    <View
+                        android:layout_width="@dimen/_24sdp"
+                        android:layout_height="@dimen/_15sdp"
+                        android:layout_weight="1"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginHorizontal="@dimen/_6sdp"
+                        android:layout_marginVertical="@dimen/_6sdp"
+                        android:background="@drawable/round_edge_shimmer" />
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_150sdp"
+                    android:padding="@dimen/_8sdp">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_150sdp"
+                        android:layout_marginHorizontal="@dimen/_6sdp"
+                        android:layout_marginVertical="@dimen/_3sdp"
+                        android:background="@drawable/round_edge_shimmer" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_10sdp"
+                    android:layout_marginHorizontal="@dimen/_40sdp"
+                    android:layout_marginVertical="@dimen/_6sdp"
+                    android:background="@drawable/round_edge_shimmer" />
+
+                <View
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="@dimen/_10sdp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginHorizontal="@dimen/_40sdp"
+                    android:layout_marginVertical="@dimen/_3sdp"
+                    android:background="@drawable/round_edge_shimmer" />
+
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="@dimen/_16sdp"
+                    android:paddingLeft="@dimen/_8sdp"
+                    android:paddingRight="@dimen/_8sdp">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_50sdp"
+                        android:layout_marginHorizontal="@dimen/_6sdp"
+                        android:background="@drawable/round_edge_shimmer" />
+
+                    <View
+                        android:layout_width="40dp"
+                        android:layout_height="@dimen/_5sdp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginHorizontal="@dimen/_6sdp"
+                        android:layout_marginVertical="@dimen/_6sdp"
+                        android:background="@drawable/round_edge_shimmer" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:weightSum="2"
+                        android:layout_height="wrap_content">
+
+                        <View
+                            android:layout_width="@dimen/_50sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:layout_weight="1"
+                            android:layout_marginHorizontal="@dimen/_6sdp"
+                            android:layout_marginVertical="@dimen/_6sdp"
+                            android:background="@drawable/round_edge_shimmer" />
+
+                        <View
+                            android:layout_width="@dimen/_50sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:layout_weight="1"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginHorizontal="@dimen/_6sdp"
+                            android:layout_marginVertical="@dimen/_6sdp"
+                            android:background="@drawable/round_edge_shimmer" />
+
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_65sdp"
+                        android:layout_marginHorizontal="@dimen/_6sdp"
+                        android:layout_marginVertical="@dimen/_6sdp"
+                        android:background="@drawable/round_edge_shimmer" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_65sdp"
+                        android:layout_marginHorizontal="@dimen/_6sdp"
+                        android:layout_marginVertical="@dimen/_6sdp"
+                        android:background="@drawable/round_edge_shimmer" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_65sdp"
+                        android:layout_marginHorizontal="@dimen/_6sdp"
+                        android:layout_marginVertical="@dimen/_6sdp"
+                        android:background="@drawable/round_edge_shimmer" />
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+        <!-- <com.facebook.shimmer.ShimmerFrameLayout
+             android:id="@+id/shimmer_layout_frame"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:layout_marginTop="?attr/actionBarSize"
+             android:background="@color/white"
+             android:visibility="visible">
+
+             <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:background="@color/white"
+                 android:orientation="vertical">
+
+                 <View
+                     android:layout_width="match_parent"
+                     android:layout_height="@dimen/_100sdp"
+                     android:layout_marginHorizontal="@dimen/_6sdp"
+                     android:layout_marginVertical="@dimen/_6sdp"
+                     android:background="@drawable/round_edge_shimmer" />
+
+                 <View
+                     android:layout_width="match_parent"
+                     android:layout_height="@dimen/_100sdp"
+                     android:layout_marginHorizontal="@dimen/_6sdp"
+                     android:layout_marginVertical="@dimen/_6sdp"
+                     android:background="@drawable/round_edge_shimmer" />
+
+                 <View
+                     android:layout_width="match_parent"
+                     android:layout_height="@dimen/_100sdp"
+                     android:layout_marginHorizontal="@dimen/_6sdp"
+                     android:layout_marginVertical="@dimen/_6sdp"
+                     android:background="@drawable/round_edge_shimmer" />
+
+                 <View
+                     android:layout_width="match_parent"
+                     android:layout_height="@dimen/_100sdp"
+                     android:layout_marginHorizontal="@dimen/_6sdp"
+                     android:layout_marginVertical="@dimen/_6sdp"
+                     android:background="@drawable/round_edge_shimmer" />
+
+                 <View
+                     android:layout_width="match_parent"
+                     android:layout_height="@dimen/_100sdp"
+                     android:layout_marginHorizontal="@dimen/_6sdp"
+                     android:layout_marginVertical="@dimen/_6sdp"
+                     android:background="@drawable/round_edge_shimmer" />
+
+                 <View
+                     android:layout_width="match_parent"
+                     android:layout_height="@dimen/_100sdp"
+                     android:layout_marginHorizontal="@dimen/_6sdp"
+                     android:layout_marginVertical="@dimen/_6sdp"
+                     android:background="@drawable/round_edge_shimmer" />
+
+             </LinearLayout>
+
+         </com.facebook.shimmer.ShimmerFrameLayout>-->
+    </RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

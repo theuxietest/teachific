@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="@dimen/_8sdp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_student"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_weight="0"
+            android:src="@color/gray" />
+
+        <com.so.luotk.customviews.CustomFontTextView
+            android:id="@+id/txt_in_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="S"
+            android:textColor="@color/textColorWhite"
+            android:textSize="@dimen/_14sdp"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <com.so.luotk.customviews.CustomSemiBoldFontTextView
+            android:id="@+id/tv_student_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="marquee"
+            android:singleLine="true"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:text="Student 1"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp" />
+
+        <com.so.luotk.customviews.CustomFontTextView
+            android:id="@+id/tv_student_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:text=""
+            android:textColor="@color/gray"
+            android:textSize="@dimen/_10sdp" />
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/btn_delete"
+        android:layout_width="@dimen/_18sdp"
+        android:layout_height="@dimen/_18sdp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/delete_new"
+        android:visibility="visible"
+         />
+
+    <!--    <LinearLayout
+            android:id="@+id/layout_view_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.smartowls.smartowls.customviews.CustomFontTextView
+                android:id="@+id/tv_view_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:text="View details"
+                android:textColor="@color/blue_main"
+                android:textSize="@dimen/_12sdp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_three_dots"
+                app:tint="@color/black" />
+        </LinearLayout>-->
+
+
+</LinearLayout>

@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="ltr"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        app:navigationIcon="@drawable/ic_arrow_back_black_24dp"
+        app:titleTextAppearance="@style/Toolbar.TitleText"
+        app:titleTextColor="@color/black">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/titleBatch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginBottom="7dp"
+                android:textSize="@dimen/_14sdp"
+                android:text=""
+                android:layout_marginRight="@dimen/_8sdp"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="@color/black" />
+
+            <com.so.luotk.customviews.CustomFontTextView
+                android:id="@+id/text_steps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/_16sdp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:text="@string/step"
+                android:textColor="@color/blue_main"
+                android:textSize="@dimen/_12sdp" />
+        </RelativeLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <!-- <androidx.appcompat.widget.Toolbar
+         android:id="@+id/toolbar"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:background="@color/card_back">
+ 
+         <RelativeLayout
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:layout_marginHorizontal="@dimen/_12sdp">
+ 
+             <com.so.bgjcn.customviews.CustomFontTextView
+                 android:id="@+id/titleBatch"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_alignParentStart="true"
+                 android:text="Create Batch"
+                 android:textColor="@color/black"
+                 android:textSize="@dimen/_14sdp" />
+ 
+             <com.so.bgjcn.customviews.CustomFontTextView
+                 android:id="@+id/text_steps"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_alignParentEnd="true"
+                 android:layout_alignParentRight="true"
+                 android:text="Step 1/2"
+                 android:textColor="@color/blue_main"
+                 android:textSize="@dimen/_14sdp" />
+ 
+         </RelativeLayout>
+     </androidx.appcompat.widget.Toolbar>-->
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:background="@color/gray"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:id="@+id/layout_step_1"
+        android:visibility="visible"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:layout_above="@+id/btn_next"
+            android:fitsSystemWindows="true"
+            android:scrollbars="none">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_100sdp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="@dimen/_16sdp"
+                        android:background="@drawable/ic_create_batch"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edt_batch_name_lay"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:hint="@string/enter_batch_name">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edt_batch_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lato_medium"
+                        android:inputType="none|text|textCapCharacters|textEmailAddress|textShortMessage|textPersonName"
+                        android:textSize="15sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edt_batch_code_lay"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:hint="@string/batch_code"
+                    android:visibility="gone">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edt_batch_code"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lato_medium"
+                        android:inputType="none|text|textCapCharacters|textEmailAddress|textShortMessage|textPersonName"
+                        android:textSize="15sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- <com.so.bgjcn.customviews.CustomFontTextView
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center_vertical"
+                     android:gravity="center_vertical"
+                     android:paddingHorizontal="@dimen/_10sdp"
+                     android:text="Select course"
+                     android:textAllCaps="true"
+                     android:textSize="@dimen/_14sdp" />
+     -->
+                <!--<LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <com.so.bgjcn.customviews.CustomFontEditText
+                        android:id="@+id/edt_batch_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/card_back"
+                        android:hint="Batch name"
+                        android:maxLines="1"
+                        android:padding="@dimen/_10sdp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_13sdp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/light_gray" />
+
+                    <com.so.bgjcn.customviews.CustomFontEditText
+                        android:id="@+id/edt_batch_code"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/card_back"
+                        android:editable="false"
+                        android:hint="@string/batch_code"
+                        android:maxLines="1"
+                        android:padding="@dimen/_10sdp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_13sdp" />
+
+                </LinearLayout>-->
+
+                <com.so.luotk.customviews.CustomFontTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:text="@string/share_code"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/_13sdp"
+                    android:visibility="gone" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tv_batch_start_date_lay"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="12dp"
+                    android:focusableInTouchMode="false"
+                    android:layout_marginEnd="16dp"
+                    android:hint="@string/select_start_date">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tv_batch_start_date"
+                        android:layout_width="match_parent"
+                        android:editable="false"
+                        android:focusableInTouchMode="false"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lato_medium"
+                        android:inputType="none|text|textCapCharacters|textEmailAddress|textShortMessage|textPersonName"
+                        android:textSize="15sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!--    <com.so.bgjcn.customviews.CustomFontTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/_10sdp"
+                        android:text="Batch start date"
+                        android:textAllCaps="true"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/_14sdp" />
+        -->
+
+                <!-- <com.so.bgjcn.customviews.CustomFontTextView
+                     android:id="@+id/tv_batch_start_date"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:background="@color/card_back"
+                     android:padding="@dimen/_10sdp"
+                     android:paddingLeft="8dp"
+                     android:text="Select date"
+                     android:textColor="@color/dark_gray"
+                     android:textSize="@dimen/_13sdp" />
+     -->
+
+                <!--<com.so.bgjcn.customviews.CustomFontTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/_10sdp"
+                    android:text="Category"
+                    android:textAllCaps="true"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/_14sdp" />-->
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tv_category_lay"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="16dp"
+                    android:focusableInTouchMode="false"
+                    android:hint="@string/select_category">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tv_category"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:editable="false"
+                        android:focusableInTouchMode="false"
+                        android:fontFamily="@font/lato_medium"
+                        android:inputType="none|text|textCapCharacters|textEmailAddress|textShortMessage|textPersonName"
+                        android:textSize="15sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!--   <com.so.bgjcn.customviews.CustomFontTextView
+                       android:id="@+id/tv_category"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_marginTop="5dp"
+                       android:background="@color/card_back"
+                       android:padding="@dimen/_10sdp"
+                       android:paddingLeft="8dp"
+                       android:text="Select category"
+                       android:textColor="@color/dark_gray"
+                       android:textSize="@dimen/_13sdp" />
+                   &lt;!&ndash;    </LinearLayout>&ndash;&gt;
+       -->
+
+                <!--  <com.so.bgjcn.customviews.CustomFontTextView
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_gravity="center_vertical"
+                      android:gravity="center_vertical"
+                      android:padding="@dimen/_10sdp"
+                      android:text="@string/course"
+                      android:textAllCaps="true"
+                      android:textColor="@color/gray"
+                      android:textSize="@dimen/_14sdp" />-->
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tv_course_lay"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="12dp"
+                    android:focusableInTouchMode="false"
+                    android:layout_marginEnd="16dp"
+                    android:hint="@string/select_course">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tv_course"
+                        android:focusableInTouchMode="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lato_medium"
+                        android:editable="false"
+                        android:inputType="none|text|textCapCharacters|textEmailAddress|textShortMessage|textPersonName"
+                        android:textSize="15sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!--  <com.so.bgjcn.customviews.CustomFontTextView
+                      android:id="@+id/tv_course"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginTop="5dp"
+                      android:background="@color/card_back"
+                      android:padding="@dimen/_10sdp"
+                      android:paddingLeft="8dp"
+                      android:text="Select course"
+                      android:textColor="@color/dark_gray"
+                      android:textSize="@dimen/_13sdp" />
+      -->
+
+                <!-- <com.so.bgjcn.customviews.CustomFontTextView
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center_vertical"
+                     android:gravity="center_vertical"
+                     android:padding="@dimen/_10sdp"
+                     android:text="@string/subject"
+                     android:textAllCaps="true"
+                     android:textColor="@color/gray"
+                     android:textSize="@dimen/_14sdp" />-->
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tv_subject_lay"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="16dp"
+                    android:focusableInTouchMode="false"
+                    android:hint="@string/select_subject">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tv_subject"
+                        android:focusableInTouchMode="false"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:editable="false"
+                        android:fontFamily="@font/lato_medium"
+                        android:inputType="none|text|textCapCharacters|textEmailAddress|textShortMessage|textPersonName"
+                        android:textSize="15sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- <com.so.bgjcn.customviews.CustomFontTextView
+                     android:id="@+id/tv_subject"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginTop="5dp"
+                     android:background="@color/card_back"
+                     android:padding="@dimen/_10sdp"
+                     android:paddingLeft="8dp"
+                     android:text="Select subject"
+                     android:textColor="@color/dark_gray"
+                     android:textSize="@dimen/_13sdp" />
+
+                 <com.so.bgjcn.customviews.CustomFontTextView
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center_vertical"
+                     android:gravity="center_vertical"
+                     android:padding="@dimen/_10sdp"
+                     android:text="Batch fee"
+                     android:textAllCaps="true"
+                     android:textColor="@color/gray"
+                     android:textSize="@dimen/_14sdp" />-->
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tv_batch_fee_lay"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="16dp"
+                    android:hint="@string/select_batch_fee">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tv_batch_fee"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lato_medium"
+                        android:inputType="none|number"
+                        android:textSize="15sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!--    <com.so.bgjcn.customviews.CustomFontEditText
+                        android:id="@+id/tv_batch_fee"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/card_back"
+                        android:hint="Enter batch fee"
+                        android:padding="@dimen/_10sdp"
+                        android:paddingLeft="8dp"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/_13sdp" />-->
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_next"
+            style="@style/primary_button"
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/_12sdp"
+            android:layout_marginRight="@dimen/_12sdp"
+            android:enabled="false"
+            android:backgroundTint="@color/disabledButtonColor"
+            android:textColor="@color/disabled_btn"
+            android:text="@string/next_btn"
+            app:strokeWidth="0dp" />
+
+        <!-- <com.so.bgjcn.customviews.CustomBoldFontTextView
+             android:id="@+id/btn_next"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_alignParentBottom="true"
+             android:layout_margin="20dp"
+             android:background="@drawable/diabled_bak"
+             android:gravity="center"
+             android:padding="10dp"
+             android:text="Next"
+             android:enabled="false"
+             android:textAllCaps="true"
+             android:textColor="@color/disabledButtonColor"
+             android:textSize="@dimen/_11sdp" />-->
+    </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:fillViewport="true"
+        android:visibility="gone"
+        android:id="@+id/layout_step_2"
+        android:layout_below="@+id/toolbar"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/_8sdp"
+            android:orientation="vertical"
+            >
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_timing_list"
+                android:layout_width="match_parent"
+                android:layout_above="@+id/btn_save"
+                android:layout_height="match_parent" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_save"
+                style="@style/primary_button"
+                android:layout_width="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="@dimen/_12sdp"
+                android:layout_marginRight="@dimen/_12sdp"
+                android:enabled="false"
+                android:backgroundTint="@color/disabledButtonColor"
+                android:textColor="@color/disabled_btn"
+                android:text="@string/save_btn"
+                app:strokeWidth="0dp" />
+
+            <!--   <com.so.bgjcn.customviews.CustomBoldFontTextView
+                   android:id="@+id/btn_save"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_margin="20dp"
+                   android:backgroundTint="@color/disabledButtonColor"
+                   android:gravity="center"
+                   android:padding="10dp"
+                   android:text="Save"
+                   android:enabled="false"
+                   android:layout_alignParentBottom="true"
+                   android:textColor="@color/disabled_btn"
+                   android:textSize="@dimen/_11sdp" />-->
+
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+</RelativeLayout>

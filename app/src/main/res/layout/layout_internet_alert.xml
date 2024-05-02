@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:padding="10dp"
+
+    android:orientation="vertical">
+
+    <com.so.luotk.customviews.CustomSemiBoldFontTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:textSize="@dimen/_12sdp"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/txt_internet_disconnected"/>
+
+    <com.so.luotk.customviews.CustomFontTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/txt_check_internet"/>
+
+    <com.so.luotk.customviews.CustomFontButton
+        android:id="@+id/btn_retry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/link_signup"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/green_button_bg"
+        android:gravity="center"
+        android:text="RETRY"
+        android:textAllCaps="true"
+        android:textColor="@color/textColorWhite"
+        android:textSize="@dimen/_13sdp" />
+
+</LinearLayout>

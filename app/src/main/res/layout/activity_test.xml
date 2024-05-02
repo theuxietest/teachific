@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.view.ChapterActivity">
+
+    <data>
+
+        <import type="android.graphics.Color" />
+
+        <import type="android.text.TextUtils" />
+
+        <variable
+            name="qTime"
+            type="String" />
+
+        <variable
+            name="sectionName"
+            type="String" />
+
+        <variable
+            name="currentPosition"
+            type="Integer" />
+
+        <variable
+            name="total"
+            type="Integer" />
+
+        <variable
+            name="ans"
+            type="Integer" />
+
+        <variable
+            name="listToggle"
+            type="boolean" />
+
+        <variable
+            name="showSol"
+            type="boolean" />
+
+        <variable
+            name="isOneSection"
+            type="boolean" />
+
+        <variable
+            name="isLoading"
+            type="boolean" />
+
+        <variable
+            name="activity"
+            type="com.so.luotk.testmodule.TestActivity" />
+
+        <variable
+            name="time"
+            type="String" />
+
+        <variable
+            name="levelColor"
+            type="String" />
+
+        <variable
+            name="level"
+            type="String" />
+
+        <variable
+            name="posMark"
+            type="String" />
+
+        <variable
+            name="negMark"
+            type="String" />
+
+        <variable
+            name="bookmark"
+            type="boolean" />
+
+        <variable
+            name="quesData"
+            type="com.so.luotk.models.output.TestQuestion" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layoutDirection="ltr"
+        android:background="@color/colorBlackGray">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/chapter_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="@dimen/_10sdp">
+
+                <ImageView
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:src="@drawable/ic_pause_new"
+                    android:visibility="gone"
+                    app:tint="@color/blue_main" />
+
+                <com.so.luotk.customviews.CustomBoldFontTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:paddingLeft="@dimen/_12sdp"
+                    android:paddingRight="@dimen/_20sdp"
+                    android:text="@{time}"
+                    android:textColor="@color/textColorWhite"
+                    android:textSize="@dimen/_13sdp" />
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1">
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/spinner_section"
+                        hideText="@{!isOneSection}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/textColorWhite" />
+
+                    <com.so.luotk.customviews.CustomFontTextView
+                        hideText="@{isOneSection}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorBlackGray"
+                        android:gravity="center"
+                        android:text="@{sectionName}"
+                        android:textColor="@color/textColorWhite"
+                        android:textSize="@dimen/_12sdp" />
+
+                </RelativeLayout>
+
+
+                <ImageView
+                    android:layout_width="@dimen/_22sdp"
+                    android:layout_height="@dimen/_22sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:background="@{listToggle?@drawable/blue_circle:@drawable/circular_border}"
+                    android:onClick="@{()->activity.showListView()}"
+                    android:padding="@dimen/_6sdp"
+                    android:src="@drawable/ic_menu"
+                    app:tint="@color/textColorWhite" />
+                <!--   invisibleView="@{!showSol}"-->
+                <ImageView
+
+                    android:layout_width="@dimen/_22sdp"
+                    android:layout_height="@dimen/_22sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:background="@drawable/circular_border"
+                    android:onClick="@{()->activity.openDialog()}"
+                    android:padding="@dimen/_4sdp"
+                    android:src="@{showSol?@drawable/ic_close_thin:@drawable/ic_tick__3_}"
+                    app:tint="@color/textColorWhite" />
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.cardview.widget.CardView
+            hideText="@{!listToggle}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/chapter_toolbar"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_minus10sdp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="0dp">
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/progress_bar"
+                hideText="@{isLoading}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/_6sdp"
+                android:indeterminate="true"
+                app:trackThickness="@dimen/_3sdp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <com.so.luotk.customviews.CustomFontTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_12sdp"
+                        android:background="@drawable/bg_light_blue_round_corner"
+                        android:paddingHorizontal="@dimen/_6sdp"
+                        android:paddingVertical="@dimen/_2sdp"
+                        android:text="@{currentPosition+1+&quot;&quot;}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12sdp" />
+
+                    <com.so.luotk.customviews.CustomBoldFontTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <com.so.luotk.customviews.CustomFontTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@{qTime}"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <View
+                        hideText="@{!TextUtils.isEmpty(qTime)}"
+                        android:layout_width="@dimen/_1sdp"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="@dimen/_6sdp"
+                        android:background="@color/gray" />
+
+
+                    <com.so.luotk.customviews.CustomBoldFontTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_3sdp"
+                        android:background="@drawable/right_marks"
+                        android:padding="@dimen/_4sdp"
+                        android:text="@{posMark}"
+                        android:textSize="@dimen/_8sdp" />
+
+                    <com.so.luotk.customviews.CustomBoldFontTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_3sdp"
+                        android:background="@drawable/wrong_mark"
+                        android:padding="@dimen/_4sdp"
+                        android:text="@{negMark}"
+                        android:textSize="@dimen/_8sdp" />
+
+                    <View
+                        android:layout_width="@dimen/_1sdp"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="@dimen/_6sdp"
+                        android:background="@color/gray" />
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        app:cardBackgroundColor="@{Color.parseColor(levelColor)}"
+                        app:cardCornerRadius="@dimen/_5sdp">
+
+                        <com.so.luotk.customviews.CustomBoldFontTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:gravity="end"
+                            android:padding="@dimen/_4sdp"
+                            android:text="@{level}"
+                            android:textColor="@color/textColorWhite"
+                            android:textSize="@dimen/_8sdp" />
+                    </androidx.cardview.widget.CardView>
+
+                    <View
+                        hideText="@{!showSol}"
+                        android:layout_width="@dimen/_1sdp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/_6sdp"
+                        android:layout_marginRight="@dimen/_3sdp"
+                        android:background="@color/gray" />
+
+                    <ImageView
+                        hideText="@{!showSol}"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_16sdp"
+                        android:layout_marginRight="@dimen/_2sdp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:onClick="@{()->activity.toggleBookMark()}"
+                        android:src="@{bookmark?@drawable/ic_bookmarks_yellow:@drawable/ic_bookmarks}" />
+
+
+                </LinearLayout>
+
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/exercise_pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:overScrollMode="never" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <FrameLayout
+            hideText="@{isLoading}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <RelativeLayout
+            hideText="@{listToggle}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/chapter_toolbar"
+            android:layout_marginTop="@dimen/_minus5sdp"
+            android:background="@drawable/bubble_bc"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:id="@+id/question_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/_15sdp"
+                android:paddingVertical="@dimen/_6sdp">
+
+                <LinearLayout
+                    invisibleView="@{!showSol}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_8sdp">
+
+                    <com.so.luotk.customviews.CustomBoldFontTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@{ans+&quot;/&quot;+total}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12sdp" />
+
+                    <com.so.luotk.customviews.CustomBoldFontTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/question_attempted"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/_10sdp" />
+                </LinearLayout>
+
+
+                <ViewFlipper
+                    android:id="@+id/list_flipper"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_25sdp">
+
+                    <ImageView
+                        android:layout_width="@dimen/_15sdp"
+                        android:layout_height="@dimen/_15sdp"
+                        android:background="?selectableItemBackground"
+                        android:onClick="@{()->activity.gridView()}"
+                        android:src="@drawable/ic_grid_interface"
+                        app:tint="@color/black" />
+
+                    <ImageView
+                        android:layout_width="@dimen/_15sdp"
+                        android:layout_height="@dimen/_15sdp"
+                        android:background="?selectableItemBackground"
+                        android:onClick="@{()->activity.listView()}"
+                        android:src="@drawable/ic_list_interface"
+                        app:tint="@color/black" />
+                </ViewFlipper>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/index_layout"
+                hideText="@{!showSol}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/question_layout"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/_12sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_6sdp">
+
+                    <ImageView
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_marginHorizontal="@dimen/_3sdp"
+                        android:background="@drawable/gray_border_bg" />
+
+                    <com.so.luotk.customviews.CustomFontTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_2sdp"
+                        android:text="@string/unanswred"
+                        android:textSize="@dimen/_8sdp" />
+
+                    <ImageView
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:background="@drawable/right_marks" />
+
+                    <com.so.luotk.customviews.CustomFontTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_2sdp"
+                        android:text="@string/answered"
+                        android:textSize="@dimen/_8sdp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_6sdp">
+
+                    <ImageView
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_marginHorizontal="@dimen/_3sdp"
+                        android:background="@drawable/yellow_border_back" />
+
+                    <com.so.luotk.customviews.CustomFontTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_2sdp"
+                        android:text="@string/to_be_reviewd"
+                        android:textSize="@dimen/_8sdp" />
+
+                    <ImageView
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_marginHorizontal="@dimen/_3sdp"
+                        android:background="@drawable/ic_bookmark_and_answered" />
+
+                    <com.so.luotk.customviews.CustomFontTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_2sdp"
+                        android:text="@string/answered_marked"
+                        android:textSize="@dimen/_8sdp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <ViewFlipper
+                android:id="@+id/view_flipper"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/index_layout"
+                android:background="@color/white"
+                android:paddingHorizontal="@dimen/_12sdp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/exercise_grid_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/exercise_list_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </ViewFlipper>
+        </RelativeLayout>
+
+    </RelativeLayout>
+</layout>

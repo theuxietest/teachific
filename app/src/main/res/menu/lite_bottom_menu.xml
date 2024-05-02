@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/bottomNavigationHomeMenuId"
+        android:icon="@drawable/home_selector_unselector"
+        android:title="@string/home" />
+
+    <item
+        android:id="@+id/bottomNavigationBatchesMenuId"
+        android:icon="@drawable/batch_selector_unselector"
+        android:title="@string/batches" />
+
+    <item
+        android:id="@+id/bottomNavigationFeeMenuId"
+        android:icon="@drawable/store_selector_unselector"
+        android:visible="false"
+        android:title="@string/store" />
+
+    <item
+        android:id="@+id/bottomNavigationReportMenuId"
+        android:icon="@drawable/report_selector_unselector"
+        android:title="@string/report" />
+
+    <item
+        android:id="@+id/bottomNavigationMoreOptionId"
+        android:icon="@drawable/more_selector_unselector"
+        android:title="@string/More" />
+</menu>

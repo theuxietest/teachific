@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:id="@+id/selectLayout"
+    android:padding="@dimen/_8sdp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:id="@+id/img_lay"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/name_img"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_weight="0"
+            android:src="@color/gray" />
+
+        <com.so.luotk.customviews.CustomFontTextView
+            android:id="@+id/txt_in_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="S"
+            android:textColor="@color/textColorWhite"
+            android:textSize="@dimen/_14sdp"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/img_lay"
+        android:layout_weight="1"
+        android:layout_toLeftOf="@+id/checkbox_student"
+        android:orientation="vertical">
+
+        <com.so.luotk.customviews.CustomFontTextView
+            android:id="@+id/tv_student_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="marquee"
+            android:singleLine="true"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:text="Student 1"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sdp" />
+
+        <com.so.luotk.customviews.CustomFontTextView
+            android:id="@+id/tv_student_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:text=""
+            android:textColor="@color/gray"
+            android:textSize="@dimen/_10sdp" />
+    </LinearLayout>
+
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/checkbox_student"
+        android:layout_alignParentTop="true"
+        android:layout_width="@dimen/_24sdp"
+        android:layout_height="@dimen/_24sdp"
+        android:layout_alignParentRight="true"
+        android:layout_weight="1"
+        android:backgroundTint="@color/blue_main"
+        android:clickable="false" />
+   <!-- <ImageView
+        android:id="@+id/btn_delete"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/delete_new"
+        android:visibility="visible"
+        />-->
+
+</RelativeLayout>
+
+<!--
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:id="@+id/selectLayout"
+    android:orientation="horizontal"
+    android:padding="@dimen/_12sdp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/batch_img"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_weight="0"
+        android:src="@color/gray" />
+
+    <com.so.bgjcn.customviews.CustomFontTextView
+        android:id="@+id/tv_batch_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/_14sdp"
+        android:layout_weight="4"
+        android:text="Batch 1"
+        android:textSize="@dimen/_14sdp" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/checkbox_batch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_weight="1"
+        android:backgroundTint="@color/blue_main"
+        android:clickable="false" />
+
+
+</LinearLayout>-->

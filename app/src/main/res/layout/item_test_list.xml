@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:clickable="true"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:divider="@android:color/transparent"
+    android:dividerHeight="0.0px"
+    android:foreground="?attr/selectableItemBackground"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    app:cardBackgroundColor="@color/card_back"
+    app:cardCornerRadius="@dimen/_7sdp"
+    app:cardElevation="2dp"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/custom_calender_icon"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_margin="@dimen/_7sdp"
+                android:background="@drawable/bg_purple_outline"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <com.so.luotk.customviews.CustomFontTextView
+                    android:id="@+id/tv_month"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_purple_semi_colored"
+                    android:gravity="center_horizontal"
+                    android:padding="@dimen/_1sdp"
+                    android:text="mar"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textAllCaps="true"
+                    android:textColor="@color/textColorWhite"
+                    android:textSize="@dimen/_9sdp" />
+
+                <com.so.luotk.customviews.CustomFontTextView
+                    android:id="@+id/tv_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="20"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_9sdp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_7sdp">
+
+
+                    <com.so.luotk.customviews.CustomFontTextView
+                        android:id="@+id/tv_topic_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_4sdp"
+                        android:text="Full Chapter Test"
+                        android:fontFamily="@font/latosemibold"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_13sdp" />
+
+
+                    <com.so.luotk.customviews.CustomFontTextView
+                        android:id="@+id/tv_batch_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="2"
+                        android:text="Real Number"
+                        android:fontFamily="@font/lato"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/_12sdp"
+                        android:visibility="gone" />
+
+                    <com.so.luotk.customviews.CustomFontTextView
+                        android:id="@+id/tv_test_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text=""
+                        android:fontFamily="@font/lato"
+                        android:layout_marginBottom="@dimen/_4sdp"
+                        android:textColor="@color/blue_main"
+                        android:textSize="@dimen/_11sdp" />
+
+                    <com.so.luotk.customviews.CustomFontTextView
+                        android:id="@+id/tv_sub_topic_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="Full Chapter Test"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+
+                        <com.so.luotk.customviews.CustomFontTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/deadline"
+                            android:fontFamily="@font/lato"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/_11sdp" />
+
+                        <com.so.luotk.customviews.CustomFontTextView
+                            android:id="@+id/tv_assign_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Apr 20,2020"
+                            android:fontFamily="@font/lato"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/_11sdp" />
+
+                        <com.so.luotk.customviews.CustomFontTextView
+                            android:id="@+id/tv_assign_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="20dp"
+                            android:text="05:28 PM"
+                            android:fontFamily="@font/lato"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/_11sdp" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/new_item_dot"
+                        android:layout_width="@dimen/_8sdp"
+                        android:layout_height="@dimen/_8sdp"
+                        android:src="@color/light_red" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/img_right_arrow_icon"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="right"
+                    android:layout_weight="0"
+                    android:padding="@dimen/_7sdp"
+                    android:src="@drawable/ic_right_arrow_gray" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

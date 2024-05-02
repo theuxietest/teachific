@@ -1,0 +1,44 @@
+ext.versions = [
+        // Project
+        minSdk                          : 17,
+        compileSdk                      : 31,
+
+        publishVersion_core             : '11.0.1',
+        publishVersionCode_core         : 17,
+
+        publishVersion_chromecast       : '0.26',
+        publishVersionCode_chromecast   : 11,
+
+        // Plugins
+        gradlePlugin                    : '4.1.0',
+        dexCount                        : '3.0.1',
+        gradleNexus                     : '1.1.0',
+        dokka                           : '1.6.0',
+
+        // Kotlin
+        kotlin                          : '1.6.0',
+
+        // AndroidX
+        androidxCore                    : '1.4.0',
+        androidxAnnotations             : '1.3.0',
+        androidxConstraintLayout        : '2.1.2',
+        androidxRecyclerView            : '1.2.1',
+        androidxMediarouter             : '1.2.5',
+        androidxLifecycleRuntime        : '2.4.0',
+        multiDex                        : '2.0.1',
+
+        // Google Play
+        googlePlayServicesCastFramework : '21.0.0',
+
+        // Google APIs
+        googleApiClientAndroid          : '1.23.0',
+        googleApiServicesYoutube        : 'v3-rev198-1.23.0',
+
+        // psoffritti
+        sampleAppTemplate               : '1.0.3',
+
+        // Tests
+        junit                           : '4.13.2',
+        runner                          : '1.4.0',
+        espressoCore                    : '3.4.0'
+]

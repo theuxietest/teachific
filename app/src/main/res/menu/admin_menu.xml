@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--<item
+        android:id="@+id/menu_set_lanuage"
+        android:title="@string/setLanguage" />-->
+    <item
+        android:id="@+id/menu_logout"
+        android:title="@string/log_out" />
+
+<!--    <item-->
+<!--        android:id="@+id/info_view"-->
+<!--        app:showAsAction="always"-->
+<!--        android:icon="@drawable/ic_baseline_info_24"-->
+<!--        android:title="@string/log_out" />-->
+</menu>

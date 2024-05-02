@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingHorizontal="@dimen/_12sdp"
+    android:paddingVertical="@dimen/_16sdp">
+
+    <com.so.luotk.customviews.CustomFontTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Auto Play"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/_14sdp" />
+
+    <Switch
+        android:id="@+id/switch_autoplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:buttonTint="@color/blue_main"
+        android:layout_weight="0.2" />
+
+
+</LinearLayout>

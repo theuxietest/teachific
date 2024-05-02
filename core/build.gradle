@@ -1,0 +1,40 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply from: '../dependencies.gradle'
+
+android {
+    compileSdkVersion 31
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 31
+    }
+
+    sourceSets {
+        main.res.srcDirs = [
+            'src/main/res',
+            'src/main/res-public'
+        ]
+    }
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    api "androidx.annotation:annotation:1.2.0"
+    api "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
+
+    implementation "androidx.appcompat:appcompat:1.1.0"
+    implementation "androidx.recyclerview:recyclerview:1.2.1"
+}
+
+ext {
+    PUBLISH_GROUP_ID = 'com.pierfrancescosoffritti.androidyoutubeplayer'
+    PUBLISH_VERSION = '11.0.1'
+    PUBLISH_ARTIFACT_ID = 'core'
+    PUBLISH_DESCRIPTION = 'YouTube Player library for Android, stable and customizable.'
+}
+
+apply from: "../scripts/publish-module.gradle"

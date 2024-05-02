@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".fragments.adminrole.adminbatches.AdminBatchDetailsFragment">
+
+    <RelativeLayout
+        android:id="@+id/root_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_14sdp"
+        android:layout_marginRight="@dimen/_7sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/layout_data_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/bottom_center_button_layout"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:id="@+id/classroom_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/latosemibold"
+                    android:text="@string/batch_code"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView14"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/view"
+                    app:layout_constraintTop_toTopOf="@+id/textView14" />
+
+                <TextView
+                    android:id="@+id/batch_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="?attr/actionModeCopyDrawable"
+                    android:drawablePadding="4dp"
+                    android:fontFamily="@font/latosemibold"
+                    android:text="123456789"
+                    app:layout_constraintBottom_toBottomOf="@+id/class_name_new"
+                    app:layout_constraintEnd_toEndOf="@+id/classroom_title"
+                    app:layout_constraintStart_toStartOf="@+id/classroom_title"
+                    app:layout_constraintTop_toTopOf="@+id/class_name_new" />
+
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/course"
+                    android:textAllCaps="false"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    app:fontFamily="@font/latosemibold"
+                    app:layout_constraintBottom_toTopOf="@+id/class_name_new"
+                    app:layout_constraintEnd_toStartOf="@+id/view"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="5dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/round_corner_4"
+                    app:layout_constraintBottom_toTopOf="@+id/invite_button"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/line1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="150dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@color/gray_cards"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/class_name_new"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:fontFamily="@font/latosemibold"
+                    android:maxLength="15"
+                    android:text="English"
+                    app:layout_constraintBottom_toTopOf="@+id/go_live_button"
+                    app:layout_constraintEnd_toEndOf="@+id/textView14"
+                    app:layout_constraintStart_toStartOf="@+id/textView14"
+                    app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/go_live_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:fontFamily="@font/latosemibold"
+                    android:letterSpacing="0"
+                    android:backgroundTint="@color/disabled_btn"
+                    android:minWidth="0dp"
+                    android:text="@string/join_class"
+                    android:textAllCaps="false"
+                    app:cornerRadius="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/invite_button"
+                    app:layout_constraintEnd_toStartOf="@+id/view"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/invite_button" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/invite_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:layout_marginBottom="16dp"
+                    android:backgroundTint="@color/blue_main"
+                    android:fontFamily="@font/latosemibold"
+                    android:letterSpacing="0"
+                    android:minWidth="0dp"
+                    android:text="@string/invite_students"
+                    android:textAllCaps="false"
+                    app:cornerRadius="8dp"
+                    app:layout_constraintBottom_toTopOf="@+id/line1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/view" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/layout_joining_request"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_3sdp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="@dimen/_3sdp"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="0.0px"
+                android:visibility="gone"
+                app:cardBackgroundColor="@color/card_back"
+                app:cardCornerRadius="@dimen/_3sdp"
+                app:cardElevation="1dp"
+                app:cardUseCompatPadding="true">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_3sdp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_7sdp"
+                        android:orientation="horizontal">
+
+                        <com.so.luotk.customviews.CustomFontTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:text="@string/subject"
+                            android:textColor="@color/textColorWhite"
+                            android:textSize="@dimen/_11sdp" />
+
+                        <com.so.luotk.customviews.CustomFontTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:gravity="center"
+                            android:text="@string/course"
+                            android:textColor="@color/textColorWhite"
+                            android:textSize="@dimen/_11sdp" />
+
+                        <com.so.luotk.customviews.CustomFontTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:gravity="end"
+                            android:text="@string/batch_code"
+                            android:textColor="@color/textColorWhite"
+                            android:textSize="@dimen/_11sdp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_7sdp"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:layout_marginRight="@dimen/_7sdp"
+                        android:layout_marginBottom="@dimen/_7sdp"
+                        android:orientation="horizontal">
+
+                        <com.so.luotk.customviews.CustomFontTextView
+                            android:id="@+id/tv_subject_name"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:text="Maths"
+                            android:textColor="@color/textColorWhite"
+                            android:textSize="@dimen/_12sdp" />
+
+                        <com.so.luotk.customviews.CustomFontTextView
+                            android:id="@+id/tv_class_name"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:gravity="center"
+                            android:text="Class X"
+                            android:textColor="@color/textColorWhite"
+                            android:textSize="@dimen/_12sdp" />
+
+                        <com.so.luotk.customviews.CustomFontTextView
+                            android:id="@+id/tv_batch_code"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:gravity="end"
+                            android:text="xyz"
+                            android:textColor="@color/textColorWhite"
+                            android:textSize="@dimen/_12sdp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <com.so.luotk.customviews.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_7sdp"
+                android:text="@string/timings"
+                android:fontFamily="@font/latosemibold"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <View
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="2dp"
+                android:layout_marginLeft="@dimen/_7sdp"
+                android:background="@color/blue_main" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/overview_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/_7sdp"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:layout_marginRight="@dimen/_7sdp"
+                android:layout_marginBottom="@dimen/_10sdp" />
+
+
+            <!--<ImageView
+                android:id="@+id/search_tab_button"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/search_button_background"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:paddingStart="15dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/go_live_button"
+                app:layout_constraintEnd_toEndOf="0"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/go_live_button"
+                app:layout_constraintTop_toTopOf="@+id/go_live_button"
+                app:srcCompat="@drawable/ic_menu" />-->
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/bottom_center_button_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:visibility="gone"
+            android:weightSum="2"
+            app:strokeWidth="0dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/go_live"
+                style="@style/primary_button"
+                android:layout_width="match_parent"
+                android:backgroundTint="@color/join_red"
+                android:layout_marginLeft="@dimen/_7sdp"
+                android:layout_marginRight="@dimen/_7sdp"
+                android:text="@string/go_live"
+                app:strokeWidth="0dp" />
+
+            <ImageView
+                android:id="@+id/go_to_button"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="24dp"
+                android:visibility="gone"
+                android:background="@drawable/circle_primary_color_background"
+                android:padding="12dp"
+                app:srcCompat="@drawable/ic_menu"
+                app:tint="@color/white" />
+        </RelativeLayout>
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer_layout"
+            android:layout_width="match_parent"
+            android:visibility="visible"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/bottom_center_button_layout"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <View
+                        android:id="@+id/textView141"
+                        android:layout_width="@dimen/_80sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_marginHorizontal="@dimen/_8sdp"
+                        android:layout_marginVertical="@dimen/_5sdp"
+                        android:background="@drawable/round_edge_shimmer"
+                        app:layout_constraintBottom_toTopOf="@+id/class_name_new1"
+                        app:layout_constraintEnd_toStartOf="@+id/view1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <View
+                        android:id="@+id/classroom_title1"
+                        android:layout_width="@dimen/_60sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_marginHorizontal="@dimen/_8sdp"
+                        android:layout_marginVertical="@dimen/_5sdp"
+                        android:background="@drawable/round_edge_shimmer"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView141"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/view1"
+                        app:layout_constraintTop_toTopOf="@+id/textView141" />
+
+                    <View
+                        android:id="@+id/class_name_new1"
+                        android:layout_width="@dimen/_80sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_marginHorizontal="@dimen/_8sdp"
+                        android:layout_marginVertical="@dimen/_5sdp"
+                        android:background="@drawable/round_edge_shimmer"
+                        app:layout_constraintBottom_toTopOf="@+id/go_live_button1"
+                        app:layout_constraintEnd_toEndOf="@+id/textView141"
+                        app:layout_constraintStart_toStartOf="@+id/textView141"
+                        app:layout_constraintTop_toBottomOf="@+id/textView141" />
+
+                    <View
+                        android:id="@+id/batch_id1"
+                        android:layout_width="@dimen/_80sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_marginHorizontal="@dimen/_8sdp"
+                        android:layout_marginVertical="@dimen/_5sdp"
+                        android:background="@drawable/round_edge_shimmer"
+                        app:layout_constraintBottom_toBottomOf="@+id/class_name_new1"
+                        app:layout_constraintEnd_toEndOf="@+id/classroom_title1"
+                        app:layout_constraintStart_toStartOf="@+id/classroom_title1"
+                        app:layout_constraintTop_toTopOf="@+id/class_name_new1" />
+
+                    <View
+                        android:id="@+id/go_live_button1"
+                        android:layout_width="@dimen/_80sdp"
+                        android:layout_height="48dp"
+                        android:layout_marginHorizontal="@dimen/_8sdp"
+                        android:layout_marginVertical="@dimen/_5sdp"
+                        android:background="@drawable/round_edge_shimmer"
+                        app:layout_constraintBottom_toBottomOf="@+id/invite_button1"
+                        app:layout_constraintEnd_toStartOf="@+id/view1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/invite_button1" />
+
+                    <View
+                        android:id="@+id/invite_button1"
+                        android:layout_width="@dimen/_80sdp"
+                        android:layout_height="48dp"
+                        android:layout_marginHorizontal="@dimen/_8sdp"
+                        android:layout_marginVertical="@dimen/_5sdp"
+                        android:background="@drawable/round_edge_shimmer"
+                        app:layout_constraintBottom_toTopOf="@+id/line11"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/view1" />
+
+                    <View
+                        android:id="@+id/view1"
+                        android:layout_width="5dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/round_edge_shimmer"
+                        app:layout_constraintBottom_toTopOf="@+id/invite_button1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                        android:id="@+id/line11"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="150dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/round_edge_shimmer"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <View
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_marginHorizontal="@dimen/_8sdp"
+                    android:layout_marginVertical="@dimen/_5sdp"
+                    android:background="@drawable/round_edge_shimmer"
+                    app:layout_constraintBottom_toTopOf="@+id/line1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/view" />
+
+
+                <View
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="2dp"
+                    android:layout_marginLeft="@dimen/_7sdp"
+                    android:background="@drawable/round_edge_shimmer" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/_7sdp"
+                    android:layout_marginTop="@dimen/_7sdp"
+                    android:layout_marginRight="@dimen/_7sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:orientation="vertical">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_marginHorizontal="@dimen/_8sdp"
+                        android:layout_marginVertical="@dimen/_5sdp"
+                        android:background="@drawable/round_edge_shimmer" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_marginHorizontal="@dimen/_8sdp"
+                        android:layout_marginVertical="@dimen/_5sdp"
+                        android:background="@drawable/round_edge_shimmer" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_marginHorizontal="@dimen/_8sdp"
+                        android:layout_marginVertical="@dimen/_5sdp"
+                        android:background="@drawable/round_edge_shimmer" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_marginHorizontal="@dimen/_8sdp"
+                        android:layout_marginVertical="@dimen/_5sdp"
+                        android:background="@drawable/round_edge_shimmer" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_marginHorizontal="@dimen/_8sdp"
+                        android:layout_marginVertical="@dimen/_5sdp"
+                        android:background="@drawable/round_edge_shimmer" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_marginHorizontal="@dimen/_8sdp"
+                        android:layout_marginVertical="@dimen/_5sdp"
+                        android:background="@drawable/round_edge_shimmer" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_marginHorizontal="@dimen/_8sdp"
+                        android:layout_marginVertical="@dimen/_5sdp"
+                        android:background="@drawable/round_edge_shimmer" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+    </RelativeLayout>
+
+    <include
+        android:id="@+id/bottomSheetOverView"
+        layout="@layout/bottom_overview_screen"/>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

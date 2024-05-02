@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="like"
+            type="boolean" />
+
+        <variable
+            name="frag"
+            type="com.so.luotk.fragments.courses.CourseOverviewFragment" />
+
+        <variable
+            name="flag"
+            type="boolean" />
+
+        <variable
+            name="base"
+            type="String" />
+
+        <variable
+            name="duration"
+            type="String" />
+
+        <variable
+            name="data"
+            type="com.so.luotk.models.newmodels.courseModel.Datum" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorLightGrayBlack">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/layout_buy_now"
+            android:scrollbars="vertical">
+
+            <LinearLayout
+                android:id="@+id/layout_data_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardUseCompatPadding="true">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_200sdp"
+                        android:scaleType="fitXY"
+                        bind:base="@{base}"
+                        bind:url="@{data.picture}" />
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingTop="@dimen/_6sdp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <com.so.luotk.customviews.CustomFontTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/_5sdp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/latosemibold"
+                            android:text="@{data.courseName}"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_14sdp" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingHorizontal="@dimen/_10sdp">
+
+                            <ImageView
+                                android:layout_width="@dimen/_24sdp"
+                                android:layout_height="@dimen/_24sdp"
+                                android:layout_marginHorizontal="@dimen/_3sdp"
+                                android:background="@drawable/ic_like_gray"
+                                android:backgroundTint="@{like?@color/blue_main:@color/light_gray}"
+                                android:onClick="@{frag::hitCourseLikeService}" />
+
+                            <com.so.luotk.customviews.CustomFontTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/lato"
+                                android:text="@{data.likesCount.toString()}"
+                                android:textColor="@color/gray"
+                                android:textSize="@dimen/_10sdp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                    <com.so.luotk.customviews.CustomFontTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_5sdp"
+                        android:text="@{data.category}"
+                        android:fontFamily="@font/lato"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12sdp" />
+
+
+                    <com.so.luotk.customviews.CustomFontTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_5sdp"
+                        android:fontFamily="@font/lato"
+                        android:text="@{data.subCategory}"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/_5sdp"
+                        android:visibility="gone">
+
+                        <com.so.luotk.customviews.CustomFontTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:layout_weight="1"
+                            android:background="@{like?@drawable/gray_border_bg:@drawable/green_border_bg}"
+                            android:foreground="?attr/selectableItemBackground"
+                            android:gravity="center"
+                            android:fontFamily="@font/latosemibold"
+                            android:onClick="@{frag::hitCourseLikeService}"
+                            android:paddingVertical="@dimen/_8sdp"
+                            android:text="@{like?@string/unlike:@string/like}"
+                            android:textColor="@{like?@color/gray:@color/green}"
+                            android:textSize="@dimen/_11sdp" />
+
+                        <com.so.luotk.customviews.CustomFontTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/green_button_bg"
+                            android:gravity="center"
+                            android:fontFamily="@font/latosemibold"
+                            android:paddingVertical="@dimen/_8sdp"
+                            android:text="Share on Whatsapp"
+                            android:textColor="@color/textColorWhite"
+                            android:textSize="@dimen/_11sdp"
+                            android:visibility="invisible" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <com.so.luotk.customviews.CustomFontTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@color/white"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/_6sdp"
+                    android:text="@string/course_duration"
+                    android:fontFamily="@font/latosemibold"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+                <com.so.luotk.customviews.CustomFontTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/_6sdp"
+                    android:text="@{duration}"
+                    android:fontFamily="@font/lato"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_11sdp" />
+
+                <com.so.luotk.customviews.CustomFontTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@color/white"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/_6sdp"
+                    android:text="@string/description"
+                    android:fontFamily="@font/latosemibold"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+                <com.so.luotk.customviews.CustomFontTextView
+                    android:id="@+id/tv_course_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:background="@color/white"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:paddingVertical="@dimen/_6sdp"
+                    android:fontFamily="@font/lato"
+                    android:text="@{data.description}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_11sdp" />
+
+                <RelativeLayout
+                    android:id="@+id/layout_talk_to_tutor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_5sdp"
+                    android:background="@color/white"
+                    android:padding="@dimen/_10sdp">
+
+                    <ImageView
+                        android:id="@+id/img_doubt"
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/doubts"
+                        app:tint="@color/blue_main" />
+
+                    <com.so.luotk.customviews.CustomFontTextView
+                        android:id="@+id/txt_have_doubts"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_6sdp"
+                        android:layout_toRightOf="@id/img_doubt"
+                        android:ellipsize="marquee"
+                        android:fontFamily="@font/latosemibold"
+                        android:padding="@dimen/_10sdp"
+                        android:singleLine="true"
+                        android:text="@string/have_doubts_regarding_this_course"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12sdp" />
+
+                    <com.so.luotk.customviews.CustomFontTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txt_have_doubts"
+                        android:layout_marginHorizontal="@dimen/_6sdp"
+                        android:layout_toEndOf="@id/img_doubt"
+                        android:fontFamily="@font/latosemibold"
+                        android:background="?attr/selectableItemBackground"
+                        android:drawableEnd="@drawable/ic_right_arrow_blue_24dp"
+                        android:ellipsize="marquee"
+                        android:onClick="@{frag::showDialog}"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:singleLine="true"
+                        android:text="@string/talk_to_tutor"
+                        android:textColor="@color/blue_main"
+                        android:textSize="@dimen/_12sdp" />
+
+                </RelativeLayout>
+
+
+                <!--<LinearLayout
+                    hideText="@{!flag}"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">-->
+                    <com.so.luotk.customviews.CustomFontTextView
+                        hideText="@{flag}"
+                        android:id="@+id/enrollDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:background="@color/white"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:paddingVertical="@dimen/_6sdp"
+                        android:fontFamily="@font/lato"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12sdp" />
+
+                    <com.so.luotk.customviews.CustomFontTextView
+                        hideText="@{flag}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:paddingHorizontal="@dimen/_10sdp"
+                        android:fontFamily="@font/lato"
+                        android:paddingVertical="@dimen/_6sdp"
+                        android:text="@{data.pivot.enrollDate}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_11sdp" />
+
+                    <View
+                        hideText="@{flag}"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_10sdp"
+                        android:background="@color/colorLightGrayBlack" />
+                <!--</LinearLayout>
+-->
+
+                <!--   <com.smartowls.smartowls.customviews.CustomFontTextView
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:background="@color/backcolorGrayBlack"
+                       android:padding="@dimen/_10sdp"
+                       android:text="Price details"
+                       android:textColor="@color/black"
+                       android:textSize="@dimen/_13sdp" />-->
+
+                <!--           <RelativeLayout
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:background="@color/white"
+                               android:orientation="horizontal"
+                               android:padding="@dimen/_10sdp">
+
+                        &lt;!&ndash;       <com.smartowls.smartowls.customviews.CustomFontTextView
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:layout_alignParentStart="true"
+                                   android:text="Course price"
+                                   android:textColor="@color/black"
+                                   android:textSize="@dimen/_13sdp" />&ndash;&gt;
+
+                         &lt;!&ndash;      <com.smartowls.smartowls.customviews.CustomFontTextView
+                                   android:id="@+id/tv_course_actual_price"
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:layout_alignParentEnd="true"
+                                   android:textColor="@color/black"
+                                   android:textSize="@dimen/_13sdp"
+                                   bind:disc="@{data.discount}"
+                                   bind:i="@{1}"
+                                   bind:price="@{data.actualPrice}" />&ndash;&gt;
+                           </RelativeLayout>-->
+
+                <!--        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/_10sdp">
+
+                            <com.smartowls.smartowls.customviews.CustomFontTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:text="Discount"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_13sdp" />
+
+                            <com.smartowls.smartowls.customviews.CustomFontTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_13sdp"
+                                bind:disc="@{data.discount}"
+                                bind:i="@{1}"
+                                bind:price="@{data.discount}" />
+                        </RelativeLayout>-->
+
+                <!--       <View
+                           android:layout_width="match_parent"
+                           android:layout_height="0.5dp"
+                           android:background="@color/gray" />
+
+                       <RelativeLayout
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:background="@color/white"
+                           android:orientation="horizontal"
+                           android:padding="@dimen/_10sdp">
+
+                           <com.smartowls.smartowls.customviews.CustomFontTextView
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:layout_alignParentStart="true"
+                               android:text="@{!flag?@string/amount_payable:@string/amount_paid}"
+                               android:textColor="@color/black"
+                               android:textSize="@dimen/_15sdp" />
+
+                  &lt;!&ndash;         <com.smartowls.smartowls.customviews.CustomFontTextView
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:layout_alignParentEnd="true"
+                               android:textColor="@color/black"
+                               android:textSize="@dimen/_14sdp"
+                               bind:disc="@{data.discount}"
+                               bind:i="@{1}"
+                               bind:price="@{data.sellingPrice}" />&ndash;&gt;
+                       </RelativeLayout>-->
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/layout_buy_now"
+            hideText="@{!flag}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:paddingHorizontal="@dimen/_12sdp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingVertical="@dimen/_6sdp">
+
+                <com.so.luotk.customviews.CustomSemiBoldFontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/lato"
+                    android:textSize="@dimen/_19sdp"
+                    bind:disc="@{data.discount}"
+                    bind:i="@{1}"
+                    bind:price="@{data.sellingPrice}" />
+
+                <com.so.luotk.customviews.CustomFontTextView
+                    android:id="@+id/tv_course_actual_price"
+                    strikethrough="@{true}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginLeft="@dimen/_6sdp"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/_11sdp"
+                    android:fontFamily="@font/lato"
+                    bind:disc="@{data.discount}"
+                    bind:i="@{1}"
+                    bind:price="@{data.actualPrice}" />
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/save_details_button"
+                style="@style/NewPrimaryButtonStyle"
+                android:layout_weight="1"
+                android:layout_marginLeft="@dimen/_8sdp"
+                android:paddingHorizontal="@dimen/_12sdp"
+                android:paddingVertical="@dimen/_8sdp"
+                android:onClick="@{frag::hitGetCoursePaymentDataService}"
+                android:text="@string/buy_now"
+                android:transitionName="create_profile"
+                />
+
+            <!--<com.so.bgjcn.customviews.CustomFontTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="2"
+                android:background="@drawable/round_edge"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:fontFamily="@font/latosemibold"
+                android:onClick="@{frag::hitGetCoursePaymentDataService}"
+                android:paddingHorizontal="@dimen/_12sdp"
+                android:paddingVertical="@dimen/_8sdp"
+                android:text="@string/buy_now"
+                android:textColor="@color/textColorWhite"
+                android:textSize="@dimen/_13sdp" />-->
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

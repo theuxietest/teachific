@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/_3sdp"
+        app:title="@string/student_join_request" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.4dp"
+        android:visibility="gone"
+        android:layout_below="@id/toolbar"
+        android:background="@color/gray" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_join_request"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:padding="@dimen/_12sdp"
+        android:visibility="gone" />
+
+    <com.so.luotk.customviews.CustomBoldFontTextView
+        android:id="@+id/tv_no_requests"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:drawableTop="@drawable/ic_undraw_reading_book_re_kqpk"
+        android:drawablePadding="@dimen/_8sdp"
+        android:padding="@dimen/_4sdp"
+        android:fontFamily="@font/poppins"
+        android:gravity="center"
+        android:text="@string/no_join_requests_in_this_batch"
+        android:textColor="@color/black"
+        android:textSize="13dp"
+        android:visibility="visible" />
+    <com.so.luotk.customviews.CustomFontTextView
+        android:id="@+id/tv_no_requests_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/tv_no_requests"
+        android:drawablePadding="@dimen/_8sdp"
+        android:gravity="center"
+        android:lineSpacingExtra="@dimen/_3sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:paddingHorizontal="@dimen/_16sdp"
+        android:text="@string/no_join_requests_in_this_batch_desc"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/_13sdp"
+        android:visibility="gone" />
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_below="@id/toolbar"
+        android:background="@color/white">
+
+        <include layout="@layout/shimmer_items" />
+    </com.facebook.shimmer.ShimmerFrameLayout>
+</RelativeLayout>

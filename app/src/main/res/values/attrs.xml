@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TwitterSplashView">
+	    <attr name="icon" format="reference"/>
+	    <attr name="iconColor" format="color"/>
+	    <attr name="holeFillColor" format="color"/>
+	    <attr name="removeFromParentOnEnd" format="boolean"/>
+    </declare-styleable>
+
+	<declare-styleable name="DividerView">
+		<attr name="color" format="color" />
+		<attr name="dashLength" format="dimension" />
+		<attr name="dashGap" format="dimension" />
+		<attr name="dashThickness" format="dimension" />
+		<attr name="orientation" format="enum">
+			<enum name="horizontal" value="0" />
+			<enum name="vertical" value="1" />
+		</attr>
+	</declare-styleable>
+
+	<declare-styleable name="AmazingSpinner">
+		<attr name="mFontType" format="string"/>
+	</declare-styleable>
+
+	<declare-styleable name="FABRevealMenu">
+		<attr name="menuBackgroundColor" format="color" />
+		<attr name="menuCustomView" format="reference" />
+		<attr name="menuRes" format="reference" />
+		<attr name="menuDirection" format="enum">
+			<enum name="left" value="0" />
+			<enum name="up" value="1" />
+			<enum name="right" value="2" />
+			<enum name="down" value="3" />
+		</attr>
+		<attr name="showOverlay" format="boolean" />
+		<attr name="overlayBackground" format="color" />
+
+		<attr name="showTitle" format="boolean" />
+		<attr name="showIcon" format="boolean" />
+		<attr name="menuTitleTextColor" format="color" />
+		<attr name="menuTitleDisabledTextColor" format="color" />
+		<attr name="menuSize" format="enum">
+			<enum name="normal" value="0" />
+			<enum name="small" value="1" />
+		</attr>
+		<attr name="menuCornerRadius" format="dimension" />
+		<attr name="duration" format="integer" />
+
+		<attr name="menuTitleFontFamily" format="reference" />
+	</declare-styleable>
+</resources>

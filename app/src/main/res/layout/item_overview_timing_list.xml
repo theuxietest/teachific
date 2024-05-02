@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item_layout"
+    android:layout_marginBottom="@dimen/_4sdp"
+    app:cardCornerRadius="@dimen/_8sdp"
+    app:cardElevation="0dp"
+    app:cardBackgroundColor="@color/card_back"
+    android:layout_marginTop="4dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_6sdp"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <com.so.luotk.customviews.CustomSemiBoldFontTextView
+            android:id="@+id/tv_day"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+            android:text="Mon"
+            android:fontFamily="@font/latosemibold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_11sdp" />
+
+        <com.so.luotk.customviews.CustomFontTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:fontFamily="@font/lato"
+            android:text="@string/start"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/_8sdp" />
+
+        <com.so.luotk.customviews.CustomSemiBoldFontTextView
+            android:id="@+id/tv_start_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+            android:text="05:00 PM"
+            android:fontFamily="@font/latosemibold"
+            android:layout_marginRight="15dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_11sdp" />
+
+        <com.so.luotk.customviews.CustomFontTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:layout_marginLeft="@dimen/_7sdp"
+            android:fontFamily="@font/lato"
+            android:text="@string/end"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/_8sdp" />
+
+        <com.so.luotk.customviews.CustomSemiBoldFontTextView
+            android:id="@+id/tv_end_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+            android:fontFamily="@font/latosemibold"
+            android:text="06:00 PM"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_11sdp" />
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

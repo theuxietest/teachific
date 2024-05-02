@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/_12sdp">
+
+    <com.so.luotk.customviews.CustomFontTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/disconnect_usb"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_18sdp" />
+
+    <com.so.luotk.customviews.CustomFontTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/_6sdp"
+        android:text="@string/your_device_is_connected_to_pc_please_disconnect_the_usb_data_connection_to_play_the_videos"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_14sdp" />
+
+    <com.so.luotk.customviews.CustomFontTextView
+        android:id="@+id/txt_got_it"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:text="@string/ok_got_it"
+        android:textColor="@color/blue_main"
+        android:textSize="@dimen/_11sdp" />
+</LinearLayout>

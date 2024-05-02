@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="flag"
+            type="boolean" />
+
+        <variable
+            name="base"
+            type="String" />
+
+        <variable
+            name="click"
+            type="com.so.luotk.adapter.StoreListAdapter.OnItemClickListener" />
+
+        <variable
+            name="data"
+            type="com.so.luotk.models.newmodels.courseModel.Datum" />
+
+        <variable
+            name="position"
+            type="int" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_6sdp"
+        app:cardElevation="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:onClick="@{()->click.onItemClick(data,position)}"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    app:cardCornerRadius="@dimen/_3sdp">
+
+                    <ImageView
+                        android:layout_width="@dimen/_60sdp"
+                        android:layout_height="@dimen/_60sdp"
+                        android:scaleType="centerCrop"
+                        bind:base="@{base}"
+                        bind:url="@{data.picture}" />
+                </androidx.cardview.widget.CardView>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="@dimen/_6sdp"
+                    android:paddingBottom="@dimen/_3sdp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.so.luotk.customviews.CustomBoldFontTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:maxLines="2"
+                            android:layout_marginRight="@dimen/_24sdp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="@{data.courseName}"
+                            android:textColor="@color/dark_gray"
+                            android:textSize="@dimen/_12sdp" />
+
+                        <ImageView
+                            android:id="@+id/share_course"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:layout_alignParentRight="true"
+                            android:gravity="center"
+                            android:src="@drawable/ic_share_4"
+                            android:visibility="invisible" />
+
+                    </RelativeLayout>
+
+                    <com.so.luotk.customviews.CustomFontTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginVertical="@dimen/_3sdp"
+                        android:fontFamily="@font/poppins"
+                        android:text="@{data.category}"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <RelativeLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:paddingVertical="@dimen/_3sdp">
+
+                        <com.so.luotk.customviews.CustomFontTextView
+                            android:id="@+id/selling_price"
+                            hideText="@{!flag}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:fontFamily="@font/poppins"
+                            android:layout_marginHorizontal="@dimen/_3sdp"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12sdp"
+                            bind:disc="@{data.discount}"
+                            bind:i="@{1}"
+                            bind:price="@{data.sellingPrice}" />
+
+                        <com.so.luotk.customviews.CustomFontTextView
+                            android:id="@+id/actual_price"
+                            hideText="@{!flag}"
+                            strikethrough="@{true}"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:fontFamily="@font/poppins"
+                            android:layout_toRightOf="@id/selling_price"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/_10sdp"
+                            bind:disc="@{data.discount}"
+                            bind:i="@{1}"
+                            bind:price="@{data.actualPrice}" />
+
+                        <!--          <LinearLayout
+
+                                      android:layout_width="wrap_content"
+                                      android:layout_height="wrap_content"
+                                      android:layout_alignParentEnd="true"
+                                      android:orientation="horizontal"
+                                      android:paddingHorizontal="@dimen/_10sdp">
+
+                                      <ImageView
+                                          android:layout_width="@dimen/_18sdp"
+                                          android:layout_height="@dimen/_18sdp"
+                                          android:layout_marginHorizontal="@dimen/_3sdp"
+                                          android:background="@drawable/ic_like_gray"
+                                          android:backgroundTint="@{data.isLiked==1?@color/blue_main:@color/light_gray}" />
+
+                                      <com.smartowls.smartowls.customviews.CustomFontTextView
+                                          android:layout_width="wrap_content"
+                                          android:layout_height="wrap_content"
+                                          android:layout_gravity="center"
+                                          android:text="@{data.likesCount.toString()}"
+                                          android:textColor="@color/gray"
+                                          android:textSize="@dimen/_11sdp" />
+                                  </LinearLayout>-->
+                        <!--      <com.smartowls.smartowls.customviews.CustomFontTextView
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:textColor="@color/light_red"
+                                 android:textSize="@dimen/_8sdp"
+                                 bind:disc="@{data.discount}"
+                                 bind:i="@{0}"
+                                 bind:price="@{data.actualPrice}" />-->
+                    </RelativeLayout>
+
+                    <com.so.luotk.customviews.CustomFontTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:background="@{flag?@drawable/less_round_green_background:@drawable/round_yellow_back}"
+                        android:paddingHorizontal="@dimen/_4sdp"
+                        android:paddingVertical="@dimen/_2sdp"
+                        android:fontFamily="@font/poppins"
+                        android:text="@{flag?@string/startlearning:@string/bestseller}"
+                        android:textColor="@color/textColorWhite"
+                        android:textSize="@dimen/_9sdp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_marginTop="@dimen/_11sdp"
+                        android:background="@color/gray" />
+
+
+                    <!--           <LinearLayout
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:layout_alignParentEnd="true"
+                                   android:layout_gravity="end"
+                                   android:orientation="horizontal">
+
+                                   <com.smartowls.smartowls.customviews.CustomFontTextView
+                                       android:layout_width="wrap_content"
+                                       android:layout_height="wrap_content"
+                                       android:layout_gravity="bottom"
+                                       android:text="@{data.likesCount.toString()}"
+                                       android:textColor="@color/gray"
+                                       android:textSize="@dimen/_10sdp" />
+
+                                   <ImageView
+                                       android:layout_width="@dimen/_16sdp"
+                                       android:layout_height="@dimen/_16sdp"
+                                       android:layout_gravity="bottom"
+                                       android:layout_marginHorizontal="@dimen/_5sdp"
+                                       android:background="@drawable/ic_like"
+                                       android:backgroundTint="@{data.isLiked>0?@color/light_red:@color/light_gray}" />
+
+
+                               </LinearLayout>-->
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--    <com.smartowls.smartowls.customviews.CustomFontTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorGrayBlackGray"
+                    android:gravity="center"
+                    android:padding="@dimen/_8sdp"
+                    android:text="@{flag?@string/start_learning:@string/buy}"
+                    android:textColor="#75C53A"
+                    android:textSize="@dimen/_12sdp" />-->
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

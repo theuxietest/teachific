@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layoutDirection="ltr"
+    android:orientation="vertical">
+
+
+    <com.so.luotk.customviews.CustomFontTextView
+        android:id="@+id/tv_add_link"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/_12sdp"
+        android:text="@string/add_ext_link"
+        android:textColor="@color/blue_main"
+        android:textSize="@dimen/_12sdp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:id="@+id/linkView"
+        android:background="@color/gray" />
+
+    <com.so.luotk.customviews.CustomFontTextView
+        android:id="@+id/tv_add_folder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/_12sdp"
+        android:text="@string/add_new_folder"
+        android:textColor="@color/blue_main"
+        android:textSize="@dimen/_12sdp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:id="@+id/folder_view"
+        android:background="@color/gray" />
+
+    <com.so.luotk.customviews.CustomFontTextView
+        android:id="@+id/tv_open_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/_12sdp"
+        android:text="@string/image"
+        android:textColor="@color/blue_main"
+        android:textSize="@dimen/_12sdp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:id="@+id/image_view"
+        android:visibility="gone"
+        android:background="@color/gray" />
+
+    <com.so.luotk.customviews.CustomFontTextView
+        android:id="@+id/tv_open_cam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:visibility="gone"
+        android:padding="@dimen/_12sdp"
+        android:text="@string/camera"
+        android:textColor="@color/blue_main"
+        android:textSize="@dimen/_12sdp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:id="@+id/camView"
+        android:visibility="gone"
+        android:background="@color/gray" />
+
+    <com.so.luotk.customviews.CustomFontTextView
+        android:id="@+id/tv_open_gallery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/_12sdp"
+        android:text="@string/gallery"
+        android:visibility="gone"
+        android:textColor="@color/blue_main"
+        android:textSize="@dimen/_12sdp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:id="@+id/galleryView"
+        android:background="@color/gray" />
+
+    <com.so.luotk.customviews.CustomFontTextView
+        android:id="@+id/tv_add_document"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/_12sdp"
+        android:text="@string/document"
+        android:textColor="@color/blue_main"
+        android:textSize="@dimen/_12sdp" />
+
+
+</LinearLayout>

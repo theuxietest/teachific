@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/card_back"
+        android:padding="@dimen/_16sdp"
+        android:orientation="vertical"
+       >
+
+        <com.so.luotk.customviews.CustomFontTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/continue_with"
+            android:paddingBottom="@dimen/_10sdp"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/_13sdp" />
+
+        <com.so.luotk.customviews.CustomFontTextView
+            android:id="@+id/num_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="@dimen/_16sdp"
+            android:drawablePadding="@dimen/_12sdp"
+            android:gravity="center_vertical"
+            android:visibility="gone"
+            android:drawableStart="@drawable/ic_phone_call"
+            android:foreground="?selectableItemBackground"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_13sdp"
+           />
+
+        <com.so.luotk.customviews.CustomFontTextView
+            android:id="@+id/num_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/_16sdp"
+            android:textColor="@color/black"
+            android:drawablePadding="@dimen/_12sdp"
+            android:gravity="center_vertical"
+            android:drawableStart="@drawable/ic_phone_call"
+            android:visibility="gone"
+            android:foreground="?selectableItemBackground"
+            android:textSize="@dimen/_13sdp" />
+
+        <com.so.luotk.customviews.CustomSemiBoldFontTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/none_of_the_above"
+            android:textAllCaps="true"
+            android:foreground="?selectableItemBackground"
+            android:id="@+id/txt_none_of_above"
+            android:textColor="@color/blue_main"
+            android:textSize="@dimen/_11sdp" />
+
+
+    </LinearLayout>
+
+</layout>

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frame_layout_student"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.adminrole.adminbatches.AdminStudentFragment">
+
+    <RelativeLayout
+        android:id="@+id/layout_batch"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/search_view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginVertical="@dimen/_12sdp"
+            android:background="@drawable/bg_search_bar"
+            android:focusable="false"
+            android:focusableInTouchMode="true"
+            android:queryHint="@string/search"
+            app:defaultQueryHint="@string/search"
+            app:iconifiedByDefault="false"
+            app:queryBackground="@null" />
+
+        <LinearLayout
+            android:id="@+id/layout_faculty_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/search_view"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginRight="5dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/swipe_refresh_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/faculty_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/search_view" />
+
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/search_data_progress"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:id="@+id/layout_no_faculty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="visible">
+
+            <ImageView
+                android:id="@+id/img_batch_icon"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_no_batches" />
+
+            <com.so.luotk.customviews.CustomBoldFontTextView
+                android:id="@+id/batch_title_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/img_batch_icon"
+                android:layout_centerHorizontal="true"
+                android:padding="@dimen/_8sdp"
+                android:text="No faculty"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp" />
+
+            <com.so.luotk.customviews.CustomFontTextView
+                android:id="@+id/batch_title_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/batch_title_1"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="@string/tap_plus_icon"
+                android:textColor="@color/dark_gray"
+                android:textSize="@dimen/_14sdp" />
+
+
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/layout_add_student"
+            android:layout_alignParentBottom="true">
+            <com.so.luotk.customviews.CustomFontTextView
+                android:layout_width="match_parent"
+                android:id="@+id/btn_add_faculty"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_edge"
+                android:textColor="@color/textColorWhite"
+                android:textSize="@dimen/_14sdp"
+                android:padding="@dimen/_8sdp"
+                android:gravity="center"
+                android:layout_margin="@dimen/_12sdp"
+                android:layout_gravity="center"
+                android:text="Add faculty"/>
+        </LinearLayout>
+
+<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_add_faculty"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="end"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp"
+            android:backgroundTint="@color/dark_blue"
+            android:scaleType="center"
+            android:src="@drawable/ic_add_white_24dp"
+            app:borderWidth="0dp"
+            app:elevation="6dp"
+            app:fabCustomSize="45dp"
+            app:rippleColor="@color/colorPrimaryDark"
+            app:tint="@color/textColorWhite" />-->
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/search_view"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginHorizontal="@dimen/_8sdp"
+                    android:layout_marginVertical="@dimen/_5sdp"
+                    android:background="@drawable/round_edge_shimmer" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginHorizontal="@dimen/_8sdp"
+                    android:layout_marginVertical="@dimen/_5sdp"
+                    android:background="@drawable/round_edge_shimmer" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginHorizontal="@dimen/_8sdp"
+                    android:layout_marginVertical="@dimen/_5sdp"
+                    android:background="@drawable/round_edge_shimmer" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginHorizontal="@dimen/_8sdp"
+                    android:layout_marginVertical="@dimen/_5sdp"
+                    android:background="@drawable/round_edge_shimmer" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginHorizontal="@dimen/_8sdp"
+                    android:layout_marginVertical="@dimen/_5sdp"
+                    android:background="@drawable/round_edge_shimmer" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginHorizontal="@dimen/_8sdp"
+                    android:layout_marginVertical="@dimen/_5sdp"
+                    android:background="@drawable/round_edge_shimmer" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginHorizontal="@dimen/_8sdp"
+                    android:layout_marginVertical="@dimen/_5sdp"
+                    android:background="@drawable/round_edge_shimmer" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginHorizontal="@dimen/_8sdp"
+                    android:layout_marginVertical="@dimen/_5sdp"
+                    android:background="@drawable/round_edge_shimmer" />
+            </LinearLayout>
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+    </RelativeLayout>
+
+</FrameLayout>

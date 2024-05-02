@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_more_result"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:layout_marginHorizontal="@dimen/_15sdp"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/image_more_result"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:src="@drawable/ic_arrowwithcircle" />
+
+    <com.so.luotk.customviews.CustomFontTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="More results"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/_12sdp" />
+
+</LinearLayout>

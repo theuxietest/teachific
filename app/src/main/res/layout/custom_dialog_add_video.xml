@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <com.so.luotk.customviews.CustomFontTextView
+        android:id="@+id/tv_add_link"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/_12sdp"
+        android:text="@string/add_ext_link"
+        android:textColor="@color/blue_main"
+        android:textSize="@dimen/_12sdp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray" />
+
+    <com.so.luotk.customviews.CustomFontTextView
+        android:id="@+id/tv_add_folder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/_12sdp"
+        android:text="@string/add_new_folder"
+        android:textColor="@color/blue_main"
+        android:textSize="@dimen/_12sdp" />
+
+
+</LinearLayout>

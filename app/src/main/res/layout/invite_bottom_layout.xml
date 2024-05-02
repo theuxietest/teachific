@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="#99000000"
+    android:layout_height="wrap_content">
+
+    <ImageButton
+        android:id="@+id/cancel_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:background="@drawable/circle_background"
+        android:tint="#ffffff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_clear" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        app:cardElevation="-1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bottom_sheet_fragment_nav_screens">
+
+            <TextView
+                android:id="@+id/textView87"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="26dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/latosemibold"
+                android:text="@string/share_this_message"
+                android:textColor="#1f3965"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/view4"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="15dp"
+                android:background="#e7edf7"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView87" />
+
+            <TextView
+                android:id="@+id/message_body"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="26dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="26dp"
+                android:fontFamily="@font/lato"
+                android:text="Message Body"
+                android:textColor="#e61f3965"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view4" />
+
+            <TextView
+                android:id="@+id/textView130"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/latosemibold"
+                android:text="Enroll to Teachmint using:"
+                android:textColor="#1f3965"
+                android:visibility="gone"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/message_body"
+                app:layout_constraintStart_toStartOf="@+id/message_body"
+                app:layout_constraintTop_toBottomOf="@+id/message_body" />
+
+            <TextView
+                android:id="@+id/enrollment_link"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/lato_medium"
+                android:text="Enrollment Link"
+                android:visibility="gone"
+                android:textColor="@color/primaryColor"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/message_body"
+                app:layout_constraintStart_toStartOf="@+id/message_body"
+                app:layout_constraintTop_toBottomOf="@+id/textView130" />
+
+            <Button
+                android:id="@+id/share_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/lato"
+                android:letterSpacing="0"
+                android:text="@string/share"
+                android:textAllCaps="false"
+                android:textColor="#6b82ab"
+                android:textSize="14sp"
+                app:icon="@drawable/ic_share_4"
+                app:iconGravity="start"
+                app:iconSize="25dp"
+                app:iconTint="#001f3965"
+                app:iconTintMode="src_over"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/whatsapp_share_button"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/enrollment_link" />
+
+            <Button
+                android:id="@+id/whatsapp_share_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/lato"
+                android:letterSpacing="0"
+                android:text="@string/whatsapp"
+                android:textAllCaps="false"
+                android:textColor="#6b82ab"
+                android:textSize="14sp"
+                app:icon="@drawable/ic_whatsapp"
+                app:iconGravity="start"
+                app:iconSize="25dp"
+                app:iconTint="#00ffffff"
+                app:iconTintMode="src_over"
+                app:layout_constraintBottom_toBottomOf="@+id/share_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/share_button"
+                app:layout_constraintTop_toTopOf="@+id/share_button" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

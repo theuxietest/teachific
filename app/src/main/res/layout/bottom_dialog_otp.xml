@@ -1,0 +1,254 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scrollview"
+    android:fillViewport="true"
+    android:background="@color/black_opp"
+    android:layout_height="match_parent">
+<!--
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bottom_sheet_rounded_background"
+        android:paddingBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/enter_otp_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/latosemibold"
+            android:text="@string/enter_otp_to_verify_your_mobile"
+            android:textColor="@color/title_dark_blue"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/help_link"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/help_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:drawablePadding="4dp"
+            android:fontFamily="@font/lato"
+            android:text="@string/help_text"
+            android:visibility="gone"
+            android:textColor="@color/primaryColor"
+            android:textSize="14sp"
+            app:drawableStartCompat="@drawable/ic_help_icon"
+            app:layout_constraintBottom_toBottomOf="@+id/enter_otp_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/enter_otp_text" />
+
+        <TextView
+            android:id="@+id/otp_sent_to"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/lato"
+            android:text="@string/otp_sent_to"
+            android:textColor="@color/description_light_blue"
+            app:layout_constraintStart_toStartOf="@+id/enter_otp_text"
+            app:layout_constraintTop_toBottomOf="@+id/enter_otp_text" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="50dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:weightSum="4"
+            android:id="@+id/otpLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/otp_sent_to"
+            >
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/otp_unit"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:tag="layout/otp_box_0"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                android:layout_weight="1"
+                app:boxStrokeColor="@color/outlined_edit_box_stroke_color">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:ems="2"
+                    android:id="@+id/otp1"
+                    android:layout_gravity="center_horizontal"
+                    android:imeOptions="flagNoExtractUi"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:padding="4dp"
+                    android:textAlignment="center"
+                    >
+
+                    <requestFocus/>
+                </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/otp_unit1"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:tag="layout/otp_box_0"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                android:layout_weight="1"
+                app:boxStrokeColor="@color/outlined_edit_box_stroke_color">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:ems="2"
+                    android:id="@+id/otp2"
+                    android:layout_gravity="center_horizontal"
+                    android:imeOptions="flagNoExtractUi"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:padding="4dp"
+                    android:textAlignment="center" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/otp_unit2"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:tag="layout/otp_box_0"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                android:layout_weight="1"
+                app:boxCornerRadiusTopStart="8dp"
+                app:boxStrokeColor="@color/outlined_edit_box_stroke_color">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:ems="2"
+                    android:id="@+id/otp3"
+                    android:imeOptions="flagNoExtractUi"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:layout_gravity="center_horizontal"
+                    android:padding="4dp"
+                    android:textAlignment="center" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/otp_unit3"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:tag="layout/otp_box_0"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusTopStart="8dp"
+                android:layout_weight="1"
+                app:boxStrokeColor="@color/outlined_edit_box_stroke_color">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:ems="2"
+                    android:id="@+id/otp4"
+                    android:imeOptions="flagNoExtractUi"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:layout_gravity="center_horizontal"
+                    android:padding="4dp"
+                    android:textAlignment="center" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/otp_box"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            app:flexDirection="column"
+            app:flexWrap="wrap"
+            app:justifyContent="space_around"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/otp_sent_to" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/continue_button"
+            style="@style/NewPrimaryButtonStyle"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:enabled="false"
+            android:letterSpacing="0"
+            android:text="@string/continue_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/otp_resend_text" />
+
+        <TextView
+            android:id="@+id/otp_error_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="24dp"
+            android:fontFamily="@font/lato"
+            android:text="@string/invalid_otp"
+            android:visibility="gone"
+            android:textColor="@color/design_default_color_error"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/otpLayout" />
+
+        <TextView
+            android:id="@+id/otp_resend_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/lato"
+            android:text="@string/resend_otp_in"
+            android:textColor="@color/primaryColor"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/otp_box"
+            app:layout_constraintTop_toBottomOf="@+id/otp_error_text" />
+
+        <TextView
+            android:id="@+id/edit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/lato"
+            android:text="@string/edit"
+            android:textColor="@color/primaryColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toEndOf="@+id/otp_sent_to"
+            app:layout_constraintTop_toTopOf="@+id/otp_sent_to" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+   <!-- </androidx.cardview.widget.CardView>-->
+</ScrollView>

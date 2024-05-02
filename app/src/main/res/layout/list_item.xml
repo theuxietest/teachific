@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/listPreferredItemHeightLarge"
+    android:background="@drawable/border">
+
+    <RadioButton
+        android:id="@+id/radioCheck"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="@dimen/_8sdp"
+        android:clickable="false"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:layout_height="wrap_content"/>
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/radioCheck"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:contentDescription="Icon" />
+
+    <com.so.luotk.customviews.CustomFontTextView
+        android:id="@+id/textView"
+        android:layout_toRightOf="@+id/radioCheck"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="@dimen/_16sdp"
+        android:layout_height="match_parent"
+        android:layout_toEndOf="@id/imageView"
+        android:gravity="center_vertical"
+        android:textSize="16sp"/>
+
+</RelativeLayout>

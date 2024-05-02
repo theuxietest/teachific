@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layoutDirection="ltr"
+    android:padding="@dimen/_18sdp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_corners_drawable"
+        android:orientation="vertical"
+        android:padding="@dimen/_12sdp">
+
+        <com.so.luotk.customviews.CustomFontTextView
+            android:id="@+id/time_out_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/run_out_of_time"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_20sdp" />
+
+        <com.so.luotk.customviews.CustomFontTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/_8sdp"
+            android:gravity="center"
+            android:text="@string/test_submitted"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/_12sdp" />
+
+        <com.so.luotk.customviews.CustomFontTextView
+            android:id="@+id/btn_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginVertical="@dimen/_8sdp"
+            android:background="@drawable/round_edge"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/_20sdp"
+            android:paddingVertical="@dimen/_6sdp"
+            android:text="@string/ok"
+            android:textAllCaps="true"
+            android:textColor="@color/textColorWhite"
+            android:textSize="@dimen/_12sdp" />
+
+    </LinearLayout>
+</LinearLayout>

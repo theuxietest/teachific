@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scroll_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true"
+    android:isScrollContainer="false"
+    android:tag="layout/login_number_bottom_dialog_0">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bottom_sheet_rounded_background"
+        android:paddingBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/get_started_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/latosemibold"
+            android:text="@string/get_started"
+            android:textColor="@color/title_dark_blue"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/change_language"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/lato"
+            android:text="@string/change_language"
+            android:visibility="gone"
+            android:textColor="@color/primaryColor"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/get_started_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/get_started_text" />
+
+        <ImageView
+            android:id="@+id/globe_icon"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginEnd="4dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/change_language"
+            app:layout_constraintEnd_toStartOf="@+id/change_language"
+            app:layout_constraintTop_toTopOf="@+id/change_language"
+            app:srcCompat="@drawable/ic_globe" />
+
+        <TextView
+            android:id="@+id/enter_mobile_number_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/enter_mobile_number_to_continue"
+            android:textAllCaps="false"
+            android:textColor="@color/description_light_blue"
+            app:layout_constraintStart_toStartOf="@+id/get_started_text"
+            app:layout_constraintTop_toBottomOf="@+id/get_started_text" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/phone_number"
+            style="@style/NewOutlinedEditBox"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            app:hintEnabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/enter_mobile_number_text">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="12"
+                android:fontFamily="@font/lato"
+                android:gravity="center_vertical"
+                android:hint="@string/mobile_number"
+                android:imeOptions="flagNoFullscreen"
+                android:inputType="number"
+                android:lines="1"
+                android:maxLength="10"
+                android:paddingStart="96dp"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                android:textColor="@color/title_dark_blue"
+                android:textColorHint="#997c98c0"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/india_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_india"
+            app:layout_constraintBottom_toBottomOf="@+id/phone_number"
+            app:layout_constraintStart_toStartOf="@+id/phone_number"
+            app:layout_constraintTop_toTopOf="@+id/phone_number"
+            app:srcCompat="@drawable/ic_india" />
+
+        <TextView
+            android:id="@+id/countr_code_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/lato"
+            android:text="+ 91"
+            android:textColor="@color/title_dark_blue"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/india_image"
+            app:layout_constraintStart_toEndOf="@+id/india_image"
+            app:layout_constraintTop_toTopOf="@+id/india_image" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/send_otp_button"
+            style="@style/NewPrimaryButtonStyle"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:enabled="false"
+            android:text="@string/send_otp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/terms_and_privacy_text2" />
+
+        <TextView
+            android:id="@+id/terms_and_privacy_text2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/agree_to_privacy_and_terms"
+            android:textAlignment="center"
+            android:textColor="#7c98c0"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="@+id/change_language"
+            app:layout_constraintStart_toStartOf="@+id/get_started_text"
+            app:layout_constraintTop_toBottomOf="@+id/phone_number" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

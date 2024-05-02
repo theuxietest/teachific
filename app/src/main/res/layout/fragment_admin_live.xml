@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.adminrole.adminbatches.AdminLiveFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:id="@+id/img_live"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_200sdp"
+            android:src="@drawable/ic_about_you_teacher_illustration" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_go_live"
+            style="@style/primary_button"
+            android:layout_width="match_parent"
+            android:enabled="true"
+            android:layout_below="@+id/img_live"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginLeft="@dimen/_12sdp"
+            android:layout_marginRight="@dimen/_12sdp"
+            android:backgroundTint="@color/blue_main"
+            android:textColor="@color/white_both"
+            android:text="@string/go_live_now"
+            app:strokeWidth="0dp" />
+
+        <!--<com.so.bgjcn.customviews.CustomFontTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img_live"
+            android:layout_marginHorizontal="@dimen/_50sdp"
+            android:background="@drawable/round_edge"
+            android:gravity="center"
+            android:padding="@dimen/_6sdp"
+            android:text="@string/go_live_now"
+            android:id="@+id/btn_go_live"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:textColor="@color/textColorWhite"
+            android:textSize="@dimen/_14sdp" />-->
+    </RelativeLayout>
+
+</FrameLayout>

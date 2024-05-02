@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.so.luotk.models.output.JoinRequestResult" />
+
+        <variable
+            name="click"
+            type="com.so.luotk.adapter.adminrole.JoinRequestListAdapter.OnItemClickListener" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/_6sdp"
+        android:paddingVertical="@dimen/_12sdp">
+
+        <com.so.luotk.customviews.CustomFontTextView
+            android:id="@+id/student_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:text="@{data.name+&quot; -  &quot;+data.phone}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp" />
+
+        <com.so.luotk.customviews.CustomFontTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/tv_accept"
+            android:background="@drawable/bg_red_round_corner"
+            android:gravity="center"
+            android:onClick="@{()-> click.onItemClick(data.id.toString(),false)}"
+            android:padding="@dimen/_6sdp"
+            android:text="@string/decline"
+            android:textColor="@color/textColorWhite" />
+
+        <com.so.luotk.customviews.CustomFontTextView
+            android:id="@+id/tv_accept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginHorizontal="@dimen/_4sdp"
+            android:background="@drawable/green_round_corner_bg"
+            android:gravity="center"
+            android:onClick="@{()-> click.onItemClick(data.id.toString(),true)}"
+            android:padding="@dimen/_6sdp"
+            android:text="@string/accept"
+            android:textColor="@color/textColorWhite" />
+
+    </RelativeLayout>
+</layout>

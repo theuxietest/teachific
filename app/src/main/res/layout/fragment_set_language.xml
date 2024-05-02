@@ -1,0 +1,1163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+    <data>
+        <variable
+            name="isChecked"
+            type="boolean" />
+        <variable
+            name="fragment"
+            type="com.so.luotk.fragments.more.SetLanguageFragment" />
+        <variable
+            name="signal"
+            type="Integer" />
+        <variable
+            name="signal_without"
+            type="Integer" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layoutDirection="ltr"
+        tools:context=".fragments.more.SetLanguageFragment">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:navigationIcon="@drawable/ic_arrow_back_black_24dp"
+            app:titleTextAppearance="@style/Toolbar.TitleText"
+            app:titleTextColor="@color/black">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:id="@+id/tv_toolbar_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="7dp"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:textSize="@dimen/_13sdp"
+                    android:text="@string/which_language"
+                    android:layout_marginRight="@dimen/_8sdp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/black" />
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="wrap_content"
+            android:fillViewport="true"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+             <!--   <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    app:title="@string/which_language" />-->
+
+
+                <TextView
+                    android:id="@+id/language_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/lato"
+                    android:text="@string/language_description"
+                    android:textColor="#6b82ab"
+                    android:textSize="14sp"
+                    />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:layout_marginHorizontal="12sp"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            app:cardCornerRadius="8dp"
+                            android:onClick="@{()->fragment.setChecked(0)}"
+                            app:cardBackgroundColor="@{signal==0?@color/colorLightBlueGray:@color/card_back_eng}"
+                            app:strokeColor="@android:color/transparent"
+                            app:strokeWidth="1dp">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_height="wrap_content">
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent">
+
+                                    <com.github.ivbaranov.mli.MaterialLetterIcon
+                                        android:id="@+id/thumbnail_english"
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:translationY="8dp"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:mli_letter="En"
+                                        app:mli_letter_color="@color/black"
+                                        app:mli_letter_size="25"
+                                        app:mli_letters_number="2"
+                                        app:mli_shape_color="#00ffffff" />
+
+                                    <TextView
+                                        android:id="@+id/main_lang_english"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="24dp"
+                                        android:layout_marginTop="8dp"
+                                        android:text="English"
+                                        android:textColor="@color/title_dark_blue"
+                                        android:textSize="14sp"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent" />
+
+                                    <TextView
+                                        android:id="@+id/english_lang"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="8dp"
+                                        android:fontFamily="@font/lato"
+                                        android:text="(English)"
+                                        android:textColor="#7c98c0"
+                                        android:textSize="12sp"
+                                        app:layout_constraintStart_toStartOf="@+id/main_lang_english"
+                                        app:layout_constraintTop_toBottomOf="@+id/main_lang_english" />
+
+                                    <ImageView
+                                        android:id="@+id/select_icon_eng"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="8dp"
+                                        android:layout_marginTop="12dp"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:srcCompat="@drawable/ic_without_select" />
+
+                                    <ImageView
+                                        setVisibile="@{signal==0}"
+                                        android:id="@+id/without_select_icon_eng"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="8dp"
+                                        android:layout_marginTop="12dp"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:srcCompat="@drawable/ic_circle_select" />
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            </RelativeLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            app:cardCornerRadius="8dp"
+                            android:onClick="@{()->fragment.setChecked(1)}"
+                            app:cardBackgroundColor="@{signal==1?@color/colorLightBlueGray:@color/card_back_hindi}"
+                            app:strokeColor="@android:color/transparent"
+                            app:strokeWidth="1dp">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_height="wrap_content">
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:id="@+id/main_layout"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent">
+
+                                    <com.github.ivbaranov.mli.MaterialLetterIcon
+                                        android:id="@+id/thumbnail_hindi"
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:translationY="8dp"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:mli_letter="हिं"
+                                        app:mli_letter_color="@color/black"
+                                        app:mli_letter_size="25"
+                                        app:mli_letters_number="1"
+                                        app:mli_shape_color="#00ffffff" />
+
+                                    <TextView
+                                        android:id="@+id/main_lang_hindi"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="24dp"
+                                        android:layout_marginTop="8dp"
+                                        android:text="Hindi"
+                                        android:textColor="@color/title_dark_blue"
+                                        android:textSize="14sp"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent" />
+
+                                    <TextView
+                                        android:id="@+id/hindi_lang"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="8dp"
+                                        android:fontFamily="@font/lato"
+                                        android:text="(हिंदी)"
+                                        android:textColor="#7c98c0"
+                                        android:textSize="12sp"
+                                        app:layout_constraintStart_toStartOf="@+id/main_lang_hindi"
+                                        app:layout_constraintTop_toBottomOf="@+id/main_lang_hindi" />
+
+                                    <ImageView
+                                        android:id="@+id/select_icon_hindi"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="8dp"
+                                        android:layout_marginTop="12dp"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:srcCompat="@drawable/ic_without_select" />
+
+                                    <ImageView
+                                        android:id="@+id/without_select_icon_hindi"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="8dp"
+                                        setVisibile="@{signal==1}"
+                                        android:layout_marginTop="12dp"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:srcCompat="@drawable/ic_circle_select" />
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            </RelativeLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:layout_marginHorizontal="12sp"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:onClick="@{()->fragment.setChecked(2)}"
+                            app:cardBackgroundColor="@{signal==2?@color/colorLightBlueGray:@color/card_back_marathi}"
+                            app:cardCornerRadius="8dp"
+                            app:strokeColor="@android:color/transparent"
+                            app:strokeWidth="1dp">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_height="wrap_content">
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent">
+
+                                    <com.github.ivbaranov.mli.MaterialLetterIcon
+                                        android:id="@+id/thumbnail_maratha"
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:translationY="8dp"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:mli_letter="मरा"
+                                        app:mli_letter_color="@color/black"
+                                        app:mli_letter_size="25"
+                                        app:mli_letters_number="2"
+                                        app:mli_shape_color="#00ffffff" />
+
+                                    <TextView
+                                        android:id="@+id/main_lang_thumbnail_maratha"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="24dp"
+                                        android:layout_marginTop="8dp"
+                                        android:text="Marathi"
+                                        android:textColor="@color/title_dark_blue"
+                                        android:textSize="14sp"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent" />
+
+                                    <TextView
+                                        android:id="@+id/thumbnail_maratha_lang"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="8dp"
+                                        android:fontFamily="@font/lato"
+                                        android:text="(मराठा)"
+                                        android:textColor="#7c98c0"
+                                        android:textSize="12sp"
+                                        app:layout_constraintStart_toStartOf="@+id/main_lang_thumbnail_maratha"
+                                        app:layout_constraintTop_toBottomOf="@+id/main_lang_thumbnail_maratha" />
+
+                                    <ImageView
+                                        android:id="@+id/select_icon_thumbnail_maratha"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="8dp"
+                                        android:layout_marginTop="12dp"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:srcCompat="@drawable/ic_without_select" />
+
+                                    <ImageView
+                                        android:id="@+id/without_select_icon_maratha"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="8dp"
+                                        setVisibile="@{signal==2}"
+                                        android:layout_marginTop="12dp"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:srcCompat="@drawable/ic_circle_select" />
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            </RelativeLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            app:cardCornerRadius="8dp"
+                            android:onClick="@{()->fragment.setChecked(3)}"
+                            app:cardBackgroundColor="@{signal==3?@color/colorLightBlueGray:@color/card_back_kannada}"
+                            app:strokeColor="@android:color/transparent"
+                            app:strokeWidth="1dp">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_height="wrap_content">
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent">
+
+                                    <com.github.ivbaranov.mli.MaterialLetterIcon
+                                        android:id="@+id/thumbnail_kannada"
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:translationY="8dp"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:mli_letter="ಕನ್ನ"
+                                        app:mli_letter_color="@color/black"
+                                        app:mli_letter_size="25"
+                                        app:mli_letters_number="2"
+                                        app:mli_shape_color="#00ffffff" />
+
+                                    <TextView
+                                        android:id="@+id/main_lang_kannada"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="24dp"
+                                        android:layout_marginTop="8dp"
+                                        android:text="Kannada"
+                                        android:textColor="@color/title_dark_blue"
+                                        android:textSize="14sp"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent" />
+
+                                    <TextView
+                                        android:id="@+id/kannada_lang"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="8dp"
+                                        android:fontFamily="@font/lato"
+                                        android:text="(ಕನ್ನಡ)"
+                                        android:textColor="#7c98c0"
+                                        android:textSize="12sp"
+                                        app:layout_constraintStart_toStartOf="@+id/main_lang_kannada"
+                                        app:layout_constraintTop_toBottomOf="@+id/main_lang_kannada" />
+
+                                    <ImageView
+                                        android:id="@+id/select_icon_kannada"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="8dp"
+                                        android:layout_marginTop="12dp"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:srcCompat="@drawable/ic_without_select" />
+
+                                    <ImageView
+                                        android:id="@+id/without_select_icon_kannada"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="8dp"
+                                        setVisibile="@{signal==3}"
+                                        android:layout_marginTop="12dp"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:srcCompat="@drawable/ic_circle_select" />
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            </RelativeLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:layout_marginHorizontal="12sp"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:onClick="@{()->fragment.setChecked(4)}"
+                            app:cardBackgroundColor="@{signal==4?@color/colorLightBlueGray:@color/card_back_arbic}"
+                            app:cardCornerRadius="8dp"
+                            app:strokeColor="@android:color/transparent"
+                            app:strokeWidth="1dp">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_height="wrap_content">
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent">
+
+                                    <com.github.ivbaranov.mli.MaterialLetterIcon
+                                        android:id="@+id/thumbnail_arabic"
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:translationY="8dp"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:mli_letter="عر"
+                                        app:mli_letter_color="@color/black"
+                                        app:mli_letter_size="25"
+                                        app:mli_letters_number="2"
+                                        app:mli_shape_color="#00ffffff" />
+
+                                    <TextView
+                                        android:id="@+id/main_lang_arabic"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="24dp"
+                                        android:layout_marginTop="8dp"
+                                        android:text="Arabic"
+                                        android:textColor="@color/title_dark_blue"
+                                        android:textSize="14sp"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent" />
+
+                                    <TextView
+                                        android:id="@+id/arabic_lang"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="8dp"
+                                        android:fontFamily="@font/lato"
+                                        android:text="(عربي)"
+                                        android:textColor="#7c98c0"
+                                        android:textSize="12sp"
+                                        app:layout_constraintStart_toStartOf="@+id/main_lang_arabic"
+                                        app:layout_constraintTop_toBottomOf="@+id/main_lang_arabic" />
+
+                                    <ImageView
+                                        android:id="@+id/select_icon_arabic"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="8dp"
+                                        android:layout_marginTop="12dp"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:srcCompat="@drawable/ic_without_select" />
+
+                                    <ImageView
+                                        android:id="@+id/without_select_icon_arabic"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="8dp"
+                                        android:layout_marginTop="12dp"
+                                        setVisibile="@{signal==4}"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:srcCompat="@drawable/ic_circle_select" />
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            </RelativeLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:onClick="@{()->fragment.setChecked(5)}"
+                            app:cardBackgroundColor="@{signal==5?@color/colorLightBlueGray:@color/card_back_punjabi}"
+                            app:cardCornerRadius="8dp"
+                            app:strokeColor="@android:color/transparent"
+                            app:strokeWidth="1dp">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_height="wrap_content">
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent">
+
+                                    <com.github.ivbaranov.mli.MaterialLetterIcon
+                                        android:id="@+id/thumbnail_punjabi"
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:translationY="8dp"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:mli_letter="ਪੰ"
+                                        app:mli_letter_color="@color/black"
+                                        app:mli_letter_size="25"
+                                        app:mli_letters_number="2"
+                                        app:mli_shape_color="#00ffffff" />
+
+                                    <TextView
+                                        android:id="@+id/main_lang_punjabi"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="24dp"
+                                        android:layout_marginTop="8dp"
+                                        android:text="Punjabi"
+                                        android:textColor="@color/title_dark_blue"
+                                        android:textSize="14sp"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent" />
+
+                                    <TextView
+                                        android:id="@+id/punjabi_lang"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="8dp"
+                                        android:fontFamily="@font/lato"
+                                        android:text="(ਪੰਜਾਬੀ)"
+                                        android:textColor="#7c98c0"
+                                        android:textSize="12sp"
+                                        app:layout_constraintStart_toStartOf="@+id/main_lang_punjabi"
+                                        app:layout_constraintTop_toBottomOf="@+id/main_lang_punjabi" />
+
+                                    <ImageView
+                                        android:id="@+id/select_icon_punjabi"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="8dp"
+                                        android:layout_marginTop="12dp"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:srcCompat="@drawable/ic_without_select" />
+
+                                    <ImageView
+                                        android:id="@+id/without_select_icon_punjabi"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="8dp"
+                                        android:layout_marginTop="12dp"
+                                        setVisibile="@{signal==5}"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:srcCompat="@drawable/ic_circle_select" />
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            </RelativeLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:layout_marginHorizontal="12sp"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:onClick="@{()->fragment.setChecked(6)}"
+                            app:cardBackgroundColor="@{signal==6?@color/colorLightBlueGray:@color/card_back_oriya}"
+                            app:cardCornerRadius="8dp"
+                            app:strokeColor="@android:color/transparent"
+                            app:strokeWidth="1dp">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_height="wrap_content">
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent">
+
+                                    <com.github.ivbaranov.mli.MaterialLetterIcon
+                                        android:id="@+id/thumbnail_oriya"
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:translationY="8dp"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:mli_letter="ଓଡି"
+                                        app:mli_letter_color="@color/black"
+                                        app:mli_letter_size="25"
+                                        app:mli_letters_number="2"
+                                        app:mli_shape_color="#00ffffff" />
+
+                                    <TextView
+                                        android:id="@+id/main_lang_oriya"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="24dp"
+                                        android:layout_marginTop="8dp"
+                                        android:text="Oriya"
+                                        android:textColor="@color/title_dark_blue"
+                                        android:textSize="14sp"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent" />
+
+                                    <TextView
+                                        android:id="@+id/oriya_lang"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="8dp"
+                                        android:fontFamily="@font/lato"
+                                        android:text="(ଓଡି)"
+                                        android:textColor="#7c98c0"
+                                        android:textSize="12sp"
+                                        app:layout_constraintStart_toStartOf="@+id/main_lang_oriya"
+                                        app:layout_constraintTop_toBottomOf="@+id/main_lang_oriya" />
+
+                                    <ImageView
+                                        android:id="@+id/select_icon_oriya"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="8dp"
+                                        android:layout_marginTop="12dp"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:srcCompat="@drawable/ic_without_select" />
+
+                                    <ImageView
+                                        android:id="@+id/without_select_icon_oriya"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="8dp"
+                                        android:layout_marginTop="12dp"
+                                        setVisibile="@{signal==6}"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:srcCompat="@drawable/ic_circle_select" />
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                            </RelativeLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:visibility="invisible"
+                        android:layout_height="wrap_content">
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:onClick="@{()->fragment.setChecked(7)}"
+                            app:cardBackgroundColor="@{signal==7?@color/colorLightBlueGray:@color/card_back_punjabi}"
+                            app:cardCornerRadius="8dp"
+                            app:strokeColor="@android:color/transparent"
+                            app:strokeWidth="1dp">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_height="wrap_content">
+
+                            </RelativeLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+                    </RelativeLayout>
+                </LinearLayout>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_6sdp"
+                    app:cardCornerRadius="@dimen/_10sdp"
+                    android:visibility="gone"
+                    android:onClick="@{()->fragment.setChecked(0)}"
+                    app:cardBackgroundColor="@{signal==0?@color/colorLightBlueGray:@color/card_back}"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_12sdp">
+
+                        <RelativeLayout
+                            android:id="@+id/circle_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="@dimen/_30sdp"
+                                android:layout_height="@dimen/_30sdp"
+                                android:src="@color/blue_main" />
+
+                            <com.so.luotk.customviews.CustomFontTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:text="E"
+                                android:textColor="@color/textColorWhite"
+                                android:textSize="@dimen/_12sdp" />
+                        </RelativeLayout>
+
+                        <com.so.luotk.customviews.CustomFontTextView
+                            android:id="@+id/txt_english"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/circle_name"
+                            android:paddingHorizontal="@dimen/_5sdp"
+                            android:paddingVertical="@dimen/_3sdp"
+                            android:text="English"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_13sdp" />
+
+                        <com.so.luotk.customviews.CustomFontTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/txt_english"
+                            android:layout_toRightOf="@+id/circle_name"
+                            android:paddingHorizontal="@dimen/_6sdp"
+                            android:text="English"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/_11sdp" />
+
+                        <ImageView
+                            setVisibile="@{signal==0}"
+                            android:id="@+id/img_checked"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/ic_check" />
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_marginHorizontal="@dimen/_6sdp"
+                    android:onClick="@{()->fragment.setChecked(1)}"
+                    app:cardBackgroundColor="@{signal==1?@color/colorLightBlueGray:@color/card_back}"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    app:cardCornerRadius="@dimen/_10sdp"
+
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_12sdp">
+
+                        <RelativeLayout
+                            android:id="@+id/circle_name_hindi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="@dimen/_30sdp"
+                                android:layout_height="@dimen/_30sdp"
+                                android:src="@color/blue_main" />
+
+                            <com.so.luotk.customviews.CustomFontTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:text="ह"
+                                android:textColor="@color/textColorWhite"
+                                android:textSize="@dimen/_12sdp" />
+                        </RelativeLayout>
+
+                        <com.so.luotk.customviews.CustomFontTextView
+                            android:id="@+id/txt_hindi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/circle_name_hindi"
+                            android:paddingHorizontal="@dimen/_5sdp"
+                            android:paddingVertical="@dimen/_3sdp"
+                            android:text="@string/hindi"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_13sdp" />
+
+                        <com.so.luotk.customviews.CustomFontTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/txt_hindi"
+                            android:layout_toRightOf="@+id/circle_name_hindi"
+                            android:paddingHorizontal="@dimen/_6sdp"
+                            android:text="Hindi"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/_11sdp" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            setVisibile="@{signal==1}"
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/ic_check" />
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_marginHorizontal="@dimen/_6sdp"
+                    android:onClick="@{()->fragment.setChecked(2)}"
+                    app:cardBackgroundColor="@{signal==2?@color/colorLightBlueGray:@color/card_back}"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    app:cardCornerRadius="@dimen/_10sdp"
+
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_12sdp">
+
+                        <RelativeLayout
+                            android:id="@+id/circle_name_marathi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="@dimen/_30sdp"
+                                android:layout_height="@dimen/_30sdp"
+                                android:src="@color/blue_main" />
+
+                            <com.so.luotk.customviews.CustomFontTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:text="म"
+                                android:textColor="@color/textColorWhite"
+                                android:textSize="@dimen/_12sdp" />
+                        </RelativeLayout>
+
+                        <com.so.luotk.customviews.CustomFontTextView
+                            android:id="@+id/txt_marathi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/circle_name_marathi"
+                            android:paddingHorizontal="@dimen/_5sdp"
+                            android:paddingVertical="@dimen/_3sdp"
+                            android:text="मराठी"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_13sdp" />
+
+                        <com.so.luotk.customviews.CustomFontTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/txt_marathi"
+                            android:layout_toRightOf="@+id/circle_name_marathi"
+                            android:paddingHorizontal="@dimen/_6sdp"
+                            android:text="Marathi"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/_11sdp" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            setVisibile="@{signal==2}"
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/ic_check" />
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_marginHorizontal="@dimen/_6sdp"
+                    android:onClick="@{()->fragment.setChecked(3)}"
+                    app:cardBackgroundColor="@{signal==3?@color/colorLightBlueGray:@color/card_back}"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    app:cardCornerRadius="@dimen/_10sdp"
+
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_12sdp">
+
+                        <RelativeLayout
+                            android:id="@+id/circle_name_kannada"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="@dimen/_30sdp"
+                                android:layout_height="@dimen/_30sdp"
+                                android:src="@color/blue_main" />
+
+                            <com.so.luotk.customviews.CustomFontTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:text="ಕ"
+                                android:textColor="@color/textColorWhite"
+                                android:textSize="@dimen/_12sdp" />
+                        </RelativeLayout>
+
+                        <com.so.luotk.customviews.CustomFontTextView
+                            android:id="@+id/txt_kannada"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/circle_name_kannada"
+                            android:paddingHorizontal="@dimen/_5sdp"
+                            android:paddingVertical="@dimen/_3sdp"
+                            android:text="ಕನ್ನಡ"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_13sdp" />
+
+                        <com.so.luotk.customviews.CustomFontTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/txt_kannada"
+                            android:layout_toRightOf="@+id/circle_name_kannada"
+                            android:paddingHorizontal="@dimen/_6sdp"
+                            android:text="Kannada"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/_11sdp" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            setVisibile="@{signal==3}"
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/ic_check" />
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:layout_marginHorizontal="@dimen/_6sdp"
+                    android:onClick="@{()->fragment.setChecked(4)}"
+                    app:cardBackgroundColor="@{signal==4?@color/colorLightBlueGray:@color/card_back}"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    app:cardCornerRadius="@dimen/_10sdp"
+
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_12sdp">
+
+                        <RelativeLayout
+                            android:id="@+id/circle_name_arabic"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="@dimen/_30sdp"
+                                android:layout_height="@dimen/_30sdp"
+                                android:src="@color/blue_main" />
+
+                            <com.so.luotk.customviews.CustomFontTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:text="ಕ"
+                                android:textColor="@color/textColorWhite"
+                                android:textSize="@dimen/_12sdp" />
+                        </RelativeLayout>
+
+                        <com.so.luotk.customviews.CustomFontTextView
+                            android:id="@+id/txt_arabic"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/circle_name_arabic"
+                            android:paddingHorizontal="@dimen/_5sdp"
+                            android:paddingVertical="@dimen/_3sdp"
+                            android:text="عربي"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_13sdp" />
+
+                        <com.so.luotk.customviews.CustomFontTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/txt_arabic"
+                            android:layout_toRightOf="@+id/circle_name_arabic"
+                            android:paddingHorizontal="@dimen/_6sdp"
+                            android:text="Arabic"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/_11sdp" />
+
+                        <ImageView
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            setVisibile="@{signal==4}"
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/ic_check" />
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+                <com.so.luotk.customviews.CustomFontTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_14sdp"
+                    android:padding="@dimen/_10sdp"
+                    android:layout_marginVertical="@dimen/_30sdp"
+                    android:gravity="center"
+                    android:layout_marginHorizontal="@dimen/_12sdp"
+                    android:textColor="@color/textColorWhite"
+                    android:background="@drawable/round_edge"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:onClick="@{()->fragment.setLocale()}"
+                    android:text="@string/txt_continue"/>
+
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+
+    </FrameLayout>
+</layout>

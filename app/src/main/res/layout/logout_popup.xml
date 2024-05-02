@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/statusBarColor"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#eff9ff"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/textView26"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_medium"
+            android:padding="12dp"
+            android:text="@string/log_out"
+            android:layout_toLeftOf="@+id/cross_sign"
+            android:textColor="#374c59"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/cross_sign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_weight="0.2"
+            android:visibility="gone"
+            android:padding="12dp"
+            app:srcCompat="@drawable/ic_baseline_clear" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/imageView36"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_centerInParent= "true"
+            android:layout_margin="16dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_group_13939" />
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/textView27"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/lato_medium"
+        android:gravity="center"
+        android:text="@string/logout_confirmation"
+        android:textColor="@color/title_dark_blue"
+        android:textSize="15sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/logout_button"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/lato"
+            android:letterSpacing="0"
+            android:text="@string/log_out"
+            android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textColor="@color/dark_red"
+            android:textSize="15sp"
+            />
+
+        <Button
+            android:id="@+id/cancel_button"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/lato"
+            android:letterSpacing="0"
+            android:text="@string/cancel"
+            android:textAllCaps="false"
+            android:layout_weight="1"
+            android:textColor="@color/primaryColor"
+            android:textSize="15sp"
+            />
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btnDone"
+        android:layout_marginRight="@dimen/_60sdp"
+        android:layout_marginLeft="@dimen/_60sdp"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        android:text="@string/log_out" />
+</LinearLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.so.luotk.customviews.CustomFontTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="?android:attr/spinnerItemStyle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:ellipsize="marquee"
+    android:padding="@dimen/_10sdp"
+    android:marqueeRepeatLimit="marquee_forever"
+    android:singleLine="true"
+    android:textColor="@color/dark_gray"
+    android:textSize="@dimen/_12sdp">
+
+</com.so.luotk.customviews.CustomFontTextView>

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layoutDirection="ltr"
+    android:layout_height="match_parent">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/card_back"
+        app:title="@string/make_announcement" />
+
+    <!--<androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        app:navigationIcon="@drawable/ic_arrow_back_black_24dp"
+        app:titleTextAppearance="@style/Toolbar.TitleText"
+        app:titleTextColor="@color/black">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_toolbar_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/make_announcement"
+                android:layout_marginRight="@dimen/_8sdp"
+                android:layout_marginBottom="7dp"
+                android:textSize="@dimen/_12sdp"
+                android:fontFamily="@font/lato_medium"
+                android:textColor="@color/black" />
+
+
+        </RelativeLayout>
+
+    </androidx.appcompat.widget.Toolbar>-->
+
+    <!--  <androidx.appcompat.widget.Toolbar
+          android:id="@+id/toolbar"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_alignParentStart="true"
+          android:background="@color/white"
+          app:title="@string/make_announcement" />-->
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:visibility="gone"
+        android:layout_below="@id/toolbar"
+        android:background="@color/gray" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/divider"
+        android:background="@color/card_back"
+        android:orientation="vertical"
+        tools:context=".activities.adminrole.MakeAnnouncementActivity">
+
+
+        <com.so.luotk.customviews.CustomFontTextView
+            android:id="@+id/tv_selected"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/_12sdp"
+            android:paddingVertical="@dimen/_8sdp"
+            android:text="@string/selected"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sdp"
+            android:visibility="visible"
+            app:textAllCaps="true" />
+
+        <RelativeLayout
+            android:id="@+id/layout_batch_attached"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:visibility="visible">
+
+            <com.so.luotk.customviews.CustomFontTextView
+                android:id="@+id/tv_to"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:paddingHorizontal="@dimen/_12sdp"
+                android:paddingVertical="@dimen/_6sdp"
+                android:text="@string/to"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_selected_classes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/img_add_batch"
+                android:layout_toRightOf="@+id/tv_to" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_add_batch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:src="@drawable/ic_add_blue_circular" />
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/tv_type_msg_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/poppins"
+            android:visibility="gone"
+            android:text="@string/announcement_create_title"
+            android:textColor="@color/textColor"
+            android:textSize="18sp"
+            />
+
+        <!-- <com.so.bgjcn.customviews.CustomFontTextView
+             android:id="@+id/tv_type_msg_title"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:paddingHorizontal="@dimen/_12sdp"
+             android:paddingVertical="@dimen/_6sdp"
+             android:text="@string/type_message"
+             android:textColor="@color/black"
+             android:textSize="@dimen/_14sdp"
+             app:textAllCaps="true" />-->
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/announcement_text"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:textAlignment="inherit"
+            app:counterEnabled="true"
+            app:counterMaxLength="500"
+            app:hintEnabled="false"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_type_msg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="top|left|center_vertical|center_horizontal|center"
+                android:hint="@string/add_description_text"
+                android:maxLength="500"
+                android:inputType="none|text|textMultiLine|textImeMultiLine"
+                android:lines="4"
+                android:maxLines="4"
+                android:minLines="4"
+                android:textAlignment="inherit"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--   <com.so.bgjcn.customviews.CustomFontEditText
+               android:id="@+id/edt_type_msg"
+               android:layout_width="match_parent"
+               android:layout_height="@dimen/_120sdp"
+               android:background="@color/white"
+               android:gravity="start"
+               android:hint="@string/type_your_message_here"
+               android:inputType="textMultiLine"
+               android:paddingHorizontal="@dimen/_12sdp"
+               android:paddingVertical="@dimen/_10sdp"
+               android:textSize="@dimen/_12sdp" />-->
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/tv_done"
+            style="@style/primary_button"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/poppins_medium"
+            android:letterSpacing="0"
+            android:enabled="true"
+            android:padding="@dimen/_8sdp"
+            android:layout_margin="@dimen/_20sdp"
+            android:layout_width="match_parent"
+            android:text="@string/post"
+            android:textAllCaps="false"
+            />
+        <!--
+           <com.so.bgjcn.customviews.CustomFontTextView
+               android:id="@+id/tv_done"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_margin="@dimen/_20sdp"
+               android:background="@drawable/round_edge"
+               android:foreground="?selectableItemBackgroundBorderless"
+               android:gravity="center"
+               android:padding="@dimen/_8sdp"
+               android:text="@string/done"
+               android:textColor="@color/textColorWhite"
+               android:textSize="@dimen/_14sdp" />-->
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/not_editable_layer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/divider"
+        android:clickable="true"
+        android:visibility="gone" />
+</RelativeLayout>

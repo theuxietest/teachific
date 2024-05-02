@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/_8sdp"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@+id/tv_absent_present"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+
+            <com.so.luotk.customviews.CustomSemiBoldFontTextView
+                android:id="@+id/tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:text="01 May 2020"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp" />
+
+            <TextView
+                android:id="@+id/tv_lecture_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_date"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:gravity="center_vertical"
+                android:text="Topic 1"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:fontFamily="@font/lato"
+                android:textColor="#666667"
+                android:textSize="@dimen/_11sdp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:src="@drawable/clock_black_icon"
+                    android:visibility="gone"
+                    app:tint="#666667" />
+
+                <com.so.luotk.customviews.CustomFontTextView
+                    android:id="@+id/tv_lecture_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:text="02:00 PM - 05:00 PM"
+                    android:textColor="#666667"
+                    android:textSize="@dimen/_12sdp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+        <com.so.luotk.customviews.CustomSemiBoldFontTextView
+            android:id="@+id/tv_absent_present"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/green_round_corner_bg"
+            android:paddingLeft="17dp"
+            android:paddingTop="8dp"
+            android:paddingRight="17dp"
+            android:paddingBottom="8dp"
+            android:text="Present"
+            android:textColor="@color/textColorWhite"
+            android:textSize="@dimen/_12sdp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/light_gray" />
+
+
+</LinearLayout>

@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frame_layout_student"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.adminrole.adminbatches.AdminStudentFragment">
+
+    <RelativeLayout
+        android:id="@+id/layout_batch"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/search_view"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/bg_search_bar"
+            android:focusable="false"
+            android:focusableInTouchMode="true"
+            android:queryHint="@string/search"
+            app:defaultQueryHint="@string/search"
+            app:iconifiedByDefault="false"
+            app:queryBackground="@null" />
+
+        <com.so.luotk.customviews.CustomFontTextView
+            android:id="@+id/tv_no_results"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/search_view"
+            android:gravity="center"
+            android:padding="@dimen/_14sdp"
+            android:text="@string/no_result_found"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/_12sdp"
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:id="@+id/layout_student_count"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/search_view"
+            android:padding="@dimen/_10sdp">
+
+            <com.so.luotk.customviews.CustomFontTextView
+                android:id="@+id/student_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text=""
+                android:textSize="@dimen/_12sdp" />
+
+            <com.so.luotk.customviews.CustomFontTextView
+                android:id="@+id/tv_see_join_request"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:text="@string/see_join_request"
+                android:textColor="@color/dark_blue"
+                android:textSize="@dimen/_12sdp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_student_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/layout_add_student"
+            android:layout_below="@+id/layout_student_count"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginRight="5dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/swipe_refresh_layout"
+                android:layout_width="match_parent"
+                android:layout_above="@+id/load_more_lay"
+                android:layout_height="wrap_content">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/student_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/search_view" />
+
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+            <RelativeLayout
+                android:id="@+id/load_more_lay"
+                android:layout_width="wrap_content"
+                android:visibility="gone"
+                android:layout_alignParentBottom="true"
+                android:layout_height="wrap_content">
+                <include
+                    android:id="@+id/loadMoreScreen"
+                    layout="@layout/load_more_layout" />
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+
+        <ProgressBar
+            android:id="@+id/search_data_progress"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:id="@+id/layout_no_any_students"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/img_batch_icon"
+                android:layout_width="@dimen/_120sdp"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/_18sdp"
+                android:visibility="visible"
+                android:src="@drawable/ic_student" />
+
+            <TextView
+                android:id="@+id/batch_title_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/img_batch_icon"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/poppins"
+                android:text="@string/no_students"
+                android:textColor="@color/noTextColor"
+                android:textSize="@dimen/_13sdp" />
+
+            <TextView
+                android:id="@+id/batch_title_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="clip_horizontal"
+                android:layout_below="@+id/batch_title_1"
+                android:layout_centerHorizontal="true"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/no_margin_from_top"
+                android:gravity="center"
+                android:text="@string/tap_plus_icon_student"
+                android:textSize="17sp"
+                android:fontFamily="@font/poppins"
+                android:textColor="@color/noTextColor"
+
+                />
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_add_student"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_alignParentBottom="true">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_add_student"
+                style="@style/primary_button"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="@dimen/_12sdp"
+                android:layout_marginRight="@dimen/_12sdp"
+                android:enabled="true"
+                android:backgroundTint="@color/blue_main"
+                android:textColor="@color/white_both"
+                android:text="@string/add_student"
+                app:strokeWidth="0dp" />
+
+            <!--<com.so.bgjcn.customviews.CustomFontTextView
+                android:id="@+id/btn_add_student"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_12sdp"
+                android:background="@drawable/round_edge"
+                android:gravity="center"
+                android:padding="@dimen/_8sdp"
+                android:text="@string/add_student_plus"
+                android:textColor="@color/textColorWhite"
+                android:textSize="@dimen/_14sdp" />-->
+        </LinearLayout>
+        <!--<LinearLayout
+            android:id="@+id/layout_add_student"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_add_student"
+                style="@style/primary_button"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="@dimen/_12sdp"
+                android:layout_marginRight="@dimen/_12sdp"
+                android:enabled="true"
+                android:backgroundTint="@color/blue_main"
+                android:textColor="@color/white_both"
+                android:text="@string/add_student_plus"
+                app:strokeWidth="0dp" />
+
+            &lt;!&ndash;<com.so.bgjcn.customviews.CustomFontTextView
+                android:id="@+id/btn_add_student"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_12sdp"
+                android:background="@drawable/round_edge"
+                android:gravity="center"
+                android:padding="@dimen/_8sdp"
+                android:text="@string/add_student_plus"
+                android:textColor="@color/textColorWhite"
+                android:textSize="@dimen/_14sdp" />&ndash;&gt;
+        </LinearLayout>-->
+
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/search_view"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginHorizontal="@dimen/_8sdp"
+                    android:layout_marginVertical="@dimen/_5sdp"
+                    android:background="@drawable/round_edge_shimmer" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginHorizontal="@dimen/_8sdp"
+                    android:layout_marginVertical="@dimen/_5sdp"
+                    android:background="@drawable/round_edge_shimmer" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginHorizontal="@dimen/_8sdp"
+                    android:layout_marginVertical="@dimen/_5sdp"
+                    android:background="@drawable/round_edge_shimmer" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginHorizontal="@dimen/_8sdp"
+                    android:layout_marginVertical="@dimen/_5sdp"
+                    android:background="@drawable/round_edge_shimmer" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginHorizontal="@dimen/_8sdp"
+                    android:layout_marginVertical="@dimen/_5sdp"
+                    android:background="@drawable/round_edge_shimmer" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginHorizontal="@dimen/_8sdp"
+                    android:layout_marginVertical="@dimen/_5sdp"
+                    android:background="@drawable/round_edge_shimmer" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginHorizontal="@dimen/_8sdp"
+                    android:layout_marginVertical="@dimen/_5sdp"
+                    android:background="@drawable/round_edge_shimmer" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginHorizontal="@dimen/_8sdp"
+                    android:layout_marginVertical="@dimen/_5sdp"
+                    android:background="@drawable/round_edge_shimmer" />
+            </LinearLayout>
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+    </RelativeLayout>
+
+</FrameLayout>

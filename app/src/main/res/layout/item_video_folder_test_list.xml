@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="?attr/selectableItemBackground"
+        android:layout_marginHorizontal="@dimen/_5sdp"
+        app:cardCornerRadius="@dimen/_7sdp"
+        app:cardElevation="2dp"
+        app:cardBackgroundColor="@color/card_back"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="@dimen/_7sdp">
+
+            <ImageView
+                android:id="@+id/img_icon"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/folder_icon"
+                />
+
+            <com.so.luotk.customviews.CustomSemiBoldFontTextView
+                android:id="@+id/tv_topic_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/img_icon"
+                android:padding="@dimen/_7sdp"
+                android:fontFamily="@font/latosemibold"
+                android:text="Real Number"
+                android:layout_weight="2"
+                android:gravity="center_vertical"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp" />
+
+            <ImageView
+                android:id="@+id/update_folder"
+                android:layout_width="@dimen/_18sdp"
+                android:visibility="gone"
+                android:layout_marginRight="@dimen/_8sdp"
+                android:src="@drawable/ic_edit_blue_dp"
+                android:layout_height="@dimen/_18sdp"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                android:layout_marginHorizontal="@dimen/_4sdp"
+                android:gravity="center">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/new_item_dot"
+                    android:layout_width="@dimen/_8sdp"
+                    android:layout_height="@dimen/_8sdp"
+                    android:src="@color/light_red" />
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/threeDotsLay"
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_24sdp">
+                <ImageView
+                    android:id="@+id/threeDots"
+                    android:layout_width="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_three_dots" />
+            </RelativeLayout>
+
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

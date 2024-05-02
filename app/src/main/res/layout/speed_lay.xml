@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <com.so.luotk.customviews.CustomFontTextView
+        android:id="@+id/speed_item"
+        android:layout_width="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:padding="@dimen/_16sdp"
+        android:textColor="@color/white"
+        android:text="1x"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>

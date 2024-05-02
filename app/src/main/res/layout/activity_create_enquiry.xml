@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.adminrole.CreateEnquiryActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backcolorGrayBlack"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:title="Add enquiry" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/gray"/>
+
+        <com.so.luotk.customviews.CustomFontTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_12sdp"
+            android:text="Name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sdp" />
+
+        <com.so.luotk.customviews.CustomFontEditText
+            android:id="@+id/edt_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:hint="Your name"
+            android:inputType="text"
+            android:padding="@dimen/_12sdp" />
+
+        <com.so.luotk.customviews.CustomFontTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_12sdp"
+            android:text="Email"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sdp" />
+
+        <com.so.luotk.customviews.CustomFontEditText
+            android:id="@+id/edt_mail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:hint="Your e-mail"
+            android:inputType="text"
+            android:padding="@dimen/_12sdp" />
+
+        <com.so.luotk.customviews.CustomFontTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_12sdp"
+            android:text="Mobile number"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sdp" />
+
+        <com.so.luotk.customviews.CustomFontEditText
+            android:id="@+id/edt_phn_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:hint="mobile"
+            android:inputType="number"
+            android:padding="@dimen/_12sdp" />
+
+        <com.so.luotk.customviews.CustomFontTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_12sdp"
+            android:text="School"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sdp" />
+
+        <com.so.luotk.customviews.CustomFontEditText
+            android:id="@+id/edt_school_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:hint="School/college"
+            android:inputType="text"
+            android:padding="@dimen/_12sdp" />
+
+        <com.so.luotk.customviews.CustomFontTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_12sdp"
+            android:text="Message"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sdp" />
+
+        <com.so.luotk.customviews.CustomFontEditText
+            android:id="@+id/edt_message"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100sdp"
+            android:background="@color/white"
+            android:gravity="start"
+            android:hint="Your query"
+            android:inputType="textMultiLine"
+            android:padding="@dimen/_12sdp" />
+
+        <com.so.luotk.customviews.CustomFontTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            android:layout_marginVertical="@dimen/_10sdp"
+            android:background="@drawable/round_edge"
+            android:gravity="center"
+            android:padding="@dimen/_8sdp"
+            android:text="Submit"
+            android:textColor="@color/textColorWhite"
+            android:textSize="@dimen/_14sdp" />
+
+
+    </LinearLayout>
+
+</ScrollView>

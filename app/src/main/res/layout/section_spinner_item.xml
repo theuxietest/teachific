@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.so.luotk.customviews.CustomFontTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/colorBlackGray"
+    android:textColor="@color/textColorWhite"
+    android:textSize="@dimen/_12sdp"
+    android:padding="@dimen/_6sdp"
+    android:gravity="center"
+    android:layout_height="wrap_content">
+
+</com.so.luotk.customviews.CustomFontTextView>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.text.TextUtils"/>
+
+        <variable
+            name="startListener"
+            type="com.so.luotk.adapter.TestSectionsAdapter.StartClickListener" />
+
+        <variable
+            name="sectionData"
+            type="com.so.luotk.models.output.TestSection" />
+
+        <variable
+            name="pos"
+            type="Integer" />
+
+        <variable
+            name="rotate"
+            type="Integer" />
+
+        <variable
+            name="showInstructions"
+            type="boolean" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingVertical="@dimen/_6sdp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <com.so.luotk.customviews.CustomFontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{sectionData.sectionName}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+                <com.so.luotk.customviews.CustomFontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:text="@{sectionData.questionCount+ &quot; Question(s)&quot;}"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/_10sdp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/btn_inst"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                hideText="@{!TextUtils.isEmpty(sectionData.sectionInstruction)}"
+                android:orientation="horizontal">
+
+                <com.so.luotk.customviews.CustomSemiBoldFontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/instruction"
+                    android:textColor="@color/blue_main" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:rotation="@{showInstructions?180:0}"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_arrow_down_black_18dp"
+                    app:tint="@color/blue_main" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <com.so.luotk.customviews.CustomFontTextView
+            hideText="@{showInstructions}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/inst_text"
+            android:text="@{sectionData.sectionInstruction}"
+            android:textColor="@color/black"
+            android:paddingBottom="@dimen/_6sdp"
+            android:textSize="@dimen/_10sdp" />
+    </LinearLayout>
+</layout>

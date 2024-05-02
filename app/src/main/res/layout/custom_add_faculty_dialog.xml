@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/_12sdp">
+
+    <com.so.luotk.customviews.CustomFontTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Add Faculty"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_14sdp" />
+
+    <com.so.luotk.customviews.CustomFontEditText
+        android:id="@+id/edt_faculty_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/_4sdp"
+        android:background="@drawable/bg_flag_box"
+        android:hint="Faculty name*"
+        android:inputType="text"
+        android:padding="@dimen/_6sdp" />
+
+    <com.so.luotk.customviews.CustomFontTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Name is required"
+        android:textColor="@color/light_red"
+        android:textSize="@dimen/_8sdp"
+        android:visibility="gone" />
+
+    <com.so.luotk.customviews.CustomFontEditText
+        android:id="@+id/edt_faculty_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/_4sdp"
+        android:background="@drawable/bg_flag_box"
+        android:hint="Faculty number*"
+        android:inputType="number"
+        android:maxLength="10"
+        android:padding="@dimen/_6sdp" />
+
+    <com.so.luotk.customviews.CustomFontTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_4sdp"
+        android:text="Number should not be less than 10 digits"
+        android:textColor="@color/light_red"
+        android:textSize="@dimen/_8sdp"
+        android:visibility="gone" />
+
+    <com.so.luotk.customviews.CustomFontTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/green_button_bg"
+        android:gravity="center"
+        android:padding="@dimen/_6sdp"
+        android:text="Submit"
+        android:textColor="@color/textColorWhite"
+        android:textSize="@dimen/_14sdp" />
+
+
+</LinearLayout>

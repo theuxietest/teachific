@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_2sdp"
+    android:id="@+id/item_layout"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="@dimen/_6sdp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:padding="@dimen/_8sdp">
+
+        <com.so.luotk.customviews.CustomFontTextView
+            android:id="@+id/tv_batch_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/ic_baseline_close_24"
+            android:padding="@dimen/_2sdp"
+            android:drawablePadding="@dimen/_2sdp"
+            android:drawableTint="@color/blue_main"
+            android:ellipsize="marquee"
+            android:singleLine="true"
+            android:text="batch"
+            android:textColor="@color/blue_main"
+            android:textSize="@dimen/_12sdp" />
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

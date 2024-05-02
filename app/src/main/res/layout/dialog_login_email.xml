@@ -1,0 +1,150 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scrollview"
+    android:fillViewport="true"
+    android:background="@color/black_opp"
+    android:layout_height="match_parent">
+
+    <!--<androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >-->
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bottom_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bottom_sheet_rounded_background"
+            android:paddingBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:id="@+id/get_started_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/latosemibold"
+                android:text="@string/enter_email_to_continue"
+                android:textColor="@color/title_dark_blue"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <ImageView
+                android:id="@+id/globe_icon"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_marginEnd="4dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/change_language"
+                app:layout_constraintEnd_toStartOf="@+id/change_language"
+                app:layout_constraintTop_toTopOf="@+id/change_language"
+                app:srcCompat="@drawable/ic_outline_email_blue" />
+
+            <TextView
+                android:id="@+id/enter_mobile_number_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/enter_email_to_continue"
+                android:textAllCaps="false"
+                android:visibility="gone"
+                android:textColor="@color/description_light_blue"
+                app:layout_constraintStart_toStartOf="@+id/get_started_text"
+                app:layout_constraintTop_toBottomOf="@+id/get_started_text" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/email_layout"
+                style="@style/NewOutlinedEditBox"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                app:hintEnabled="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/enter_mobile_number_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/email_text"
+                    android:fontFamily="@font/lato"
+                    android:gravity="center_vertical"
+                    android:hint="@string/email_address"
+                    android:imeOptions="flagNoFullscreen"
+                    android:inputType="textEmailAddress"
+                    android:lines="1"
+                    android:paddingStart="16dp"
+                    android:paddingTop="0dp"
+                    android:paddingBottom="0dp"
+                    android:textColor="@color/title_dark_blue"
+                    android:textColorHint="#997c98c0"
+                    android:textSize="16sp" />
+
+                <requestFocus/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/change_language"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/latosemibold"
+                android:text="@string/login_with_mobile"
+                android:visibility="visible"
+                android:textColor="@color/primaryColor"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/get_started_text"
+                app:layout_constraintTop_toBottomOf="@+id/email_layout" /> />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_error_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/email_layout"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:text="The email is required."
+                android:textColor="@android:color/holo_red_light"
+                android:textSize="@dimen/_10sdp"
+                android:visibility="gone" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/send_otp_button"
+                style="@style/NewPrimaryButtonStyle"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="24dp"
+                android:enabled="false"
+                android:text="@string/send_otp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/terms_and_privacy_text2" />
+
+
+            <TextView
+                android:id="@+id/terms_and_privacy_text2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/privacy_and_terms"
+                android:textAlignment="center"
+                android:textColor="#7c98c0"
+                android:textSize="11sp"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="@+id/get_started_text"
+                app:layout_constraintTop_toBottomOf="@+id/change_language" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+  <!--  </androidx.cardview.widget.CardView>-->
+
+</ScrollView>

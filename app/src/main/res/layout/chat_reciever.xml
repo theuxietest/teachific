@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="@dimen/_1sdp"
+    android:layout_marginBottom="@dimen/_1sdp"
+    android:id="@+id/itemLayout"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/dateLayout"
+        android:background="@drawable/round_corner_4"
+        android:layout_width="@dimen/_85sdp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:layout_marginBottom="@dimen/_4sdp"
+        android:layout_height="wrap_content">
+
+
+        <com.so.luotk.customviews.CustomSemiBoldFontTextView
+            android:id="@+id/dateTv"
+            android:text="23-06-2021"
+            android:layout_centerInParent="true"
+            android:padding="@dimen/_4sdp"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/lyt_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_16sdp"
+        android:gravity="start"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/_8sdp"
+        android:paddingTop="@dimen/_4sdp"
+        android:paddingRight="@dimen/_8sdp"
+        android:paddingBottom="@dimen/_4sdp">
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_4sdp"
+            android:minHeight="32dp"
+            app:cardBackgroundColor="@color/reciever_background"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="1dp"
+            app:cardUseCompatPadding="false">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:minWidth="180dp"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/_4sdp"
+                android:paddingTop="@dimen/_4sdp"
+                android:paddingRight="@dimen/_4sdp"
+                android:paddingBottom="@dimen/_4sdp">
+
+                <com.so.luotk.customviews.CustomSemiBoldFontTextView
+                    android:id="@+id/rec_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
+                    android:text="Message content"
+                    android:textSize="@dimen/_11sdp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                    android:textColor="#6ccbef"
+                    android:textStyle="normal" />
+
+                <com.so.luotk.customviews.CustomFontTextView
+                    android:id="@+id/text_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
+                    android:text="Message content"
+                    android:layout_marginTop="1dp"
+                    android:textSize="@dimen/_11sdp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                    android:textColor="@color/black"
+                    android:textStyle="normal" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:orientation="horizontal">
+
+                    <com.so.luotk.customviews.CustomFontTextView
+                        android:id="@+id/text_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="02:30 AM"
+                        android:layout_marginTop="1dp"
+                        android:textColor="@color/chat_time_color"
+                        android:textSize="10sp" />
+
+                    <View
+                        android:layout_width="@dimen/_4sdp"
+                        android:layout_height="0dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <View
+            android:layout_width="@dimen/_14sdp"
+            android:layout_height="0dp" />
+
+    </LinearLayout>
+</LinearLayout>

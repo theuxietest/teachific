@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/batch_btn"
+        android:icon="@drawable/main_fragment_selector"
+        android:title="@string/batch_text" />
+
+    <item
+        android:id="@+id/account_btn"
+        android:icon="@drawable/account_selector"
+        android:title="@string/account_text" />
+</menu>

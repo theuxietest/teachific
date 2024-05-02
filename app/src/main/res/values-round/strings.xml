@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ONESTAR</string>
+    <string name="api_key_youtube">AIzaSyBq4nhuOXwH91-jFv40gH9FY2fI0L-2s-g</string>
+    <string name="api_key_youtube_one">AIzaSyBq4nhuO</string>
+    <string name="api_key_youtube_two">XwH91-jFv40gH9</string>
+    <string name="api_key_youtube_three">FY2fI0L-2s-g</string>
+    <string name="organization_code">umzbj</string>
+</resources>

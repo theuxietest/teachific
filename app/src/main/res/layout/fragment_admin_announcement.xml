@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.adminrole.adminbatches.AdminAnnouncementFragment">
+
+    <RelativeLayout
+        android:id="@+id/layout_announcement"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="fragments.BatchFragment">
+
+        <RelativeLayout
+            android:id="@+id/layout_data_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/swipe_refresh_layout"
+                android:layout_width="match_parent"
+                android:layout_above="@+id/load_more_lay"
+                android:layout_height="wrap_content">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/announcement_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:overScrollMode="never" />
+
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+            <RelativeLayout
+                android:id="@+id/load_more_lay"
+                android:layout_width="wrap_content"
+                android:visibility="gone"
+                android:layout_above="@+id/layout_add_announcement"
+                android:layout_height="wrap_content">
+                <include
+                    android:id="@+id/loadMoreScreen"
+                    layout="@layout/load_more_layout" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_add_announcement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_add_annoucement"
+                    style="@style/primary_button"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/_12sdp"
+                    android:layout_marginRight="@dimen/_12sdp"
+                    android:enabled="true"
+                    android:backgroundTint="@color/blue_main"
+                    android:textColor="@color/white_both"
+                    android:text="@string/make_announcement"
+                    app:strokeWidth="0dp" />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_no_annoucements"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/img_batch_icon"
+                android:layout_width="@dimen/_120sdp"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:visibility="visible"
+                android:layout_marginBottom="@dimen/_18sdp"
+                android:src="@drawable/ic_undraw_candidate_ubwv" />
+
+            <TextView
+                android:id="@+id/batch_title_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/img_batch_icon"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/poppins"
+                android:layout_marginTop="@dimen/no_margin_from_top"
+                android:padding="@dimen/_4sdp"
+                android:gravity="center"
+                android:text="@string/add_your_announcement"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <TextView
+                android:id="@+id/batch_title_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/batch_title_1"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/poppins"
+                android:layout_marginTop="@dimen/no_margin_from_top"
+                android:gravity="center"
+                android:visibility="gone"
+                android:text="@string/tap_the_button_to_send_your_first_nannouncement_to_the_entire_batch"
+                android:textColor="@color/noTextColor"
+                android:textSize="16sp" />
+
+
+        </RelativeLayout>
+
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:visibility="visible"
+            app:shimmer_auto_start="true">
+
+            <include layout="@layout/shimmer_items" />
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+    </RelativeLayout>
+
+
+</FrameLayout>

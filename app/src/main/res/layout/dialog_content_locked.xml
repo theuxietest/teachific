@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:padding="@dimen/_12sdp"
+    >
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/_24sdp"
+        android:paddingHorizontal="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:background="@drawable/round_corners_drawable"
+        android:orientation="vertical">
+
+        <com.so.luotk.customviews.CustomFontTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingVertical="@dimen/_12sdp"
+            android:text="@string/content_locked"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16sdp" />
+
+        <com.so.luotk.customviews.CustomFontTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout_lock"
+            android:gravity="center"
+            android:text="@string/the_content_you_are_trying_to_access_is_locked_n_buy_the_course_for_complete_access"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/_11sdp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.so.luotk.customviews.CustomFontTextView
+                android:id="@+id/go_back"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:paddingVertical="@dimen/_7sdp"
+                android:background="@drawable/gray_button_bg"
+                android:gravity="center"
+                android:layout_marginRight="@dimen/_8sdp"
+                android:text="@string/cancel"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp" />
+
+            <com.so.luotk.customviews.CustomFontTextView
+                android:id="@+id/buy_now_for"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/_8sdp"
+                android:background="@drawable/round_edge"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:paddingVertical="@dimen/_7sdp"
+                android:text="Buy now for"
+                android:textColor="@color/textColorWhite"
+                android:textSize="@dimen/_11sdp" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/layout_lock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:src="@color/blue_main" />
+
+        <ImageView
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_padlock"
+            app:tint="@color/textColorWhite" />
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+
+    android:padding="10dp">
+
+    <com.so.luotk.customviews.CustomSemiBoldFontTextView
+        android:id="@+id/tv_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black" />
+
+    <com.so.luotk.customviews.CustomSemiBoldFontTextView
+        android:id="@+id/tv_msg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+     />
+
+    <com.so.luotk.customviews.CustomFontTextView
+        android:id="@+id/btn_ok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/round_edge"
+        android:gravity="center_horizontal"
+        android:padding="@dimen/_7sdp"
+        android:text="@string/ok"
+        android:textAllCaps="true"
+        android:textColor="@color/textColorWhite"
+        android:textSize="13sp" />
+
+</LinearLayout>
